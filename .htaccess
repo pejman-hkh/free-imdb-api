@@ -1,0 +1,6 @@
+RewriteEngine on
+Options -Indexes
+RewriteRule    ^$    public_html/    [L]
+RewriteCond %{REQUEST_FILENAME} !-f	
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule    (.*) public_html/$1    [L]
