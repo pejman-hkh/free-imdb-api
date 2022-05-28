@@ -6,7 +6,7 @@ use Peji\DB\DB;
 
 use App\Model\Basics;
 
-class indexController extends appController {
+class apiController extends appController {
 
 	public function before() {
 		
