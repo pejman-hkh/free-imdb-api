@@ -1,6 +1,6 @@
 <?
 ini_set('memory_limit', -1);
-ini_set('display_errors',1);
+//ini_set('display_errors',1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once 'helper.php';
@@ -12,7 +12,7 @@ use Peji\View as View;
 Config::setDir('../config');
 $dbConf = Config::file('db');
 
-
+define('HOST', $_SERVER['HTTP_HOST'] );
 define('siteUrl', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
 
 DB::init( $dbConf['host'], $dbConf['username'], $dbConf['password'], $dbConf['db'] );
