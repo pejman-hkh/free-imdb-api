@@ -20,7 +20,7 @@ class apiController extends appController {
 	function basics() {
 		
 		$basic = Basics::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		return json_encode( $basic );
+		return echo json_encode( $basic );
 
 	}
 
