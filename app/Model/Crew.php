@@ -13,18 +13,25 @@ class Crew extends \Peji\DB\Model {
 		}
 
 		$lines = gzfile($file);
-		foreach ($lines as $k => $line) {
-			if( $k == 0 ) {
-				$e = explode("\t", $line);
-			} else {	
-				$d = explode("\t", $line );
-				$a = new Crew;
-				foreach( $e as $k1 => $v ) {
-					$v = trim( $v );
-					$a->$v = trim($d[$k1]);
+		try {
+			DB::beginTransaction();
+
+			foreach ($lines as $k => $line) {
+				if( $k == 0 ) {
+					$e = explode("\t", $line);
+				} else {	
+					$d = explode("\t", $line );
+					$a = new Crew;
+					foreach( $e as $k1 => $v ) {
+						$v = trim( $v );
+						$a->$v = trim($d[$k1]);
+					}
+					$a->save();
 				}
-				$a->save();
 			}
-		}		
+			DB::commit();
+		} catch (\Throwable $e) {
+			DB::rollback();
+		}				
 	}
 }
