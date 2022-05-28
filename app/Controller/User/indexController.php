@@ -18,10 +18,10 @@ class indexController extends appController {
 	}
 
 	public function index( $id = 0, $params = [] ) {
-		if( isset( $this->get['ratings'] ) ) {
+	/*	if( isset( $this->get['ratings'] ) ) {
 			$a = new Ratings;
 			$a->read();
-		}
+		}*/
 
 	}
 
