@@ -5,6 +5,7 @@ use App\Controller\User\appController;
 use Peji\DB\DB;
 
 use App\Model\Basics;
+use App\Model\Ratings;
 
 class apiController extends appController {
 
@@ -30,9 +31,9 @@ class apiController extends appController {
 
 		
 		$this->disableView = 1;
-		$basic = Basics::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+		$basic = Ratings::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
 		echo json_encode( $basic );
-				
+
 	}
 
 	public function after() {
