@@ -5,7 +5,7 @@ class Basics extends \Peji\DB\Model {
 
 
 	function read() {
-		$file = 'datasets/title.basics.tsv.gz';
+		$file = MDIR.'datasets/title.basics.tsv.gz';
 		if( ! file_exists( $file ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/title.basics.tsv.gz');
 			file_put_contents($file, $c );

@@ -4,7 +4,7 @@ class Names extends \Peji\DB\Model {
 	var $table = 'names';
 
 	function read() {
-		$file = 'datasets/name.basics.tsv.gz';
+		$file = MDIR.'datasets/name.basics.tsv.gz';
 		if( ! file_exists( $file ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/name.basics.tsv.gz');
 			file_put_contents($file, $c );

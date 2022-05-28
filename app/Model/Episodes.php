@@ -4,7 +4,7 @@ class Episodes extends \Peji\DB\Model {
 	var $table = 'episodes';
 
 	function read() {
-		$file = 'datasets/title.episode.tsv.gz';
+		$file = MDIR.'datasets/title.episode.tsv.gz';
 		if( ! file_exists( $file ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/title.episode.tsv.gz');
 			file_put_contents($file, $c );

@@ -3,7 +3,7 @@ namespace App\Model;
 class Akas extends \Peji\DB\Model {
 	var $table = 'akas';
 	function read() {
-		$file = 'datasets/title.akas.tsv.gz';
+		$file = MDIR.'datasets/title.akas.tsv.gz';
 		if( ! file_exists( $file ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/title.akas.tsv.gz');
 			file_put_contents($file, $c );

@@ -6,7 +6,7 @@ class Ratings extends \Peji\DB\Model {
 	var $table = 'ratings';
 
 	function read() {
-		$file = 'datasets/title.ratings.tsv.gz';
+		$file = MDIR.'datasets/title.ratings.tsv.gz';
 		if( ! file_exists( $file ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/title.ratings.tsv.gz');
 			file_put_contents($file, $c );
