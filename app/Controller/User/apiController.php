@@ -53,6 +53,13 @@ class apiController extends appController {
 		echo api_encode( $basic );
 	}
 
+
+	function episodes() {
+		$this->disableView = 1;
+		$basic = Akas::sql("where parentTconst = ? ")->find([ $this->get['code'] ]);
+		echo api_encode( $basic );
+	}
+
 	public function after() {
 	
 	}
