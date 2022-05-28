@@ -7,6 +7,7 @@ use Peji\DB\DB;
 use App\Model\Basics;
 use App\Model\Ratings;
 use App\Model\Crew;
+use App\Model\Names;
 
 class apiController extends appController {
 
@@ -36,6 +37,12 @@ class apiController extends appController {
 	function crew() {
 		$this->disableView = 1;
 		$basic = Crew::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $basic );
+	}
+
+	function names() {
+		$this->disableView = 1;
+		$basic = Names::sql("where nconst = ? ")->findFirst([ $this->get['code'] ]);
 		echo api_encode( $basic );
 	}
 
