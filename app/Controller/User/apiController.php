@@ -9,6 +9,7 @@ use App\Model\Ratings;
 use App\Model\Crew;
 use App\Model\Names;
 use App\Model\Akas;
+use App\Model\Episodes;
 
 class apiController extends appController {
 
@@ -56,7 +57,7 @@ class apiController extends appController {
 
 	function episodes() {
 		$this->disableView = 1;
-		$basic = Akas::sql("where parentTconst = ? ")->find([ $this->get['code'] ]);
+		$basic = Episodes::sql("where parentTconst = ? ")->find([ $this->get['code'] ]);
 		echo api_encode( $basic );
 	}
 
