@@ -14,9 +14,15 @@ class Names extends \Peji\DB\Model {
 
 		$lines = gzfile($file);
 		try {
-			DB::beginTransaction();
 
+			DB::beginTransaction();
+			
 			foreach ($lines as $k => $line) {
+				if( $k % 100000 == 0 ) {
+					DB::commit();
+					DB::beginTransaction();
+				}
+
 				if( $k == 0 ) {
 					$e = explode("\t", $line);
 				} else {	
@@ -28,9 +34,11 @@ class Names extends \Peji\DB\Model {
 					}
 					$a->save();
 				}
+				
 			}
-
+			
 			DB::commit();
+
 		} catch (\Throwable $e) {
 
 			DB::rollback();

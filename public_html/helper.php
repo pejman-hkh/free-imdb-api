@@ -1,5 +1,12 @@
 <?php
 
+function api_encode( $a ) {
+	$ret = [];
+	foreach( $a->columns as $v ) {
+		$ret[$v] = $a->$v;
+	}
+	return json_encode( $ret );
+}
 
 $globalPath = '';
 function getPath() {
