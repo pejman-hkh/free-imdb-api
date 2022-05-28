@@ -18,7 +18,9 @@ class Principals extends \Peji\DB\Model {
 			DB::beginTransaction();
 
 			foreach ($lines as $k => $line) {
-
+				print_r( $line );
+				exit();
+				
 				if( $k % 1000 == 0 ) {
 					DB::commit();
 					DB::beginTransaction();
