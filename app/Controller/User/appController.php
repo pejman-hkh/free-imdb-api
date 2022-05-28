@@ -21,7 +21,8 @@ class appController extends baseController {
 	public function beforeApp() {
 		$this->setViewDir('user');
 
-
+		$this->set("tdir", $this->controller);
+		$this->set("pick", $this->action);
 	}
 
 	protected function queryString() {

@@ -6,6 +6,7 @@ use Peji\Controller;
 class baseController extends Controller {
 
 	function flash( $msg, $status = 0, $data = [] ) {
+		$this->disableView = 1;
 		echo json_encode( [ 'msg' => $msg, 'status' => $status, 'data' => $data ] );
 		//exit();
 	}
