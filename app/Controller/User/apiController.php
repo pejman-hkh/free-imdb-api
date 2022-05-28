@@ -46,6 +46,12 @@ class apiController extends appController {
 		echo api_encode( $basic );
 	}
 
+	function akas() {
+		$this->disableView = 1;
+		$basic = Akas::sql("where titleId = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $basic );
+	}
+
 	public function after() {
 	
 	}
