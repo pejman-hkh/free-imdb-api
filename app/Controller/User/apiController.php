@@ -8,6 +8,7 @@ use App\Model\Basics;
 use App\Model\Ratings;
 use App\Model\Crew;
 use App\Model\Names;
+use App\Model\Akas;
 
 class apiController extends appController {
 
