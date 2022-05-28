@@ -1,5 +1,7 @@
 <?php
 namespace App\Model;
+use Peji\DB\DB;
+
 class Principals extends \Peji\DB\Model {
 	var $table = 'principals';
 

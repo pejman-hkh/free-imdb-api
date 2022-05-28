@@ -1,5 +1,7 @@
 <?php
 namespace App\Model;
+use Peji\DB\DB;
+
 class Akas extends \Peji\DB\Model {
 	var $table = 'akas';
 	function read() {

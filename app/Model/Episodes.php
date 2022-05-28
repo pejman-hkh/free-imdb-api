@@ -1,5 +1,7 @@
 <?php
 namespace App\Model;
+use Peji\DB\DB;
+
 class Episodes extends \Peji\DB\Model {
 	var $table = 'episodes';
 
