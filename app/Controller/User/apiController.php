@@ -20,8 +20,9 @@ class apiController extends appController {
 	function basics() {
 		
 		$basic = Basics::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		return echo json_encode( $basic );
+		echo json_encode( $basic );
 
+		$this->disableView = 1;
 	}
 
 	public function after() {
