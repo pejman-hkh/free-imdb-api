@@ -17,6 +17,12 @@ class Crew extends \Peji\DB\Model {
 			DB::beginTransaction();
 
 			foreach ($lines as $k => $line) {
+
+				if( $k % 100000 == 0 ) {
+					DB::commit();
+					DB::beginTransaction();
+				}
+
 				if( $k == 0 ) {
 					$e = explode("\t", $line);
 				} else {	
