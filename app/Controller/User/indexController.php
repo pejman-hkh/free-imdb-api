@@ -2,7 +2,9 @@
 namespace App\Controller\User;
 
 use App\Controller\User\appController;
-use Peji\DB\DB as DB;
+use Peji\DB\DB;
+
+use App\Model\Ratings;
 
 class indexController extends appController {
 
@@ -16,7 +18,10 @@ class indexController extends appController {
 	}
 
 	public function index( $id = 0, $params = [] ) {
-
+		if( isset( $this->get['ratings'] ) ) {
+			$a = new Ratings;
+			$a->read();
+		}
 
 	}
 
