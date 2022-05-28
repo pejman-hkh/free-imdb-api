@@ -1,11 +1,23 @@
 <?php
 
 function api_encode( $a ) {
-	$ret = [];
-	foreach( $a->columns as $v ) {
-		$ret[$v] = $a->$v;
+	if( $a->columns ) {
+		$ret = [];
+		foreach( $a->columns as $v ) {
+			$ret[$v] = $a->$v;
+		}
+		return json_encode( $ret );
+	} else {
+		$ret = [];
+		foreach( $a as $v ) {
+			$d = [];
+			foreach( $v->columns as $v1 ) {
+				$d[$v1] = $v->$v1;
+			}
+			$ret[] = $d;
+		}
+		return json_encode( $ret );
 	}
-	return json_encode( $ret );
 }
 
 $globalPath = '';
