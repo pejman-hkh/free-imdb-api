@@ -16,6 +16,7 @@ class Principals extends \Peji\DB\Model {
 			$k = 0;
 			DB::beginTransaction();
 			gzfile_get_contents($file, function( $line ) use( $k ) {
+				echo $k."\n";
 
 				if( $k % 1000 == 0 ) {
 					DB::commit();
