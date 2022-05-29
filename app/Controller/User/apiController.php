@@ -63,7 +63,7 @@ class apiController extends appController {
 
 	function principals() {
 		$this->disableView = 1;
-		$ret = Episodes::sql("where tconst = ? ")->find([ $this->get['code'] ]);
+		$ret = Principals::sql("where tconst = ? ")->find([ $this->get['code'] ]);
 		echo api_encode( $ret );
 	}
 
