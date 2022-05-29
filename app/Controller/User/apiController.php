@@ -10,6 +10,7 @@ use App\Model\Crew;
 use App\Model\Names;
 use App\Model\Akas;
 use App\Model\Episodes;
+use App\Model\Principals;
 
 class apiController extends appController {
 
