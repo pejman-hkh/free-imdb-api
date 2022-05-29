@@ -24,41 +24,47 @@ class apiController extends appController {
 
 	function basics() {
 		$this->disableView = 1;
-		$basic = Basics::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Basics::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 
 	function ratings() {
 		$this->disableView = 1;
-		$basic = Ratings::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Ratings::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 
 	function crew() {
 		$this->disableView = 1;
-		$basic = Crew::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Crew::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 	function names() {
 		$this->disableView = 1;
-		$basic = Names::sql("where nconst = ? ")->findFirst([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Names::sql("where nconst = ? ")->findFirst([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 	function akas() {
 		$this->disableView = 1;
-		$basic = Akas::sql("where titleId = ? ")->find([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Akas::sql("where titleId = ? ")->find([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 
 	function episodes() {
 		$this->disableView = 1;
-		$basic = Episodes::sql("where parentTconst = ? ")->find([ $this->get['code'] ]);
-		echo api_encode( $basic );
+		$ret = Episodes::sql("where parentTconst = ? ")->find([ $this->get['code'] ]);
+		echo api_encode( $ret );
+	}
+
+	function principals() {
+		$this->disableView = 1;
+		$ret = Episodes::sql("where tconst = ? ")->find([ $this->get['code'] ]);
+		echo api_encode( $ret );
 	}
 
 	public function after() {
