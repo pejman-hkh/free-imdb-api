@@ -12,17 +12,10 @@ class Principals extends \Peji\DB\Model {
 			file_put_contents($file, $c );
 		}
 
-		gzfile_get_contents($file, function( $line ) {
-			print_r( $line );
-			exit();
-		});
-
-/*		try {
+		try {
+			$k = 0;
 			DB::beginTransaction();
-
-			foreach ($lines as $k => $line) {
-				print_r( $line );
-				exit();
+			gzfile_get_contents($file, function( $line ) use( $k ) {
 
 				if( $k % 1000 == 0 ) {
 					DB::commit();
@@ -40,12 +33,18 @@ class Principals extends \Peji\DB\Model {
 					}
 					$a->save();
 				}
-			}
+				
+				$k++;
+
+				//print_r( $line );
+				//exit();
+			});
 			DB::commit();
 		} catch (\Throwable $e) {
 
 			DB::rollback();
-		}*/
+		}
+
 
 	}
 		
