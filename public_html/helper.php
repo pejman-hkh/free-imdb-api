@@ -1,5 +1,14 @@
 <?php
 
+function gzfile_get_contents($filename, $callback ) {
+	$sfp = gzopen($filename, "r");
+	while ($line = fgets($sfp)) {
+	    //echo $line;
+	    $callback( $line );
+	}
+}
+
+
 function api_encode( $a ) {
 	if( $a->columns ) {
 		$ret = [];

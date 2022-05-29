@@ -12,15 +12,18 @@ class Principals extends \Peji\DB\Model {
 			file_put_contents($file, $c );
 		}
 
-		$lines = gzfile($file);
+		gzfile_get_contents($file, function( $line ) {
+			print_r( $line );
+			exit();
+		});
 
-		try {
+/*		try {
 			DB::beginTransaction();
 
 			foreach ($lines as $k => $line) {
 				print_r( $line );
 				exit();
-				
+
 				if( $k % 1000 == 0 ) {
 					DB::commit();
 					DB::beginTransaction();
@@ -42,7 +45,7 @@ class Principals extends \Peji\DB\Model {
 		} catch (\Throwable $e) {
 
 			DB::rollback();
-		}
+		}*/
 
 	}
 		
