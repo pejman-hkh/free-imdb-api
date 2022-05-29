@@ -2,9 +2,10 @@
 
 function gzfile_get_contents($filename, $callback ) {
 	$sfp = gzopen($filename, "r");
+	$k = 0;
 	while ($line = fgets($sfp)) {
 	    //echo $line;
-	    $callback( $line );
+	    $callback( $line, $k++ );
 	}
 }
 
