@@ -2,6 +2,7 @@
   <div class="col-12">
   <h1> <?=$movie->originalTitle?> <?=$movie->startYear?> </h1>
 
+  <?if($movie->movie->id) {?>
   <div class="row">
     <div class="col-12">
       <div class="card m-1">
@@ -30,6 +31,7 @@
     </div>
   </div>
   <hr />
+    <? } ?>
 
  <div class="row">
     <div class="col-6">
