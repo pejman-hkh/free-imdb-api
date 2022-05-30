@@ -108,7 +108,7 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 
-		$movie->tactors = implode(',', $ids );
+		$movie->tactors = implode(',', array_unique($ids) );
 
 		@$all['Writer'] = @$all['Writer']?:@$all['Writers'];
 		$ids = [];
@@ -127,7 +127,7 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 
-		$movie->twriters = implode(',', $ids );
+		$movie->twriters = implode(',', array_unique($ids) );
 
 		@$all['Director'] = @$all['Director']?:@$all['Directors'];
 
@@ -151,7 +151,7 @@ class Movies extends \Peji\DB\Model {
 		}
 
 
-		$movie->tdirectors = implode(',', $ids );
+		$movie->tdirectors = implode(',', array_unique($ids) );
 
 		@$all['Genre'] = @$all['Genre']?:@$all['Genres'];
 		$ids = [];
@@ -171,7 +171,7 @@ class Movies extends \Peji\DB\Model {
 
 			$ids[] = $id;
 		}
-		$movie->tgenres = implode(',', $ids );
+		$movie->tgenres = implode(',', array_unique($ids) );
 
 		@$all['Country of origin'] = @$all['Country of origin']?:@$all['Countries of origin'];
 		$ids = [];
@@ -191,7 +191,7 @@ class Movies extends \Peji\DB\Model {
 
 			$ids[] = $id;
 		}
-		$movie->tcountries = implode(',', $ids );
+		$movie->tcountries = implode(',', array_unique($ids) );
 
 
 		@$all['Language'] = @$all['Language']?:@$all['Languages'];
@@ -212,7 +212,7 @@ class Movies extends \Peji\DB\Model {
 
 			$ids[] = $id;
 		}
-		$movie->tlanguages = implode(',', $ids );
+		$movie->tlanguages = implode(',', array_unique($ids) );
 
 		$movie->save();		
 	}
