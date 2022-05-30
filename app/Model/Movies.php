@@ -57,7 +57,7 @@ class Movies extends \Peji\DB\Model {
 		//$movie->time = (int)$m[1] * 60 + (int)$m[2];
 		
 		//$nname = html_entity_decode($mainName,ENT_QUOTES | ENT_HTML5).'&nbsp;('.$movie->year.')';
-		$movie->name = $nname;
+		//$movie->name = $nname;
 		//$movie->numberVote = $data->aggregateRating->ratingCount;
 		//$movie->kind = 0;
 		$img = $html->find(".ipc-image", 0);
@@ -73,7 +73,7 @@ class Movies extends \Peji\DB\Model {
 			$movie->srcset = $img->srcset;
 		}
 
-		$movie->name = str_replace('&nbsp;', " ", $movie->name ) ;
+		//$movie->name = str_replace('&nbsp;', " ", $movie->name ) ;
 
 
 		$all = [];
