@@ -5,6 +5,9 @@ use Peji\DB\DB;
 class Basics extends \Peji\DB\Model {
 	var $table = 'basics';
 
+	function getRating() {
+		return Ratings::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
+	}
 
 	function read() {
 		$file = MDIR.'datasets/title.basics.tsv.gz';
