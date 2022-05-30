@@ -5,7 +5,12 @@
   <div class="row">
     <div class="col-12">
       <?if( file_exists( $movie->pic ) ) {?>
+      <div class="card m-1">
+        <div class="card-body">        
         <img src="<?=baseUrl?><?=$movie->pic?>">
+        </div>
+      </div>
+        
       <? } ?>
     </div>
 
