@@ -93,7 +93,7 @@ class Movies extends \Peji\DB\Model {
 		//$movie->name = $nname;
 		//$movie->numberVote = $data->aggregateRating->ratingCount;
 		//$movie->kind = 0;
-		$img = $html->find(".ipc-image", 0);
+		$img = $html->find(".ipc-poster .ipc-image", 0);
 
 		if( $img ) {
 			$fname = $movie->name;
