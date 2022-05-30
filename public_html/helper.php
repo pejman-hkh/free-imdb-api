@@ -26,6 +26,13 @@ function mjson_encode( $arr ) {
 	return json_encode( $arr, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 }
 
+function getArray( $a ) {
+	$ret = [];
+	foreach( $a->columns as $v ) {
+		$ret[$v] = $a->$v;
+	}
+	return $ret;
+}
 
 function api_encode( $a ) {
 	if( $a->columns ) {
