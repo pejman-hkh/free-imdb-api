@@ -96,12 +96,12 @@ class apiController extends appController {
 		$ret->isAdult = $find->basic->isAdult;
 		$ret->type = $find->basic->titleType;
 
-		$ret->actors = $find->actors;
-		$ret->directors = $find->directors;
-		$ret->writers = $find->writers;
-		$ret->countries = $find->countries;
-		$ret->languages = $find->languages;
-		$ret->genres = $find->genres;
+		$ret->actors = getArray($find->actors);
+		$ret->directors = getArray($find->directors);
+		$ret->writers = getArray($find->writers);
+		$ret->countries = getArray($find->countries);
+		$ret->languages = getArray($find->languages);
+		$ret->genres = getArray($find->genres);
 
 		echo mjson_encode( (array)$ret );
 	}
