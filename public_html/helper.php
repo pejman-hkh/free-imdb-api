@@ -1,5 +1,12 @@
 <?php
 
+function isLocal() {
+	if( $_SERVER['HTTP_HOST'] == 'localhost' || isset($_GET['debug_programmer']) ) {
+		return 1;
+	}
+	return 0;
+}
+
 function gzfile_get_contents($filename, $callback ) {
 	$sfp = gzopen($filename, "r");
 	$k = 0;

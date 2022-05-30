@@ -3,15 +3,23 @@ ini_set('memory_limit', -1);
 //ini_set('display_errors',1);
 
 
-if( ( $_SERVER['REQUEST_SCHEME'] == 'http' ) {
-		$req = $_SERVER['REQUEST_URI'];
-		header("Location: https://".HOST.$req,TRUE,301);
-		exit();
+require_once __DIR__.'/../vendor/autoload.php';
+require_once 'helper.php';
+
+define('HOST', $_SERVER['HTTP_HOST'] );
+define('HOST1', 'https://'.$_SERVER['HTTP_HOST'] );
+define('siteUrl', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
+
+
+if( ! isLocal() ) {
+	if( $_SERVER['REQUEST_SCHEME'] == 'http' ) {
+			$req = $_SERVER['REQUEST_URI'];
+			header("Location: https://".HOST.$req,TRUE,301);
+			exit();
+	}
 }
 
 
-require_once __DIR__.'/../vendor/autoload.php';
-require_once 'helper.php';
 
 use Peji\DB\DB as DB;
 use Peji\Config as Config;
@@ -19,10 +27,6 @@ use Peji\View as View;
 
 Config::setDir('../config');
 $dbConf = Config::file('db');
-
-define('HOST', $_SERVER['HTTP_HOST'] );
-define('HOST1', 'https://'.$_SERVER['HTTP_HOST'] );
-define('siteUrl', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
 
 DB::init( $dbConf['host'], $dbConf['username'], $dbConf['password'], $dbConf['db'] );
 
