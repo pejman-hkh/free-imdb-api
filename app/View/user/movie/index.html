@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-lg-12">
   <h1> <?=$movie->originalTitle?> <?=$movie->startYear?> ( <a rel="nofollow" href="<?=baseUrl?>api/movies/?code=<?=$movie->tconst?>">api</a> )  </h1>
 
   <?if($movie->movie->id) {?>
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-12">
       <div class="card m-1">
         <div class="card-body">        
       <?if( file_exists( $movie->pic ) ) {?>
@@ -34,7 +34,7 @@
     <? } ?>
 
  <div class="row">
-    <div class="col-6">
+    <div class="col-lg-6">
       <div class="card">
         <div class="card-body">
           <h4>Basics ( <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">api</a> ) </h4>
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-lg-6">
       
       <div class="card">
         <div class="card-body">
@@ -75,7 +75,7 @@
     <?
   foreach( $movie->akas as $aka ) {
     ?>
-    <div class="col-3">
+    <div class="col-lg-3">
       
       <div class="card m-1">
         <div class="card-body">
@@ -102,7 +102,7 @@
     <?
   foreach( $movie->principals as $principal ) {
     ?>
-    <div class="col-3">
+    <div class="col-lg-3">
       
       <div class="card m-1">
         <div class="card-body">
@@ -127,7 +127,7 @@
     <?
   foreach( $movie->crews as $crew ) {
     ?>
-    <div class="col-3">
+    <div class="col-lg-3">
       
       <div class="card m-1">
         <div class="card-body">

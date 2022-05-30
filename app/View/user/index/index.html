@@ -1,13 +1,13 @@
 
 <div class="row">
-  <div class="col-12">
+  <div class="col-lg-12">
 <h1> Free IMDB REST API </h1>
   <a href="<?=baseUrl?>api">API Documantation</a>
 
 
     <div class="row">
     <?foreach( $movies as $movie ) {?>
-      <div class="col-4">
+      <div class="col-lg-4">
         <div class="card m-1">
           <div class="card-body">
             <h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4>
