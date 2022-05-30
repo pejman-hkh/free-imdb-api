@@ -19,10 +19,10 @@ class movieController extends appController {
 		//array_shift( $params );
 		//$params = $this->keyPairParams( $params );
 
-		print_r( $params );
+		$movie = Basics::sql(" where tconst = ?")->findFirst([ $params[1] ]);
+		print_r( $movie );
 		exit();
-
-		$movie = Basics::sql(" where tconst = ?")->findFirst([ $params ]);
+		
 	}
 
 	public function after() {
