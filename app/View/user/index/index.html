@@ -39,7 +39,7 @@
 
 
     <br />
-    
+
    <?if( $pagination['count'] == 0 ) {?>
       <div class="alert alert-danger">نتیجه ای یافت نشد !</div>
    <? } ?>
@@ -63,7 +63,7 @@
    for( $i = $p['start']; $i <= $p['end']; $i++ ) {
 
    ?>
-   <li class="page-item"><a class="page-link <?=(@$this->params['page'] == $i ? ' active' : '')?>" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"><?=$i?></a> </li>
+   <li class="page-item <?=(@$this->params['page'] == $i ? ' active' : '')?>"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"><?=$i?></a> </li>
    <?    
    }
    ?>
