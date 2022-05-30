@@ -1,7 +1,6 @@
 <?php
 
 function strip_tags_content($text) {
-
     return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
     
  }
@@ -23,13 +22,18 @@ function gzfile_get_contents($filename, $callback ) {
 }
 
 
+function mjson_encode( $arr ) {
+	return json_encode( $arr, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+}
+
+
 function api_encode( $a ) {
 	if( $a->columns ) {
 		$ret = [];
 		foreach( $a->columns as $v ) {
 			$ret[$v] = $a->$v;
 		}
-		return json_encode( $ret );
+		return mjson_encode( $ret );
 	} else {
 		$ret = [];
 		foreach( $a as $v ) {
@@ -39,7 +43,7 @@ function api_encode( $a ) {
 			}
 			$ret[] = $d;
 		}
-		return json_encode( $ret );
+		return mjson_encode( $ret );
 	}
 }
 
