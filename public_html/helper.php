@@ -28,8 +28,12 @@ function mjson_encode( $arr ) {
 
 function getArray( $a ) {
 	$ret = [];
-	foreach( $a->columns as $v ) {
-		$ret[$v] = $a->$v;
+	foreach( $a as $v ) {
+		$d = [];
+		foreach( $v->columns as $v1 ) {
+			$d[$v1] = $v->$v1;
+		}
+		$ret[] = $d;
 	}
 	return $ret;
 }
