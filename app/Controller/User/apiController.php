@@ -11,6 +11,7 @@ use App\Model\Names;
 use App\Model\Akas;
 use App\Model\Episodes;
 use App\Model\Principals;
+use App\Model\Movies;
 
 class apiController extends appController {
 
