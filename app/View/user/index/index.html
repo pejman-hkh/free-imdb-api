@@ -10,21 +10,21 @@
       <div class="col-4">
         <div class="card m-1">
           <div class="card-body">
-            <h4><?=$movie->primaryTitle?></h4>
+            <h4><?=$movie->basic->primaryTitle?></h4>
             <hr />
-            Imdb Code : <?=$movie->tconst?>
+            Imdb Code : <?=$movie->basic->tconst?>
             <hr />
-            Title Type : <?=$movie->titleType?>
+            Title Type : <?=$movie->basic->titleType?>
             <hr />
             <?=$movie->rating->averageRating?> / <?=$movie->rating->numVotes?>
             <hr />
-            Year : <?=$movie->startYear?>
+            Year : <?=$movie->basic->startYear?>
             <hr />
-            RunTime : <?=$movie->runtimeMinutes?>
+            RunTime : <?=$movie->basic->runtimeMinutes?>
             <hr />
-            Genres : <?=$movie->genres?>
+            Genres : <?=$movie->basic->genres?>
             <hr />
-            isAdult : <?=$movie->isAdult?> 
+            isAdult : <?=$movie->basic->isAdult?> 
 
             <hr />
 
@@ -39,10 +39,6 @@
 
 
     <br />
-
-   <?if( $pagination['count'] == 0 ) {?>
-    
-   <? } ?>
 
    <?if( $pagination['count'] > 0 ) {?>
 
