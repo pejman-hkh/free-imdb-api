@@ -18,11 +18,12 @@ class indexController extends appController {
 	}
 
 	public function index( $id = 0, $params = [] ) {
-	/*	if( isset( $this->get['ratings'] ) ) {
-			$a = new Ratings;
-			$a->read();
-		}*/
+		array_shift( $params );
+		$params = $this->keyPairParams( $params );
 
+		$movies = Ratings::sql("")->paginate( (int)(isset($this->get['npage'])?$this->get['npage']:36), @$params['page']?:1 )->find();
+
+		$this->set('movies', $movies);
 	}
 
 	public function after() {

@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-12">
+<h1> Free IMDB REST API </h1>
+
+This api taken from : https://datasets.imdbws.com/
+
+<br />
+<br />
+
+<div class="card">
+  <div class="card-body">
+
+<h2>Names </h2>
+<a href="<?=baseUrl?>api/names/?code=nm0000001">Basics Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/names/?code=nm0000001
+</code>
+</pre>
+
+<pre>
+	<code>
+{"id":"1","nconst":"nm0000001","primaryName":"Fred Astaire","birthYear":"1899","deathYear":"1987","primaryProfession":"soundtrack,actor,miscellaneous","knownForTitles":"tt0031983,tt0072308,tt0053137,tt0050419"}
+	</code>
+</pre>
+
+  </div>
+</div>
+<br />
+<div class="card">
+  <div class="card-body">
+
+<h2>Akas </h2>
+<a href="<?=baseUrl?>api/akas/?code=tt0000001">Akas Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/akas/?code=tt0000001
+</code>
+</pre>
+
+<pre>
+<code>
+[{"id":"9522811","titleId":"tt0000001","ordering":"1","title":"\u041a\u0430\u0440\u043c\u0435\u043d\u0441\u0456\u0442\u0430","region":"UA","language":"\\N","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"},{"id":"9522812","titleId":"tt0000001","ordering":"2","title":"Carmencita","region":"DE","language":"\\N","types":"\\N","attributes":"literal title","isOriginalTitle":"0"},{"id":"9522813","titleId":"tt0000001","ordering":"3","title":"Carmencita - spanyol t\u00e1nc","region":"HU","language":"\\N","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"},{"id":"9522814","titleId":"tt0000001","ordering":"4","title":"\u039a\u03b1\u03c1\u03bc\u03b5\u03bd\u03c3\u03af\u03c4\u03b1","region":"GR","language":"\\N","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"},{"id":"9522815","titleId":"tt0000001","ordering":"5","title":"\u041a\u0430\u0440\u043c\u0435\u043d\u0441\u0438\u0442\u0430","region":"RU","language":"\\N","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"},{"id":"9522816","titleId":"tt0000001","ordering":"6","title":"Carmencita","region":"US","language":"\\N","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"},{"id":"9522817","titleId":"tt0000001","ordering":"7","title":"Carmencita","region":"\\N","language":"\\N","types":"original","attributes":"\\N","isOriginalTitle":"1"},{"id":"9522818","titleId":"tt0000001","ordering":"8","title":"\u30ab\u30eb\u30e1\u30f3\u30c1\u30fc\u30bf","region":"JP","language":"ja","types":"imdbDisplay","attributes":"\\N","isOriginalTitle":"0"}]
+</code>	
+</pre>
+
+  </div>
+</div>
+<br />
+<div class="card">
+  <div class="card-body">
+
+<h2>Basics </h2>
+<a href="<?=baseUrl?>api/basics/?code=tt0000001">Basics Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/basics/?code=tt0000001
+</code>
+</pre>
+
+<pre>
+	<code>
+{"id":"1","tconst":"tt0000001","titleType":"short","primaryTitle":"Carmencita","originalTitle":"Carmencita","isAdult":"0","startYear":"1894","endYear":"\\N","runtimeMinutes":"1","genres":"Documentary,Short"}
+	</code>
+</pre>
+
+  </div>
+</div>
+
+
+<br />
+
+<div class="card">
+  <div class="card-body">
+
+
+<h2>Crew </h2>
+<a href="<?=baseUrl?>api/crew/?code=tt0000001">Crew Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/crew/?code=tt0000001
+</code>
+</pre>
+<pre>
+<code>
+{"id":"1","tconst":"tt0000001","directors":"nm0005690","writers":"\\N"}
+</code>	
+</pre>
+
+  </div>
+</div>
+
+<br />
+
+
+<div class="card">
+  <div class="card-body">
+
+
+<h2>Episodes </h2>
+<a href="<?=baseUrl?>api/episodes/?code=tt15180956">Episodes Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/episodes/?code=tt15180956
+</code>
+</pre>
+<pre>
+<code>
+[{"id":"1","tconst":"tt0020666","parentTconst":"tt15180956","seasonNumber":"1","episodeNumber":"2"},{"id":"2","tconst":"tt0020829","parentTconst":"tt15180956","seasonNumber":"1","episodeNumber":"1"},{"id":"3","tconst":"tt0021166","parentTconst":"tt15180956","seasonNumber":"1","episodeNumber":"3"},{"id":"4","tconst":"tt0021612","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"2"},{"id":"5","tconst":"tt0021655","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"5"},{"id":"6","tconst":"tt0021663","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"6"},{"id":"7","tconst":"tt0021664","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"4"},{"id":"8","tconst":"tt0021701","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"1"},{"id":"9","tconst":"tt0021802","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"11"},{"id":"10","tconst":"tt0022009","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"10"},{"id":"11","tconst":"tt0022031","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"8"},{"id":"12","tconst":"tt0022127","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"9"},{"id":"13","tconst":"tt0022152","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"7"},{"id":"14","tconst":"tt0022385","parentTconst":"tt15180956","seasonNumber":"2","episodeNumber":"3"},{"id":"15","tconst":"tt0022604","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"8"},{"id":"16","tconst":"tt0022610","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"10"},{"id":"17","tconst":"tt0022631","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"1"},{"id":"18","tconst":"tt0022666","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"11"},{"id":"19","tconst":"tt0022667","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"17"},{"id":"20","tconst":"tt0022668","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"15"},{"id":"21","tconst":"tt0022669","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"13"},{"id":"22","tconst":"tt0022670","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"19"},{"id":"23","tconst":"tt0022671","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"16"},{"id":"24","tconst":"tt0022704","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"2"},{"id":"25","tconst":"tt0022758","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"9"},{"id":"26","tconst":"tt0022786","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"6"},{"id":"27","tconst":"tt0022800","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"7"},{"id":"28","tconst":"tt0023045","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"18"},{"id":"29","tconst":"tt0023227","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"4"},{"id":"30","tconst":"tt0023408","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"3"},{"id":"31","tconst":"tt0023417","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"5"},{"id":"32","tconst":"tt0023514","parentTconst":"tt15180956","seasonNumber":"3","episodeNumber":"12"},{"id":"33","tconst":"tt0023797","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"8"},{"id":"34","tconst":"tt0023798","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"6"},{"id":"35","tconst":"tt0023799","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"2"},{"id":"36","tconst":"tt0023800","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"14"},{"id":"37","tconst":"tt0023801","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"1"},{"id":"38","tconst":"tt0023802","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"7"},{"id":"39","tconst":"tt0023803","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"4"},{"id":"40","tconst":"tt0024154","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"12"},{"id":"41","tconst":"tt0024187","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"3"},{"id":"42","tconst":"tt0024354","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"13"},{"id":"43","tconst":"tt0024355","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"9"},{"id":"44","tconst":"tt0024404","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"11"},{"id":"45","tconst":"tt0024428","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"15"},{"id":"46","tconst":"tt0024461","parentTconst":"tt15180956","seasonNumber":"4","episodeNumber":"10"},{"id":"47","tconst":"tt0024877","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"7"},{"id":"48","tconst":"tt0024878","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"10"},{"id":"49","tconst":"tt0024879","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"11"},{"id":"50","tconst":"tt0024880","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"5"},{"id":"51","tconst":"tt0024881","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"6"},{"id":"52","tconst":"tt0024882","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"4"},{"id":"53","tconst":"tt0025213","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"3"},{"id":"54","tconst":"tt0025343","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"12"},{"id":"55","tconst":"tt0025665","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"8"},{"id":"56","tconst":"tt0025705","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"2"},{"id":"57","tconst":"tt0025778","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"1"},{"id":"58","tconst":"tt0025877","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"9"},{"id":"59","tconst":"tt0025979","parentTconst":"tt15180956","seasonNumber":"5","episodeNumber":"13"},{"id":"60","tconst":"tt0026091","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"1"},{"id":"61","tconst":"tt0026109","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"8"},{"id":"62","tconst":"tt0026110","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"11"},{"id":"63","tconst":"tt0026553","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"9"},{"id":"64","tconst":"tt0026601","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"7"},{"id":"65","tconst":"tt0026640","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"6"},{"id":"66","tconst":"tt0026669","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"10"},{"id":"67","tconst":"tt0026788","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"5"},{"id":"68","tconst":"tt0027045","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"3"},{"id":"69","tconst":"tt0027061","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"4"},{"id":"70","tconst":"tt0027074","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"2"},{"id":"71","tconst":"tt0027339","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"11"},{"id":"72","tconst":"tt0027352","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"3"},{"id":"73","tconst":"tt0027353","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"1"},{"id":"74","tconst":"tt0027691","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"10"},{"id":"75","tconst":"tt0027717","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"8"},{"id":"76","tconst":"tt0027895","parentTconst":"tt15180956","seasonNumber":"6","episodeNumber":"12"},{"id":"77","tconst":"tt0027933","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"12"},{"id":"78","tconst":"tt0027984","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"6"},{"id":"79","tconst":"tt0028042","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"2"},{"id":"80","tconst":"tt0028279","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"5"},{"id":"81","tconst":"tt0028403","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"9"},{"id":"82","tconst":"tt0028482","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"4"},{"id":"83","tconst":"tt0028526","parentTconst":"tt15180956","seasonNumber":"7","episodeNumber":"7"},{"id":"84","tconst":"tt0028685","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"8"},{"id":"85","tconst":"tt0028787","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"7"},{"id":"86","tconst":"tt0028894","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"11"},{"id":"87","tconst":"tt0029022","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"3"},{"id":"88","tconst":"tt0029027","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"1"},{"id":"89","tconst":"tt0029046","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"6"},{"id":"90","tconst":"tt0029302","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"10"},{"id":"91","tconst":"tt0029447","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"5"},{"id":"92","tconst":"tt0029448","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"4"},{"id":"93","tconst":"tt0029538","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"9"},{"id":"94","tconst":"tt0029773","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"2"},{"id":"95","tconst":"tt0029820","parentTconst":"tt15180956","seasonNumber":"8","episodeNumber":"12"},{"id":"96","tconst":"tt0029903","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"2"},{"id":"97","tconst":"tt0029955","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"7"},{"id":"98","tconst":"tt0029956","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"9"},{"id":"99","tconst":"tt0030244","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"3"},{"id":"100","tconst":"tt0030524","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"11"},{"id":"101","tconst":"tt0030536","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"4"},{"id":"102","tconst":"tt0030633","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"6"},{"id":"103","tconst":"tt0030634","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"8"},{"id":"104","tconst":"tt0030682","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"1"},{"id":"105","tconst":"tt0030711","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"10"},{"id":"106","tconst":"tt0030818","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"5"},{"id":"107","tconst":"tt0030869","parentTconst":"tt15180956","seasonNumber":"9","episodeNumber":"12"},{"id":"108","tconst":"tt0031689","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"3"},{"id":"109","tconst":"tt0031694","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"1"},{"id":"110","tconst":"tt0031855","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"5"},{"id":"111","tconst":"tt0031901","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"4"},{"id":"112","tconst":"tt0031944","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"2"},{"id":"113","tconst":"tt0032151","parentTconst":"tt15180956","seasonNumber":"10","episodeNumber":"6"}]
+</code>	
+</pre>
+
+  </div>
+</div>
+
+<br />
+
+<div class="card">
+  <div class="card-body">
+
+
+<h2>Principals </h2>
+<a href="<?=baseUrl?>api/principals/?code=tt0000001">Principals Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/principals/?code=tt0000001
+</code>
+</pre>
+
+<pre>
+<code>
+[{"id":"1","tconst":"tt0000001","ordering":"1","nconst":"nm1588970","category":"self","job":"\\N","characters":"[\"Self\"]"},{"id":"2","tconst":"tt0000001","ordering":"2","nconst":"nm0005690","category":"director","job":"\\N","characters":"\\N"},{"id":"3","tconst":"tt0000001","ordering":"3","nconst":"nm0374658","category":"cinematographer","job":"director of photography","characters":"\\N"}]
+</code>	
+</pre>
+
+	</div>
+</div>
+<br />
+
+<div class="card">
+  <div class="card-body">
+
+
+<h2>Ratings <span>( daily update )</span></h2>
+<a href="<?=baseUrl?>api/ratings/?code=tt0000001">Ratings Sample</a> <br />
+<pre>
+<code>
+GET <?=HOST1?>/api/ratings/?code=tt0000001
+</code>
+</pre>
+
+<pre>
+<code>
+POST <?=HOST1?>/api/ratings/?codes[]=tt0000001&codes[]=tt0000002
+</code>
+</pre>
+
+<pre>
+<code>
+{"id":"1","tconst":"tt0000001","averageRating":"5.7","numVotes":"1882"}
+</code>	
+</pre>
+
+	</div>
+</div>
+
+<br />
+
+
+</div>
+</div>

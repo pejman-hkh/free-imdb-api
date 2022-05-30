@@ -5,6 +5,10 @@ use Peji\DB\DB;
 class Ratings extends \Peji\DB\Model {
 	var $table = 'ratings';
 
+	function getBasic() {
+		return Basics::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
+	}
+
 	function read() {
 		$file = MDIR.'datasets/title.ratings.tsv.gz';
 		//if( ! file_exists( $file ) ) {
@@ -40,7 +44,7 @@ class Ratings extends \Peji\DB\Model {
 					if( $check->id ) {
 						$a = $check;
 					}
-					
+
 					$a->save();
 				}
 			});
