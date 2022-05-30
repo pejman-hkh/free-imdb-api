@@ -13,6 +13,13 @@
     <?foreach( $movie->rating->columns as $c ) {?>
         <li><?=$c?> : <?=$movie->rating->$c?></li>
     <? } ?>
+    </ul>    
+
+    <h4>Akas : </h4>
+    <ul>
+    <?foreach( $movie->aka->columns as $c ) {?>
+        <li><?=$c?> : <?=$movie->aka->$c?></li>
+    <? } ?>
     </ul>
 
   </div>
