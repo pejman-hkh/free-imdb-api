@@ -1,5 +1,11 @@
 <?php
 
+function strip_tags_content($text) {
+
+    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+    
+ }
+
 function isLocal() {
 	if( $_SERVER['HTTP_HOST'] == 'localhost' || isset($_GET['debug_programmer']) ) {
 		return 1;
