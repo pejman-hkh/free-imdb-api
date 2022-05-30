@@ -8,8 +8,13 @@
         <div class="card-body">        
       <?if( file_exists( $movie->pic ) ) {?>
         <img src="<?=baseUrl?><?=$movie->pic?>">
+        <br />
       <? } ?>
+        
         <?=$movie->movie->storyLine?>
+        <?=$movie->movie->summery?>
+        <hr />
+
         </div>
       </div>
         
