@@ -20,7 +20,7 @@
     <?
   foreach( $movie->akas as $aka ) {
     foreach( $aka->columns as $c ) {?>
-        <li><?=$c?> : <?=$movie->aka->$c?></li>
+        <li><?=$c?> : <?=$aka->$c?></li>
     <? } 
   }
     ?>
