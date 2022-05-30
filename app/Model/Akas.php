@@ -11,11 +11,13 @@ class Akas extends \Peji\DB\Model {
 			file_put_contents($file, $c );
 		}
 
-		$lines = gzfile($file);
+		//$lines = gzfile($file);
 		try {
 			DB::beginTransaction();
+			$e = [];
+			gzfile_get_contents($file, function( $line, $k ) {
+				global $e;
 
-			foreach ($lines as $k => $line) {
 
 				if( $k % 100000 == 0 ) {
 					DB::commit();
@@ -33,7 +35,7 @@ class Akas extends \Peji\DB\Model {
 					}
 					$a->save();
 				}
-			}
+			});
 
 			DB::commit();
 		} catch (\Throwable $e) {

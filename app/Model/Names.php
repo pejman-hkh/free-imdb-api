@@ -12,12 +12,14 @@ class Names extends \Peji\DB\Model {
 			file_put_contents($file, $c );
 		}
 
-		$lines = gzfile($file);
+		//$lines = gzfile($file);
 		try {
 
 			DB::beginTransaction();
-			
-			foreach ($lines as $k => $line) {
+			$e = [];
+			gzfile_get_contents($file, function( $line, $k ) {
+				global $e;
+
 				if( $k % 100000 == 0 ) {
 					DB::commit();
 					DB::beginTransaction();
@@ -35,7 +37,7 @@ class Names extends \Peji\DB\Model {
 					$a->save();
 				}
 				
-			}
+			});
 			
 			DB::commit();
 

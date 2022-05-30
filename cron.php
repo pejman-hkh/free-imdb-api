@@ -21,11 +21,11 @@ DB::setAttr([
 
 define('MDIR', 'public_html/');
 
-use App\Model\Principals;
+use App\Model\Ratings;
 
 try {
 
-	$a = new Principals;
+	$a = new Ratings;
 	$a->read();
 
 } catch( Error $e ){

@@ -18,7 +18,6 @@ class Principals extends \Peji\DB\Model {
 			$e = [];
 			gzfile_get_contents($file, function( $line, $k ) {
 				global $e;
-				//echo $k."\n";
 
 				if( $k % 1000 == 0 ) {
 					DB::commit();
@@ -37,11 +36,8 @@ class Principals extends \Peji\DB\Model {
 					$a->save();
 				}
 				
-				$k++;
-
-				//print_r( $line );
-				//exit();
 			});
+			
 			DB::commit();
 		} catch (\Throwable $e) {
 
