@@ -83,22 +83,28 @@ class DHC {
 			$csql = $this->sql;
 			$csql = substr($csql, strpos( $csql, 'from') );
 			$csql = substr($csql, 0, strpos( $csql, 'limit') );
+			$countsql = "select count(*) as count ".$csql;
+			$countsql = preg_replace($regex = '#order\s*by\s*(\w+)\s*(\w+)\s*#i', '', $countsql);
 
-			$csql = preg_replace_callback('#order\s*by(.*?)(asc|desc)#isU', function( $m ) {
-				return '';
-			}, $csql);
+			$jbind = json_encode( $bind );
+			$md5 = md5($countsql.$jbind);
+			$check = DB::sql("select * from countcache where md5 = ?")->findFirst([ $md5 ]);
 
+			if( @$check->id ) {
+				$this->count = $check->ncount;
+				if(  time() - $check->date > 60 ) {
+					DB::sql("update countcache set status = 2 where id = ? ")->execute([ $check->id ]);
+				}
+			} else {
+				$fetch = DB::sql( $countsql )->findFirst($bind);
+				if( ! @$check->id && $fetch->count >= 2000 ) {
+					DB::sql("insert into countcache(nsql,bind,md5,ncount,date) values(?,?,?,?,?)")->execute([$countsql, $jbind, $md5, $fetch->count, time() ]);
+				}
 
-//			$csql = preg_replace($regex = '#order\s*by\s*#i', '', $csql);
-//			$csql = preg_replace($regex = '#\w+\s*(desc|asc)\s*(\,)?#i', '', $csql);
-
-			$fetch = DB::sql( "select count(*) as count ".$csql )->findFirst($bind);
-			$this->count = $fetch->count;
-	
+				$this->count = $fetch->count;
+			}
 			//$fetch = $this->db->prepare("SELECT FOUND_ROWS()")->execute()->fetch();
 			//$this->count = @$fetch["FOUND_ROWS()"];
-		
-
 		}
 
 		$ret = [];
