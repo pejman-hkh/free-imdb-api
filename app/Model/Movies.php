@@ -36,6 +36,10 @@ class Movies extends \Peji\DB\Model {
 		return Basics::sql("where tconst = ? ")->findFirst([ $this->code ]);
 	}
 
+	function getRating() {
+		return Ratings::sql("where tconst = ? ")->findFirst([ $this->code ]);
+	}
+
 	function update() {
 
 		$movie = $this;
