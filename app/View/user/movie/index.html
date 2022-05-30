@@ -39,6 +39,7 @@
 <hr />
 
 <h4>Akas : </h4>
+<a rel="nofollow" href="<?=baseUrl?>api/akas/?code=<?=$movie->tconst?>">api</a>
  <div class="row">
     <?
   foreach( $movie->akas as $aka ) {
@@ -65,6 +66,7 @@
 <hr />
 
 <h4>Principals : </h4>
+<a rel="nofollow" href="<?=baseUrl?>api/principals/?code=<?=$movie->tconst?>">api</a>
  <div class="row">
     <?
   foreach( $movie->principals as $principal ) {
@@ -89,6 +91,7 @@
 <hr />
 
 <h4>Crews : </h4>
+<a rel="nofollow" href="<?=baseUrl?>api/crew/?code=<?=$movie->tconst?>">api</a>
  <div class="row">
     <?
   foreach( $movie->crews as $crew ) {
