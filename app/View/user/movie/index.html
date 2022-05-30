@@ -2,7 +2,9 @@
   <div class="col-12">
   <h1> <?=$movie->primaryTitle?> </h1>
     <ul>
-    <?foreach( $movie->basic as $basic ) {?>
+    <?foreach( $movie->basic as $basic ) {
+print_r( $basic );
+      ?>
       <? foreach( $basic->columns as $b ) {?>
         <?=$b?> : <?=$basic->$b?>
       <? } ?>
