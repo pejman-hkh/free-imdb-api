@@ -23,7 +23,12 @@ class indexController extends appController {
 
 		$movies = Ratings::sql("")->paginate( (int)(isset($this->get['npage'])?$this->get['npage']:36), @$params['page']?:1 )->find();
 
+		$path = explode("/", getPath() );
+		$this->set('mcontroller', $path[0]?:'index' );
+
+		$this->set('params', $params);
 		$this->set('movies', $movies);
+		$this->set('pagination', Ratings::getPaginate() );
 	}
 
 	public function after() {

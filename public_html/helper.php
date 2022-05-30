@@ -53,3 +53,22 @@ function getPath() {
 	$globalPath = preg_replace( '#^'.$appDir.'#', "", $reqUri );
 	return $globalPath;
 }
+
+
+function makePp( $params = [], $except = '' ) {
+
+	if( @$params['page'] )
+		unset( $params['page'] );
+
+	$ret = '';
+	$pre = '';
+
+	foreach( $params as $k => $v ) {
+		if( $k == $except ) continue;
+		
+		$ret .= $pre.$k.($v?'/'.$v:'');
+		$pre = '/';
+	}
+
+	return $ret;
+}

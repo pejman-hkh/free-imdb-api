@@ -37,5 +37,47 @@
     <? } ?>
     </div>
 
+
+
+                     <?if( $pagination['count'] == 0 ) {?>
+                        <div class="alert alert-danger">نتیجه ای یافت نشد !</div>
+                     <? } ?>
+
+                     <?if( $pagination['count'] > 0 ) {?>
+                  
+                     <ul class="pagination">
+                     <? 
+                     $p = $pagination;
+                     $i = $p['prev']; 
+                     $params = makePp($this->params);
+                     ?>
+                     <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>">Prev</a></li>
+             
+
+                     <?$i = 1;?>
+                     <li class="page-item"><a class="page-link wa" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>">First</a></li>
+
+                     <?
+
+                     for( $i = $p['start']; $i <= $p['end']; $i++ ) {
+
+                     ?>
+                     <li class="page-item"><a class="page-link <?=(@$this->params['page'] == $i ? ' active' : '')?>" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"><?=$i?></a> </li>
+                     <?    
+                     }
+                     ?>
+
+                     <? $i = $p['endPage']?>
+                     <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"> Last</a></li>
+
+            
+                     <? $i = $p['next']?>
+                     <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"> Next</a></li>
+
+                     </ul>
+                   
+                     <? } ?>  
+
+
   </div>
 </div>

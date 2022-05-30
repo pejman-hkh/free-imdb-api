@@ -23,6 +23,8 @@ class appController extends baseController {
 
 		$this->set("tdir", $this->controller);
 		$this->set("pick", $this->action);
+		$this->set('queryString', $this->queryString() );
+		
 	}
 
 	protected function queryString() {
