@@ -1,19 +1,39 @@
 <div class="row">
   <div class="col-12">
   <h1> <?=$movie->primaryTitle?> </h1>
-    <h4>Basics : </h4>
-    <ul>
-    <?foreach( $movie->basic->columns as $c ) {?>
-        <li><?=$c?> : <?=$movie->basic->$c?></li>
-    <? } ?>
-    </ul>   
 
-    <h4>Ratings : </h4>
-    <ul>
-    <?foreach( $movie->rating->columns as $c ) {?>
-        <li><?=$c?> : <?=$movie->rating->$c?></li>
-    <? } ?>
-    </ul>    
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h4>Basics : </h4>
+          <ul>
+          <?foreach( $movie->basic->columns as $c ) {?>
+              <li><?=$c?> : <?=$movie->basic->$c?></li>
+          <? } ?>
+          </ul>   
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      
+      <div class="card">
+        <div class="card-body">
+          <h4>Ratings : </h4>
+          <ul>
+          <?foreach( $movie->rating->columns as $c ) {?>
+              <li><?=$c?> : <?=$movie->rating->$c?></li>
+          <? } ?>
+          </ul>    
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
 
     <h4>Akas : </h4>
     <?
