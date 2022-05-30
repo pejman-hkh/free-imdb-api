@@ -24,7 +24,10 @@
             <hr />
             Genres : <?=$movie->basic->genres?>
             <hr />
-            isAdult : <?=$movie->basic->isAdult?>  
+            isAdult : <?=$movie->basic->isAdult?> 
+
+
+            <a href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">ratings</a> / <a href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">basics</a>
           </div>
         </div>
 
