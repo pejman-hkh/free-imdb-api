@@ -134,7 +134,9 @@ class Movies extends \Peji\DB\Model {
 			if( @count( $actor ) == 0 ) {
 				$a = new Actors;
 				$a->name = $v[0];
-				$a->imdbLink = $v[1];
+				$e = explode('/', $v[1]);
+				$a->const = $e[2];
+				//$a->imdbLink = $v[1];
 				$id = $a->save();
 
 				//$a->savePic();
@@ -154,7 +156,9 @@ class Movies extends \Peji\DB\Model {
 			if( @count( $writer ) == 0 ) {
 				$a = new Writers;
 				$a->name = $v[0];
-				$a->imdbLink = $v[1];
+				$e = explode('/', $v[1]);
+				$a->const = $e[2];				
+				//$a->imdbLink = $v[1];
 				$id = $a->save();
 
 			} else {
@@ -175,7 +179,9 @@ class Movies extends \Peji\DB\Model {
 			if( @count( $director ) == 0 ) {
 				$a = new Directors;
 				$a->name = $v[0];
-				$a->imdbLink = $v[1];
+				$e = explode('/', $v[1]);
+				$a->const = $e[2];				
+				//$a->imdbLink = $v[1];
 				$id = $a->save();
 
 				//$a->savePic();
