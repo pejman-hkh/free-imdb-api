@@ -92,8 +92,8 @@ class DHC {
 //			$csql = preg_replace($regex = '#order\s*by\s*#i', '', $csql);
 //			$csql = preg_replace($regex = '#\w+\s*(desc|asc)\s*(\,)?#i', '', $csql);
 
-			$fetch = DB::sql( "select count(*) as count ".$csql )->findFirst($bind);
-			$this->count = $fetch->count;
+			//$fetch = DB::sql( "select count(*) as count ".$csql )->findFirst($bind);
+			//$this->count = $fetch->count;
 	
 			//$fetch = $this->db->prepare("SELECT FOUND_ROWS()")->execute()->fetch();
 			//$this->count = @$fetch["FOUND_ROWS()"];
