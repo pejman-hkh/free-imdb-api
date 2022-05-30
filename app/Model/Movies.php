@@ -3,6 +3,26 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function getLanguages() {
+		return Languages::sql("where id in(".($this->tlanguages?:-1).") ")->find();
+	}
+
+	function getCountries() {
+		return Countries::sql("where id in(".($this->tcountries?:-1).") ")->find();
+	}
+
+	function getActors() {
+		return Actors::sql("where id in(".($this->tactors?:-1).") ")->find();
+	}
+
+	function getDirectors() {
+		return Directors::sql("where id in(".($this->tdirectors?:-1).") ")->find();
+	}
+
+	function getWrites() {
+		return Writers::sql("where id in(".($this->twriters?:-1).") ")->find();
+	}
+
 	function getImdbUrl() {
 		return 'https://www.imdb.com/title/'.$this->code.'/';
 	}

@@ -80,6 +80,18 @@ class apiController extends appController {
 		echo api_encode( $ret );
 	}
 
+	function movies() {
+		$this->disableView = 1;
+		$find = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
+		$find->actors = $find->actors;
+		$find->directors = $find->directors;
+		$find->writers = $find->writers;
+		$find->countries = $find->countries;
+		$find->languages = $find->languages;
+
+		echo api_encode( $find );
+	}
+
 	public function after() {
 	
 	}
