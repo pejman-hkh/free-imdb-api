@@ -84,13 +84,24 @@ class apiController extends appController {
 	function movies() {
 		$this->disableView = 1;
 		$find = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
-		$find->actors = $find->actors;
-		$find->directors = $find->directors;
-		$find->writers = $find->writers;
-		$find->countries = $find->countries;
-		$find->languages = $find->languages;
+		$ret = new \StdClass;
 
-		echo api_encode( $find );
+		$ret->title = $find->basic->originalTitle;
+		$ret->rate = $find->rating->averageRating;
+		$ret->numVotes = $find->rating->numVotes;
+		$ret->year = $find->basic->startYear;
+		$ret->runtime = $find->basic->runtimeMinutes;
+		$ret->isAdult = $find->basic->isAdult;
+		$ret->type = $find->basic->titleType;
+
+		$ret->actors = $find->actors;
+		$ret->directors = $find->directors;
+		$ret->writers = $find->writers;
+		$ret->countries = $find->countries;
+		$ret->languages = $find->languages;
+		$ret->genres = $find->genres;
+
+		echo mjson_encode( $ret );
 	}
 
 	public function after() {

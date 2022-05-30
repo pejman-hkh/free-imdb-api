@@ -23,8 +23,17 @@ class Movies extends \Peji\DB\Model {
 		return Writers::sql("where id in(".($this->twriters?:-1).") ")->find();
 	}
 
+	function getGenres() {
+		return Genres::sql("where id in(".($this->tgenres?:-1).") ")->find();
+	}
+
 	function getImdbUrl() {
 		return 'https://www.imdb.com/title/'.$this->code.'/';
+	}
+
+
+	function getBasic() {
+		return Basics::sql("where tconst = ? ")->findFirst([ $this->code ]);
 	}
 
 	function update() {
