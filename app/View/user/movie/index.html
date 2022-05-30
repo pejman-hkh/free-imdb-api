@@ -31,23 +31,31 @@
       </div>
 
 
-    </div>
-  </div>
-
 
     <h4>Akas : </h4>
     <?
   foreach( $movie->akas as $aka ) {
     ?>
+    <div class="col-3">
+      
+      <div class="card">
+        <div class="card-body">
+
     <ul>
     <?foreach( $aka->columns as $c ) {?>
         <li><?=$c?> : <?=$aka->$c?></li>
     <? } ?>
     </ul>
-    <hr />
+    </div>
+  </div>
+</div>
+
     <?
   }
     ?>
+
+    </div>
+  </div>
 
   </div>
 </div>
