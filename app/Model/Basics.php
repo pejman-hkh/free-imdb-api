@@ -22,7 +22,7 @@ class Basics extends \Peji\DB\Model {
 	}
 
 	function getCrews() {
-		return Crews::sql("where tconst = ? ")->find([ $this->tconst ]);
+		return Crew::sql("where tconst = ? ")->find([ $this->tconst ]);
 	}
 
 	function read() {
