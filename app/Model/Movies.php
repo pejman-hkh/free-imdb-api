@@ -69,7 +69,8 @@ class Movies extends \Peji\DB\Model {
 			$ret = file_get_contents( $img->src );
 
 			file_put_contents( MDIR.'images/'.$fname, $ret );
-			//$movie->pic = $fname;
+			$movie->src = $img->src;
+			$movie->srcset = $img->srcset;
 		}
 
 		$movie->name = str_replace('&nbsp;', " ", $movie->name ) ;
