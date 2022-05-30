@@ -7,6 +7,8 @@
       <div class="card">
         <div class="card-body">
           <h4>Basics : </h4>
+          <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">api</a>
+
           <ul>
           <?foreach( $movie->basic->columns as $c ) {?>
               <li><?=$c?> : <?=$movie->basic->$c?></li>
@@ -22,6 +24,7 @@
       <div class="card">
         <div class="card-body">
           <h4>Ratings : </h4>
+          <a rel="nofollow" href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">api</a>
           <ul>
           <?foreach( $movie->rating->columns as $c ) {?>
               <li><?=$c?> : <?=$movie->rating->$c?></li>
