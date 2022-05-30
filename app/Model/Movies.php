@@ -45,7 +45,10 @@ class Movies extends \Peji\DB\Model {
 			}
 		}
 
-		$movie->storyLine = $data->review->reviewBody;
+		//$movie->storyLine = $data->review->reviewBody;
+		$stl = $html->find(".ipc-html-content-inner-div", 0);
+		$movie->storyLine = strip_tags( $stl->innertext );
+
 		$movie->summery = $data->description;
 		//$movie->imdbRate = $data->aggregateRating->ratingValue;
 		//$e = explode("-", ($data->review->dateCreated?:$data->datePublished) );
