@@ -47,16 +47,16 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->storyLine = $data->review->reviewBody;
 		$movie->summery = $data->description;
-		$movie->imdbRate = $data->aggregateRating->ratingValue;
-		$e = explode("-", ($data->review->dateCreated?:$data->datePublished) );
-		$movie->year = $year;
-		preg_match('#([0-9]+)H([0-9]+)M#', $data->duration, $m );
-		$movie->time = (int)$m[1] * 60 + (int)$m[2];
+		//$movie->imdbRate = $data->aggregateRating->ratingValue;
+		//$e = explode("-", ($data->review->dateCreated?:$data->datePublished) );
+		//$movie->year = $year;
+		//preg_match('#([0-9]+)H([0-9]+)M#', $data->duration, $m );
+		//$movie->time = (int)$m[1] * 60 + (int)$m[2];
 		
-		$nname = html_entity_decode($mainName,ENT_QUOTES | ENT_HTML5).'&nbsp;('.$movie->year.')';
+		//$nname = html_entity_decode($mainName,ENT_QUOTES | ENT_HTML5).'&nbsp;('.$movie->year.')';
 		$movie->name = $nname;
-		$movie->numberVote = $data->aggregateRating->ratingCount;
-		$movie->kind = 0;
+		//$movie->numberVote = $data->aggregateRating->ratingCount;
+		//$movie->kind = 0;
 		$img = $html->find(".ipc-image", 0);
 
 		if( $img ) {
@@ -66,7 +66,7 @@ class Movies extends \Peji\DB\Model {
 			$ret = file_get_contents( $img->src );
 
 			file_put_contents( MDIR.'images/'.$fname, $ret );
-			$movie->pic = $fname;
+			//$movie->pic = $fname;
 		}
 
 		$movie->name = str_replace('&nbsp;', " ", $movie->name ) ;
