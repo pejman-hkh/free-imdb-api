@@ -9,6 +9,11 @@ class Basics extends \Peji\DB\Model {
 		return 'images/'.$this->tconst.'.jpg';
 	}
 
+	function getMovie() {
+		return Movies::sql("where code = ? ")->findFirst([ $this->tconst ]);
+	}
+
+
 	function getRating() {
 		return Ratings::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
 	}
