@@ -5,6 +5,7 @@ use App\Controller\User\appController;
 use Peji\DB\DB;
 
 use App\Model\Basics;
+use App\Model\Movies;
 
 class indexController extends appController {
 
@@ -18,6 +19,8 @@ class indexController extends appController {
 	}
 
 	public function index( $id = 0, $params = [] ) {
+		Movies::sql("")->find();
+
 		array_shift( $params );
 		$params = $this->keyPairParams( $params );
 
