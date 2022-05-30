@@ -32,8 +32,20 @@ class apiController extends appController {
 
 	function ratings() {
 		$this->disableView = 1;
-		$ret = Ratings::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
-		echo api_encode( $ret );
+
+		if( isset( $this->get['code'] ) ) {
+			$ret = Ratings::sql("where tconst = ? ")->findFirst([ $this->get['code'] ]);
+			echo api_encode( $ret );
+		}
+
+
+		if( isset( $this->post['codes'] ) ) {
+			$ret = [];
+			foreach( $this->post['codes'] as $code ) {
+				$ret[] = Ratings::sql("where tconst = ? ")->findFirst([ $code ]);
+			}
+			echo api_encode( $ret );
+		}
 	}
 
 

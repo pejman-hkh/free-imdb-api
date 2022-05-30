@@ -35,6 +35,12 @@ class Ratings extends \Peji\DB\Model {
 						$v = trim( $v );
 						$a->$v = trim($d[$k1]);
 					}
+
+					$check = Ratings::sql("where tconst = ? ")->findFirst([ $a->tconst ]);
+					if( $check->id ) {
+						$a = $check;
+					}
+					
 					$a->save();
 				}
 			});
