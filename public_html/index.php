@@ -13,6 +13,7 @@ Config::setDir('../config');
 $dbConf = Config::file('db');
 
 define('HOST', $_SERVER['HTTP_HOST'] );
+define('HOST1', 'https://'.$_SERVER['HTTP_HOST'] );
 define('siteUrl', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'] );
 
 DB::init( $dbConf['host'], $dbConf['username'], $dbConf['password'], $dbConf['db'] );
