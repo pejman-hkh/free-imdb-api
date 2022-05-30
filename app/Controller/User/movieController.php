@@ -2,11 +2,9 @@
 namespace App\Controller\User;
 
 use App\Controller\User\appController;
-use Peji\DB\DB;
-
 use App\Model\Basics;
 
-class indexController extends appController {
+class movieController extends appController {
 
 	var $toIndex = true;
 	public function before() {
@@ -23,7 +21,7 @@ class indexController extends appController {
 
 		print_r( $params );
 		exit();
-		
+
 		$movie = Basics::sql(" where tconst = ?")->findFirst([ $params ]);
 	}
 
