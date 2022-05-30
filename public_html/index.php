@@ -5,6 +5,7 @@ ini_set('memory_limit', -1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once 'helper.php';
+require_once 'simple_html_dom.php';
 
 define('HOST', $_SERVER['HTTP_HOST'] );
 define('HOST1', 'https://'.$_SERVER['HTTP_HOST'] );

@@ -25,6 +25,12 @@ class movieController extends appController {
 
 		$this->set('title', $movie->originalTitle.' '.$movie->startYear);
 
+		if( isset( $this->get['update'] ) ) {
+			$movie = new Movies;
+			$movie->code = $movie->tconst;
+			$movie->update();
+		}
+
 	}
 
 	public function after() {
