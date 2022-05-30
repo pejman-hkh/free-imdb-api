@@ -225,6 +225,7 @@ class Movies extends \Peji\DB\Model {
 				$a = new Countries;
 				$a->name = $v[0];
 				$a->imdbLink = $v[1];
+				$a->short = $a->mshort;
 				$id = $a->save();
 
 
