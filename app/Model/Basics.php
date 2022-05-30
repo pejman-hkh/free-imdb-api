@@ -13,8 +13,8 @@ class Basics extends \Peji\DB\Model {
 		return Basics::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
 	}
 
-	function getAka() {
-		return Akas::sql("where titleId = ? ")->findFirst([ $this->tconst ]);
+	function getAkas() {
+		return Akas::sql("where titleId = ? ")->find([ $this->tconst ]);
 	}
 
 	function read() {
