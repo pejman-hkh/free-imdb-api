@@ -16,15 +16,17 @@
     </ul>    
 
     <h4>Akas : </h4>
-    <ul>
     <?
   foreach( $movie->akas as $aka ) {
-    foreach( $aka->columns as $c ) {?>
+    ?>
+    <ul>
+    <?foreach( $aka->columns as $c ) {?>
         <li><?=$c?> : <?=$aka->$c?></li>
-    <? } 
+    <? } ?>
+    </ul>
+    <?
   }
     ?>
-    </ul>
 
   </div>
 </div>
