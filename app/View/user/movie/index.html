@@ -2,13 +2,8 @@
   <div class="col-12">
   <h1> <?=$movie->primaryTitle?> </h1>
     <ul>
-    <?foreach( $movie->basic as $basic ) {
-print_r( $basic );
-      ?>
-      <? foreach( $basic->columns as $b ) {?>
-        <?=$b?> : <?=$basic->$b?>
-      <? } ?>
-
+    <?foreach( $movie->basic->columns as $basic ) {?>
+        <li><?=$b?> : <?=$movie->basic->$b?></li>
     <? } ?>
     </ul>
 
