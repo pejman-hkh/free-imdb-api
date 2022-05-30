@@ -78,9 +78,30 @@
   </div>
 </div>
 
+  <?}?>
+</div>
+
+
+<h4>Crews : </h4>
+ <div class="row">
     <?
-  }
+  foreach( $movie->crews as $crew ) {
     ?>
+    <div class="col-3">
+      
+      <div class="card m-1">
+        <div class="card-body">
+
+    <ul>
+    <?foreach( $crew->columns as $c ) {?>
+        <li><?=$c?> : <?=$crew->$c?></li>
+    <? } ?>
+    </ul>
+    </div>
+  </div>
+</div>
+
+  <?}?>
 </div>
 
 
