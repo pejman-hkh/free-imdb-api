@@ -12,8 +12,17 @@
           <div class="card-body">
             <?=$movie->basic->primaryTitle?>
             <br />
-
+            Title Type : <?=$movie->basic->titleType?>
+            <br />
             <?=$movie->averageRating?> / <?=$movie->numVotes?>
+            <br />
+            Year : <?=$movie->basic->startYear?>
+            <br />
+            RunTime : <?=$movie->basic->runtimeMinutes?>
+            <br />
+            Genres : <?=$movie->basic->genres?>
+            <br />
+            isAdult : <?=$movie->basic->isAdult?>  
           </div>
         </div>
 
