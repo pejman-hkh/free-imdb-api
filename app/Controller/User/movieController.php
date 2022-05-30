@@ -3,6 +3,7 @@ namespace App\Controller\User;
 
 use App\Controller\User\appController;
 use App\Model\Basics;
+use App\Model\Movies;
 
 class movieController extends appController {
 
@@ -19,15 +20,18 @@ class movieController extends appController {
 		//array_shift( $params );
 		//$params = $this->keyPairParams( $params );
 
-		$movie = Basics::sql(" where tconst = ?")->findFirst([ $params[1] ]);
+		$basics = Basics::sql(" where tconst = ?")->findFirst([ $params[1] ]);
 
-		$this->set('movie', $movie);
+		$this->set('movie', $basics);
 
-		$this->set('title', $movie->originalTitle.' '.$movie->startYear);
+		$this->set('title', $basics->originalTitle.' '.$basics->startYear);
 
 		if( isset( $this->get['update'] ) ) {
-			$movie = new Movies;
-			$movie->code = $movie->tconst;
+			$movie = Movies::sql("where code = ? ")->findFirst([$basics->tconst]);
+			if( ! $movie->id )
+				$movie = new Movies;
+
+			$movie->code = $basics->tconst;
 			$movie->update();
 		}
 

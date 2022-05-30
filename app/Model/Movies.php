@@ -8,6 +8,8 @@ class Movies extends \Peji\DB\Model {
 	}
 
 	function update() {
+			
+		$movie = $this;
 
 		$ret = file_get_contents( $this->imdbUrl );
 		$html = str_get_html( $ret );
@@ -139,7 +141,7 @@ class Movies extends \Peji\DB\Model {
 				$a->imdbLink = $v[1];
 				$id = $a->save();
 
-				$a->savePic();
+				//$a->savePic();
 
 			} else {
 				$id = $director->id;

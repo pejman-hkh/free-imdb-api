@@ -10,7 +10,7 @@ class Basics extends \Peji\DB\Model {
 	}
 
 	function getBasic() {
-		return Basics::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
+		return Basics::sql("where id = ? ")->findFirst([ $this->id ]);
 	}
 
 	function getAkas() {
