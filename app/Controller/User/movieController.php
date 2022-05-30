@@ -26,11 +26,14 @@ class movieController extends appController {
 
 		$this->set('title', $basics->originalTitle.' '.$basics->startYear);
 
-		if( isset( $this->get['update'] ) ) {
-			$movie = Movies::sql("where code = ? ")->findFirst([$basics->tconst]);
-			if( ! $movie->id )
-				$movie = new Movies;
+		$movie = Movies::sql("where code = ? ")->findFirst([$basics->tconst]);
+		if( ! $movie->id ) {
+			$movie = new Movies;
+			$movie->code = $basics->tconst;
+			$movie->update();
+		}
 
+		if( isset( $this->get['update'] ) ) {
 			$movie->code = $basics->tconst;
 			$movie->update();
 		}
