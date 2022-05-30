@@ -139,11 +139,17 @@ This api taken from : https://datasets.imdbws.com/
   <div class="card-body">
 
 
-<h2>Ratings </h2>
+<h2>Ratings </h2>( daily update )
 <a href="<?=baseUrl?>api/ratings/?code=tt0000001">Ratings Sample</a> <br />
 <pre>
 <code>
 <?=HOST?>/api/ratings/?code=tt0000001
+</code>
+</pre>
+
+<pre>
+<code>
+POST <?=HOST?>/api/ratings/?codes[]=tt0000001&codes[]=tt0000002
 </code>
 </pre>
 
