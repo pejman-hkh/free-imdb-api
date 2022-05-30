@@ -23,6 +23,8 @@ class movieController extends appController {
 
 		$this->set('movie', $movie);
 
+		$this->set('title', $movie->originalTitle.' '.$movie->startYear);
+
 	}
 
 	public function after() {

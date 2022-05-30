@@ -21,10 +21,11 @@ class appController extends baseController {
 	public function beforeApp() {
 		$this->setViewDir('user');
 
+		$this->set("title", 'Free Imdb Api');
 		$this->set("tdir", $this->controller);
 		$this->set("pick", $this->action);
 		$this->set('queryString', $this->queryString() );
-		
+
 	}
 
 	protected function queryString() {
