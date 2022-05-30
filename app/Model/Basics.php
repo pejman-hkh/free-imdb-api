@@ -5,6 +5,10 @@ use Peji\DB\DB;
 class Basics extends \Peji\DB\Model {
 	var $table = 'basics';
 
+	function getPic() {
+		return 'images/'.$this->tconst.'.jpg';
+	}
+
 	function getRating() {
 		return Ratings::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
 	}
