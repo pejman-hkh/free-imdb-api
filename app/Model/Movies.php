@@ -19,7 +19,7 @@ class Movies extends \Peji\DB\Model {
 		return Directors::sql("where id in(".($this->tdirectors?:-1).") ")->find();
 	}
 
-	function getWrites() {
+	function getWriters() {
 		return Writers::sql("where id in(".($this->twriters?:-1).") ")->find();
 	}
 
