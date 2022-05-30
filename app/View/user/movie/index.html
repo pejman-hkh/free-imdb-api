@@ -32,7 +32,9 @@
 
     </div>
   </div>
-    <h4>Akas : </h4>
+
+
+<h4>Akas : </h4>
  <div class="row">
     <?
   foreach( $movie->akas as $aka ) {
@@ -45,6 +47,31 @@
     <ul>
     <?foreach( $aka->columns as $c ) {?>
         <li><?=$c?> : <?=$aka->$c?></li>
+    <? } ?>
+    </ul>
+    </div>
+  </div>
+</div>
+
+    <?
+  }
+    ?>
+</div>
+
+
+<h4>Principals : </h4>
+ <div class="row">
+    <?
+  foreach( $movie->principals as $principal ) {
+    ?>
+    <div class="col-3">
+      
+      <div class="card m-1">
+        <div class="card-body">
+
+    <ul>
+    <?foreach( $principal->columns as $c ) {?>
+        <li><?=$c?> : <?=$principal->$c?></li>
     <? } ?>
     </ul>
     </div>

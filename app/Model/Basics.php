@@ -17,6 +17,10 @@ class Basics extends \Peji\DB\Model {
 		return Akas::sql("where titleId = ? ")->find([ $this->tconst ]);
 	}
 
+	function getPrincipals() {
+		return Principals::sql("where tconst = ? ")->find([ $this->tconst ]);
+	}
+
 	function read() {
 		$file = MDIR.'datasets/title.basics.tsv.gz';
 		if( ! file_exists( $file ) ) {
