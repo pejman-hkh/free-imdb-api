@@ -2,6 +2,14 @@
 ini_set('memory_limit', -1);
 //ini_set('display_errors',1);
 
+
+if( ( $_SERVER['REQUEST_SCHEME'] == 'http' ) {
+		$req = $_SERVER['REQUEST_URI'];
+		header("Location: https://".HOST.$req,TRUE,301);
+		exit();
+}
+
+
 require_once __DIR__.'/../vendor/autoload.php';
 require_once 'helper.php';
 
@@ -27,6 +35,8 @@ DB::setAttr([
 define('MDIR', '');
 
 View::setDir( '../app/View' );
+
+
 
 use App\Model\Ratings;
 
