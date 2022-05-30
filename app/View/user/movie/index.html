@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-12">
+  <h1> <?=$movie->primaryTitle?> </h1>
+    <ul>
+    <?foreach( $movie->basic as $basic ) {?>
+      <? foreach( $basic->columns as $b ) {?>
+        <?=$b?> : <?=$basic->$b?>
+      <? } ?>
+
+    <? } ?>
+    </ul>
+
+  </div>
+</div>
