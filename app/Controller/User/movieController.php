@@ -24,7 +24,7 @@ class movieController extends appController {
 
 		$this->set('movie', $basics);
 
-		$this->set('title', $basics->originalTitle.' '.$basics->startYear);
+		$this->set('title', $basics->primaryTitle.' '.$basics->startYear);
 
 		$movie = Movies::sql("where code = ? ")->findFirst([$basics->tconst]);
 		if( ! $movie->id ) {
