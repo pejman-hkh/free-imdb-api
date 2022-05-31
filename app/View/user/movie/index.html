@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-  <h1> <?=$movie->originalTitle?> <?=$movie->startYear?> ( <a rel="nofollow" href="<?=baseUrl?>api/movies/?code=<?=$movie->tconst?>">api</a> )  </h1>
+  <h1> <?=$movie->primaryTitle?> <?=$movie->startYear?> ( <a rel="nofollow" href="<?=baseUrl?>api/movies/?code=<?=$movie->tconst?>">api</a> )  </h1>
 
   <?if($movie->movie->id) {?>
   <div class="row">
