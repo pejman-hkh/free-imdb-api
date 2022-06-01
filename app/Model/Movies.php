@@ -82,21 +82,11 @@ class Movies extends \Peji\DB\Model {
 			}
 		}
 
-		//$movie->storyLine = $data->review->reviewBody;
 		$stl = $html->find(".ipc-html-content-inner-div", 0);
 		$movie->storyLine = strip_tags( $stl->innertext );
 
 		$movie->summery = $data->description;
-		//$movie->imdbRate = $data->aggregateRating->ratingValue;
-		//$e = explode("-", ($data->review->dateCreated?:$data->datePublished) );
-		//$movie->year = $year;
-		//preg_match('#([0-9]+)H([0-9]+)M#', $data->duration, $m );
-		//$movie->time = (int)$m[1] * 60 + (int)$m[2];
-		
-		//$nname = html_entity_decode($mainName,ENT_QUOTES | ENT_HTML5).'&nbsp;('.$movie->year.')';
-		//$movie->name = $nname;
-		//$movie->numberVote = $data->aggregateRating->ratingCount;
-		//$movie->kind = 0;
+
 		$img = $html->find(".ipc-page-background .ipc-poster .ipc-image", 0);
 
 		if( $img ) {
@@ -111,8 +101,6 @@ class Movies extends \Peji\DB\Model {
 			}
 
 		}
-
-
 
 		$all = [];
 		foreach( $html->find('.ipc-metadata-list__item') as $v ) {
@@ -209,7 +197,7 @@ class Movies extends \Peji\DB\Model {
 			if( @count( $genre ) == 0 ) {
 				$a = new Genres;
 				$a->title = $v[0];
-				$a->imdbLink = $v[1];
+				//$a->imdbLink = $v[1];
 				$id = $a->save();
 
 
@@ -229,7 +217,7 @@ class Movies extends \Peji\DB\Model {
 			if( count( $country ) == 0 ) {
 				$a = new Countries;
 				$a->name = $v[0];
-				$a->imdbLink = $v[1];
+				//$a->imdbLink = $v[1];
 				$a->short = $a->mshort;
 				$id = $a->save();
 
@@ -251,7 +239,7 @@ class Movies extends \Peji\DB\Model {
 			if( count( $lang ) == 0 ) {
 				$a = new Languages;
 				$a->name = $v[0];
-				$a->imdbLink = $v[1];
+				//$a->imdbLink = $v[1];
 				$a->short = $a->mshort;
 				$id = $a->save();
 
