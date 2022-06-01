@@ -33,6 +33,10 @@ class movieController extends appController {
 			//$movie->update();
 		}
 
+		if( isset( $this->get['deletePic'] ) ) {
+			unlink( $movie->pic );
+		}
+
 		if( isset( $this->get['update'] ) ) {
 			$movie->code = $basics->tconst;
 			$movie->update();
