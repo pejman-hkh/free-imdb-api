@@ -40,6 +40,8 @@ try {
 	while( 1 ) {
 		$basics = Basics::sql(" limit $from, 1000")->find();
 		foreach( $basics as $basic ) {
+			echo $basic->tconst."\n";
+
 			$movie = Movies::sql("where code = ? ")->findFirst([$basic->tconst]);
 			if( @$movie->id ) {
 				continue;
