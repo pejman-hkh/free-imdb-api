@@ -3,6 +3,10 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function getPic() {
+		return 'images/'.$this->code.'.jpg';
+	}
+
 	function getLanguages() {
 		return Languages::sql("where id in(".($this->tlanguages?:-1).") ")->find();
 	}
