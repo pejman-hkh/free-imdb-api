@@ -8,7 +8,7 @@
       <div class="card m-1">
         <div class="card-body">        
       <?if( file_exists( $movie->pic ) ) {?>
-        <img src="<?=baseUrl?><?=$movie->pic?>">
+        <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->primaryTitle?>" />
         <br />
       <? } ?>
         <br />

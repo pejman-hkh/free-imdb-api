@@ -12,7 +12,7 @@
           <div class="card-body">
             <h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4>
             <?if( file_exists($movie->pic) ) {?>
-              <img src="<?=baseUrl?><?=$movie->pic?>" />
+              <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->basic->primaryTitle?>" />
             <? } ?>
             <hr />
             Imdb Code : <a target="_blank" href="https://www.imdb.com/title/<?=$movie->basic->tconst?>/"><?=$movie->basic->tconst?></a>
