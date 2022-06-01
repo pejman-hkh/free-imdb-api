@@ -116,8 +116,8 @@ class Movies extends \Peji\DB\Model {
 
 			}
 		}
-		print_r( $all );
-		exit(0);
+		//print_r( $all );
+		//exit(0);
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
@@ -254,7 +254,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->tlanguages = implode(',', array_unique($ids) );
 		print_r( $movie );
 		exit(0);
-		
+
 		$movie->save();		
 	}
 }
