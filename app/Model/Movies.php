@@ -254,6 +254,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->tlanguages = implode(',', array_unique($ids) );
 
 		$movie->save();		
+		print_r( $all );
 		print_r( $movie );
 		exit(0);
 	}
