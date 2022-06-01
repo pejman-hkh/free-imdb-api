@@ -1,5 +1,46 @@
 <?php
 
+function lockFile($file = '')
+{
+    if (file_exists($file)) {
+        $type = 'r+';
+    } else {
+        $type = 'w+';
+    }
+    $fp = fopen($file, $type);
+    if ($fp) {
+        if (flock($fp, LOCK_EX | LOCK_NB)) {
+            return $fp;
+        }
+    }
+    return false;
+}
+
+function isLockFile($file = '')
+{
+    if (!file_exists($file)) {
+        return false;
+    }
+    $fp = fopen($file, 'r+');
+    if ($fp) {
+        $lock = flock($fp, LOCK_EX | LOCK_NB);
+        fclose($fp);
+        if (!$lock) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function unlockFile($fp)
+{
+    if ($fp) {
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
+}
+
+
 function strip_tags_content($text) {
     return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
     
