@@ -38,7 +38,7 @@ try {
 	$i = 0;
 	$from  = 0;
 	while( 1 ) {
-		$basics = Basics::sql(" limit $from, 1000")->find();
+		$basics = Basics::sql(" select a.* from basics as a join ratings as b on a.tconst = b.tconst where 1 order by ( b.averageRating * b.numVotes ) desc  limit $from, 1000")->find();
 		foreach( $basics as $basic ) {
 			echo $basic->tconst."\n";
 
