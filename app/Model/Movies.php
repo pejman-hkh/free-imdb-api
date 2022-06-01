@@ -252,9 +252,9 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 		$movie->tlanguages = implode(',', array_unique($ids) );
-		//print_r( $movie );
-		//exit(0);
 
 		$movie->save();		
+		print_r( $movie );
+		exit(0);
 	}
 }
