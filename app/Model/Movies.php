@@ -100,17 +100,18 @@ class Movies extends \Peji\DB\Model {
 		$img = $html->find(".ipc-page-background .ipc-poster .ipc-image", 0);
 
 		if( $img ) {
-			$fname = $movie->name;
-			$fname = $movie->code.'.jpg';
 
-			$ret = file_get_contents( $img->src );
+			if( preg_match('#190\,281#', $img->src ) ) {
+				$fname = $movie->code.'.jpg';
+				$ret = file_get_contents( $img->src );
 
-			file_put_contents( MDIR.'images/'.$fname, $ret );
-			$movie->src = $img->src;
-			$movie->srcset = $img->srcset;
+				file_put_contents( MDIR.'images/'.$fname, $ret );
+				$movie->src = $img->src;
+				$movie->srcset = $img->srcset;
+			}
+
 		}
 
-		//$movie->name = str_replace('&nbsp;', " ", $movie->name ) ;
 
 
 		$all = [];
