@@ -116,7 +116,8 @@ class Movies extends \Peji\DB\Model {
 
 			}
 		}
-
+		print_r( $all );
+		exit(0);
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
