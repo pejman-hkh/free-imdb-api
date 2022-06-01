@@ -94,31 +94,6 @@ class Movies extends \Peji\DB\Model {
 		$data = ( json_decode($m[1]) );
 
 
-		$nh1 = $html->find("h1", 0);
-		$mainName = $nh1->innertext;
-
-		$initems = [];
-		foreach( $html->find(".ipc-inline-list__item") as $v ) {
-			$tid =  $v->parent()->{'data-testid'};
-	
-			if( $v->children() ) {
-				foreach( $v->children() as $v1 ) {
-					$initems[ $tid ][] = ($v1->innertext);
-				}
-			} else {
-				$initems[ $tid ][] = $v->innertext;
-			}
-
-		}
-
-		$year = 0;
-		foreach( $initems['hero-title-block__metadata'] as $v ) {
-			if( preg_match('#[0-9]{4}#', $v ) ) {
-				$year = $v;
-				break;
-			}
-		}
-
 		$stl = $html->find(".ipc-html-content-inner-div", 0);
 		$movie->storyLine = strip_tags( $stl->innertext );
 
@@ -153,8 +128,6 @@ class Movies extends \Peji\DB\Model {
 
 			}
 		}
-		//print_r( $all );
-		//exit(0);
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
@@ -289,10 +262,11 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 		$movie->tlanguages = implode(',', array_unique($ids) );
+		if( $movie->tgenres ) {
+			$movie->save();		
+		} else {
+			$this->update();
+		}
 
-		$movie->save();		
-		print_r( $all );
-		print_r( $movie );
-		exit(0);
 	}
 }
