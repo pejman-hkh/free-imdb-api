@@ -53,9 +53,9 @@ try {
 		}
 
 		$from = ($i + 1) * 1000;
+		$i++;
 	}
 
-	$i++;
 } catch( Error $e ){
 	Peji\Error::manage( $e );
 }
