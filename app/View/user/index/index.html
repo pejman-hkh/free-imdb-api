@@ -6,8 +6,8 @@
     <div class="row">
     <?foreach( $movies as $movie ) {?>
       <div class="col-lg-4">
-        <div class="categories_guide_item wow fadeInUp m-1">
-          <div class="">
+        <div class="card m-1">
+          <div class="card-body">
             <h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4>
             <?if( file_exists($movie->pic) ) {?>
               <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->basic->primaryTitle?>" />
