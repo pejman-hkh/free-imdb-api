@@ -232,7 +232,7 @@ class Movies extends \Peji\DB\Model {
 			if( count( $country ) == 0 ) {
 				$a = new Countries;
 				$a->name = $v[0];
-				//$a->imdbLink = $v[1];
+				$a->imdbLink = $v[1];
 				$a->short = $a->mshort;
 				$id = $a->save();
 
@@ -254,7 +254,7 @@ class Movies extends \Peji\DB\Model {
 			if( count( $lang ) == 0 ) {
 				$a = new Languages;
 				$a->name = $v[0];
-				//$a->imdbLink = $v[1];
+				$a->imdbLink = $v[1];
 				$a->short = $a->mshort;
 				$id = $a->save();
 
