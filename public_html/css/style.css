@@ -17306,3 +17306,7 @@ body.body_dark .sticky_menu .menu_one .menu > .nav-item .nav-link, body.body_dar
 .categories_guide_item { 
   word-break: break-word;
 }
+
+.categories_guide_item ul {
+  padding-left: 10px;
+}
