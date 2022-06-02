@@ -8,7 +8,7 @@
       <div class="col-lg-4">
         <div class="card m-1">
           <div class="card-body">
-            <h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4>
+            <center><h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4></center>
             <?if( file_exists($movie->pic) ) {?>
               <center><img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->basic->primaryTitle?>" /></center>
             <? } ?>
