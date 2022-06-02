@@ -22,6 +22,10 @@ class DB {
 		return self::$db->setAttr( $arr );
 	}
 
+	public static function disconnect() {
+		return self::$db->disconnect();
+	}
+
 	public static function beginTransaction() {
 		return self::$db->getDB()->beginTransaction();
 	}

@@ -9,6 +9,11 @@ class pdoWrapper {
 		return $this->db;
 	}
 
+	public function disconnect() {
+		$this->db = null;
+		unset( $this->db );
+	}
+
 	public function setAttr( $array ) {
 		foreach( $array as $k => $v ) {
 			$this->db->setAttribute( $k, $v );
