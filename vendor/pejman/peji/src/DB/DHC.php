@@ -12,9 +12,9 @@ class DHC {
 	public static $instance;
 	public static function getInstance( $class ) {
 
-		if( @$ret = self::$instance[ $class ] ) {
+		/*if( @$ret = self::$instance[ $class ] ) {
 			return $ret;
-		}
+		}*/
 
 		self::$instance[ $class ] = new self( $class );
 		return self::$instance[ $class ];
