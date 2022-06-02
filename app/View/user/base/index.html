@@ -24,7 +24,9 @@
       <link rel="icon" href="<?=baseUrl?>favicon.ico">
       <link rel="alternate" href="https://<?=HOST?>" hreflang="en-USA"/>
 
-      <link rel="stylesheet" href="<?=baseUrl?>css/bootstrap.4.0.0.min.css">
+      <!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
       <link rel="stylesheet" href="<?=baseUrl?>css/style.css">
 
       <!--[if IE 9]>
@@ -37,10 +39,26 @@
       <script>var jqueryFn = [];</script>
    </head>
    <body class="">
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
 
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="<?=baseUrl?>" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="<?=baseUrl?>api" class="nav-link px-2 text-white">Doc API</a></li>
+         
+        </ul>
+
+    
+      </div>
+    </div>
+  </header>
    	<br />
    	<br />
-   	
+
    	<div class="container">
 		<?=$this->fetch( $this->tdir.'/'.$this->pick );?>
 	</div>
