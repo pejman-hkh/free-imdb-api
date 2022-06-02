@@ -5,7 +5,7 @@
   <?if($movie->movie->id) {?>
   <div class="row">
     <div class="col-lg-12">
-      <div class="card m-1">
+      <div class="categories_guide_item wow fadeInUp m-1">
         <div class="card-body">        
       <?if( file_exists( $movie->pic ) ) {?>
         <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->primaryTitle?>" />
@@ -35,7 +35,7 @@
 
  <div class="row">
     <div class="col-lg-6">
-      <div class="card">
+      <div class="categories_guide_item wow fadeInUp">
         <div class="card-body">
           <h4>Basics ( <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">api</a> ) </h4>
           
@@ -52,7 +52,7 @@
     </div>
     <div class="col-lg-6">
       
-      <div class="card">
+      <div class="categories_guide_item wow fadeInUp">
         <div class="card-body">
           <h4>Ratings ( <a rel="nofollow" href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">api</a> ) </h4>
           
