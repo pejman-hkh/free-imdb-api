@@ -8,7 +8,7 @@ require_once 'helper.php';
 require_once 'simple_html_dom.php';
 
 @mkdir(__DIR__ . '/../cache/locks/');
-$file = __DIR__ . '/../cache/locks/cron.lock';
+$file = __DIR__ . '/../cache/locks/read.lock';
 $fp = lockFile($file);
 if(!$fp) {
     die('already running');
