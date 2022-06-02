@@ -37,6 +37,8 @@ class DHC {
 	}
 
 	function execute( $bind = [] ) {
+		$this->db = DB::$db;
+		
 		return $this->db->prepare( $this->sql )->execute(@$bind);
 	}
 
@@ -46,6 +48,7 @@ class DHC {
 		}
 		$this->sql = " select count(*) as count from ".$this->table." ".$this->extraSql;
 
+		$this->db = DB::$db;
 		$fetch = $this->db->prepare( $this->sql )->execute(@$bind)->fetch();
 
 		return $fetch['count'];
@@ -73,6 +76,7 @@ class DHC {
 			$startTime = microtime(true);
 		}
 
+		$this->db = DB::$db;
 		$query = $this->db->prepare( $this->sql )->execute(@$bind);
 
 		if( isset( $_GET['showSql']) ) {
