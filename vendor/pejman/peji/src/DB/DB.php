@@ -6,6 +6,8 @@ class DB {
 	public static $name;
 
 	public static function init( $host, $user, $pass, $dbn ) {
+		echo "new wrapper ";
+		
 		$db = new pdoWrapper();
 		$db->connect($host, $user, $pass, $dbn );
 		self::$name = $dbn;
