@@ -85,6 +85,11 @@ class Movies extends \Peji\DB\Model {
 		return $result;
 	}
 
+
+	function getRottentomatoes() {
+		
+	}
+
 	function update() {
 
 		$movie = $this;
