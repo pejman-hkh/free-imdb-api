@@ -3,6 +3,10 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function getStoryLine1() {
+		return preg_replace("#—(.*?)$#", "", $this->storyLine );
+	}
+
 	function getPic() {
 		return 'images/'.$this->code.'.jpg';
 	}

@@ -88,7 +88,7 @@ class apiController extends appController {
 		$ret = new \StdClass;
 		$ret->title = $find->basic->originalTitle;
 		$ret->summery = $find->summery;
-		$ret->story = $find->storyLine;
+		$ret->story = $find->storyLine1;
 		$ret->src = $find->src;
 		$ret->srcset = $find->srcset;
 		$ret->rate = $find->rating->averageRating;
