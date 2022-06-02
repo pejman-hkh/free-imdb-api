@@ -17301,3 +17301,8 @@ body.body_dark .sticky_menu .menu_one .menu > .nav-item .nav-link, body.body_dar
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style-main.css.map */
+
+
+.categories_guide_item { 
+  word-break: break-word;
+}
