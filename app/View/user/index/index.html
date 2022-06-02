@@ -9,27 +9,32 @@
         <div class="categories_guide_item wow fadeInUp m-1">
           <div class="">
             <h4><a href="<?=baseUrl?>movie/<?=$movie->tconst?>"><?=$movie->basic->primaryTitle?></a></h4>
+            <ul class="list-unstyled tag_list">
+            <li>
             <?if( file_exists($movie->pic) ) {?>
               <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->basic->primaryTitle?>" />
             <? } ?>
-            <hr />
+            </li><li>
             Imdb Code : <a target="_blank" href="https://www.imdb.com/title/<?=$movie->basic->tconst?>/"><?=$movie->basic->tconst?></a>
-            <hr />
+            </li><li>
             Title Type : <?=$movie->basic->titleType?>
-            <hr />
+            </li><li>
             <?=$movie->rating->averageRating?> / <?=$movie->rating->numVotes?>
-            <hr />
+            </li><li>
             Year : <?=$movie->basic->startYear?>
-            <hr />
+            </li><li>
             RunTime : <?=$movie->basic->runtimeMinutes?>
-            <hr />
+            </li><li>
             Genres : <?=$movie->basic->genres?>
-            <hr />
+            </li><li>
             isAdult : <?=$movie->basic->isAdult?> 
 
-            <hr />
+            </li>
+            <li>
 
             <a rel="nofollow" href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">ratings</a> / <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">basics</a>
+            </li>
+          </ul>
           </div>
         </div>
 
