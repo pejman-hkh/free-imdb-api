@@ -25,7 +25,6 @@
       <link rel="alternate" href="https://<?=HOST?>" hreflang="en-USA"/>
 
       <link rel="stylesheet" href="<?=baseUrl?>css/bootstrap.4.0.0.min.css">
-      <link rel="stylesheet" href="<?=baseUrl?>css/style.css">
 
       <!--[if IE 9]>
       <link href="<?=themeDir?>css/ie9.css" rel="stylesheet">
@@ -37,86 +36,6 @@
       <script>var jqueryFn = [];</script>
    </head>
    <body class="">
-
-        <nav class="navbar navbar-expand-lg menu_one dark_menu sticky-nav">
-            <div class="container">
-                <a class="navbar-brand header_logo" href="<?=baseUrl?>">
-                    Free IMDB REST API 
-                </a>
-                <div class="search-input">
-                    <ion-icon class="search-icon" name="search-outline"></ion-icon>
-                    <input type="text" placeholder="Search..." value="" class="">
-                </div>
-                <div class="mobile-dark-mode d-lg-none">
-                    <label for="something" class="tab-btn tab-btns">
-                        <ion-icon class="light-mode" name="contrast"></ion-icon>
-                    </label>
-                    <label for="something" class="tab-btn">
-                        <ion-icon class="dark-mode" name="contrast-outline"></ion-icon>
-                    </label>
-                </div>
-                <div class="mobile-dark-mode d-lg-none">
-                    <label for="something" class="tab-btn tab-btns">
-                        <ion-icon class="light-mode" name="contrast"></ion-icon>
-                    </label>
-                    <label for="something" class="tab-btn">
-                        <ion-icon class="dark-mode" name="contrast-outline"></ion-icon>
-                    </label>
-                </div>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="menu_toggle">
-                    <span class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    <span class="hamburger-cross">
-                        <span></span>
-                        <span></span>
-                    </span>
-                </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-                        <li class="nav-item dropdown submenu">
-                            <a href="<?=baseUrl?>" class="nav-link dropdown-toggle">Home</a>
-                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false" data-toggle="dropdown"></i>
-                            
-                        </li>
-                        <li class="nav-item dropdown submenu">
-                            <a href="<?=baseUrl?>api" class="nav-link dropdown-toggle">Api Docs</a>
-                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false" data-toggle="dropdown"></i>
-                            
-                        </li>
-                   
-             
-                    </ul>
-                    <div class="right-nav">
-                        <a class="nav_btn tp_btn" href="" target="_blank">Imdb Api</a>
-                        <a class="px-2 ml-3" href="#" title="Subscribe to the newsletter">
-                            <ion-icon name="mail"></ion-icon>
-                        </a>
-                        <a class="px-2" href="#" title="RSS feed">
-                            <ion-icon name="logo-rss"></ion-icon>
-                        </a>
-                        <div class="px-2 js-darkmode-btn" title="Toggle dark mode">
-                            <label for="something" class="tab-btn tab-btns">
-                                <ion-icon class="light-mode" name="contrast"></ion-icon>
-                            </label>
-                            <input type="checkbox" name="something" id="something" class="dark_mode_switcher">
-                            <label for="something" class="tab-btn">
-                                <ion-icon class="dark-mode" name="contrast-outline"></ion-icon>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-  	
-    <br class="clearfix" />
-    <br class="clearfix" />
-    <br class="clearfix" />
-    <br class="clearfix" />
 
    	<div class="container">
 		<?=$this->fetch( $this->tdir.'/'.$this->pick );?>
