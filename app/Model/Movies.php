@@ -87,7 +87,7 @@ class Movies extends \Peji\DB\Model {
 
 
 	function getRottentomatoes() {
-		
+
 	}
 
 	function update() {
@@ -136,6 +136,11 @@ class Movies extends \Peji\DB\Model {
 			} else {
 
 			}
+		}
+
+		if( isset( $this->get['all'] ) ) {
+			print_r( $all );
+			exit();
 		}
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
