@@ -138,10 +138,10 @@ class Movies extends \Peji\DB\Model {
 			}
 		}
 
-		if( isset( $this->get['all'] ) ) {
+		//if( isset( $this->get['all'] ) ) {
 			print_r( $all );
 			exit();
-		}
+		//}
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
@@ -278,7 +278,7 @@ class Movies extends \Peji\DB\Model {
 				$lang->imdbLink = $v[1];
 				$lang->short = $lang->mshort;
 				$lang->save();
-								
+
 				$id = $lang->id;
 			}
 
