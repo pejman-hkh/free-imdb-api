@@ -10,6 +10,7 @@ class pdoWrapper {
 	}
 
 	public function disconnect() {
+
 		$this->db = null;
 		unset( $this->db );
 	}

@@ -8,6 +8,10 @@ class DHC {
 		$this->db = DB::$db;
 		$this->class = $class;
 	}
+	
+	function __destruct() {
+		//echo "here dhc\n";
+	}
 
 	public static $instance;
 	public static function getInstance( $class ) {

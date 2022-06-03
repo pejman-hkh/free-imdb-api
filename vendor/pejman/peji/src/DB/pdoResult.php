@@ -45,4 +45,8 @@ class pdoResult  {
 		return $this->numRows();
 	}
 
+	function __destruct() {
+		unset( $this->statment );
+	}
+
 }

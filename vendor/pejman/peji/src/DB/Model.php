@@ -11,6 +11,12 @@ class Model {
 		}
 	}
 
+	function __destruct() {
+		foreach( DHC::$instance as $a ) {
+			$a->__destruct();
+		}
+	}
+
 	public static $instance;
 	public static function getInstance( $class ) {
 
