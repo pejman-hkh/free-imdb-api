@@ -248,6 +248,11 @@ class Movies extends \Peji\DB\Model {
 
 
 			} else {
+
+				$country->imdbLink = $v[1];
+				$country->short = $country->mshort;
+				$country->save();
+
 				$id = $country->id;
 			}
 
@@ -270,6 +275,10 @@ class Movies extends \Peji\DB\Model {
 
 			
 			} else {
+				$lang->imdbLink = $v[1];
+				$lang->short = $lang->mshort;
+				$lang->save();
+								
 				$id = $lang->id;
 			}
 
