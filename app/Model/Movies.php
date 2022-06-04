@@ -15,11 +15,11 @@ class Movies extends \Peji\DB\Model {
 			}
 
 			if( preg_match('#Release#i', $k ) ) {
-				$ret->rd = $v[0][0];
+				$ret->releaseDate = $v[0][0];
 			}
 
 			if( preg_match('#sites#i', $k ) ) {
-				$ret->rd = $v;
+				$ret->sites = $v;
 			}
 			
 			if( preg_match('#Production company#i', $k ) ) {
