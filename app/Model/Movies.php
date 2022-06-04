@@ -287,7 +287,7 @@ class Movies extends \Peji\DB\Model {
 		if( $movie->tgenres && $this->again < 5 ) {
 			$movie->save();		
 		} else {
-			echo "try again\n";
+			echo "try again : ".$this->again." \n";
 			$this->again++;
 			$this->update();
 		}
