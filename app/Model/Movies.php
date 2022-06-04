@@ -23,7 +23,14 @@ class Movies extends \Peji\DB\Model {
 			}
 			
 			if( preg_match('#Production compan#i', $k ) ) {
-				$ret->company = $v[0][0];
+
+				$cy = [];
+				foreach( $v as $v1 ) {
+					$e = explode("/", $v1[1] );
+
+					$cy[] = [ $v1[0], $e[2] ];
+				}
+				$this->company = $cy;
 			}
 
 			if( preg_match('#Budget#i', $k ) ) {
