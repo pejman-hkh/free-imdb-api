@@ -40,7 +40,9 @@ class Basics extends \Peji\DB\Model {
 
 	function getTconst1() {
 		$basic = Basics::sql("where id = ? ")->findFirst([ $this->id ]);
-		$this->tconst = $basic->tconst;
+		//$this->tconst = $basic->tconst;
+		$this = $basic;
+
 		return $basic->tconst;
 	}
 
