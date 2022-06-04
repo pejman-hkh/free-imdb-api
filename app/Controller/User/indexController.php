@@ -26,7 +26,7 @@ class indexController extends appController {
 
 		$sql = " select id,tconst from basics where 1 order by id asc ";
 		if( isset( $this->get['rate'] ) ) {
-			$sql = " select a.id,a.tconst from basics as a join ratings as b on a.tconst = b.tconst where 1 order by ( b.averageRating * b.numVotes ) desc ";
+			$sql = " select id,tconst from basics where 1 order by averageRating * numVotes desc ";
 		}
 
 		$movies = Basics::sql( $sql )->paginate( (int)(isset($this->get['npage'])?$this->get['npage']:36), @$params['page']?:1 )->find();
