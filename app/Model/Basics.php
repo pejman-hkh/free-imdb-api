@@ -5,6 +5,32 @@ use Peji\DB\DB;
 class Basics extends \Peji\DB\Model {
 	var $table = 'basics';
 
+	function readRating() {
+		
+		$from = 0;
+		$i = 0;
+		while( 1 ) {
+			try {
+				DB::beginTransaction();
+				$ratings = Ratings::sql(" limitt $from, 10000")->find();
+				foreach( $ratings as $rating ) {
+					if( $rating->basic->id ) {
+						$rating->basic->averageRating = $rating->averageRating;
+						$rating->basic->numVotes = $rating->numVotes;
+						$rating->basic->save();
+					}
+				}
+				$from = ($i + 1) * 10000;
+				$i++;
+				DB::commit();
+			} catch (\Throwable $e) {
+				DB::rollback();
+			}
+
+		}
+
+	}
+
 	function getPic() {
 		return 'images/'.$this->tconst.'.jpg';
 	}
