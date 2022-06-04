@@ -30,7 +30,7 @@ class Movies extends \Peji\DB\Model {
 
 					$cy[] = [ $v1[0], $e[2] ];
 				}
-				$this->company = $cy;
+				$ret->company = $cy;
 			}
 
 			if( preg_match('#Budget#i', $k ) ) {
