@@ -46,6 +46,12 @@ class Ratings extends \Peji\DB\Model {
 					}
 
 					$a->save();
+					if( $a->basic ) {
+						$a->basic->averageRating = $a->averageRating;
+						$a->basic->numVotes = $a->numVotes;
+						$a->basic->rateOrder = $a->averageRating * $a->numVotes;
+						$a->basic->save();
+					}
 				}
 			});
 
