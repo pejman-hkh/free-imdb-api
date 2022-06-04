@@ -27,7 +27,7 @@ class movieController extends appController {
 		$this->set('title', $basics->primaryTitle.' '.$basics->startYear);
 
 		$movie = Movies::sql("where code = ? ")->findFirst([$basics->tconst]);
-		if( ! $movie->id ) {
+		if( ! @$movie->id ) {
 			$movie = new Movies;
 			//$movie->code = $basics->tconst;
 			//$movie->update();

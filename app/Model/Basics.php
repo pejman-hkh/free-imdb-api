@@ -12,11 +12,11 @@ class Basics extends \Peji\DB\Model {
 		while( 1 ) {
 			try {
 				DB::beginTransaction();
-				$ratings = Ratings::sql(" limit $from, 10000")->find();
+				$ratings = Ratings::sql(" limit $from, 100000")->find();
 				if( count( $ratings ) == 0 ) {
 					break;
 				}
-				
+
 				foreach( $ratings as $rating ) {
 					if( $rating->basic->id ) {
 						$rating->basic->averageRating = $rating->averageRating;
@@ -24,7 +24,7 @@ class Basics extends \Peji\DB\Model {
 						$rating->basic->save();
 					}
 				}
-				$from = ($i + 1) * 10000;
+				$from = ($i + 1) * 100000;
 				$i++;
 				DB::commit();
 			} catch (\Throwable $e) {
