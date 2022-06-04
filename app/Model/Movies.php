@@ -90,7 +90,7 @@ class Movies extends \Peji\DB\Model {
 
 	}
 
-	$this->again = 0;
+	var $again = 0;
 	function update() {
 
 		$movie = $this;
