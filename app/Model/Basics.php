@@ -13,6 +13,7 @@ class Basics extends \Peji\DB\Model {
 			try {
 				DB::beginTransaction();
 				$ratings = Ratings::sql(" limit $from, 100000")->find();
+				
 				if( count( $ratings ) == 0 ) {
 					break;
 				}
@@ -24,7 +25,7 @@ class Basics extends \Peji\DB\Model {
 						$rating->basic->save();
 					}
 				}
-				
+
 				$from = ($i + 1) * 100000;
 				$i++;
 				DB::commit();
