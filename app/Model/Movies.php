@@ -131,7 +131,7 @@ class Movies extends \Peji\DB\Model {
 			if( @$label ) {
 				foreach( $v->find("li") as $v1 ) {
 					$link = $v1->find("a",0)?:$v1->find("span",0);
-					$all[$label][] = [ trim($link->innertext), $link->href ];
+					$all[$label][] = [ trim(@$link->innertext), @$link->href ];
 				}
 
 			} else {
