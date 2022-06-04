@@ -284,7 +284,7 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 		$movie->tlanguages = implode(',', array_unique($ids) );
-		if( $movie->tgenres && $this->again < 5 ) {
+		if( $movie->tgenres || $this->again > 5 ) {
 			$movie->save();		
 		} else {
 			echo "try again : ".$this->again." \n";
