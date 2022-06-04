@@ -41,7 +41,7 @@ try {
 			\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true ,
 		]);
 
-		$basics = Basics::sql(" select a.* from basics as a join ratings as b on a.tconst = b.tconst where 1 order by ( b.averageRating * b.numVotes ) desc  limit $from, 100")->find();
+		$basics = Basics::sql(" order by rateOrder desc limit $from, 100")->find();
 		foreach( $basics as $basic ) {
 			echo $basic->tconst."\n";
 
