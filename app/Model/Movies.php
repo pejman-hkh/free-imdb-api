@@ -22,7 +22,7 @@ class Movies extends \Peji\DB\Model {
 				$ret->sites = $v;
 			}
 			
-			if( preg_match('#Production company#i', $k ) ) {
+			if( preg_match('#Production compan#i', $k ) ) {
 				$ret->company = $v[0][0];
 			}
 
