@@ -27,8 +27,10 @@ class Movies extends \Peji\DB\Model {
 				$cy = [];
 				foreach( $v as $v1 ) {
 					$e = explode("/", $v1[1] );
+					$s = $e[2];
+					$g = explode('?', $s);
 
-					$cy[] = [ $v1[0], $e[2] ];
+					$cy[] = [ $v1[0], $g[0] ];
 				}
 				$ret->company = $cy;
 			}
