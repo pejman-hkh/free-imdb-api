@@ -41,7 +41,7 @@ class Ratings extends \Peji\DB\Model {
 					}
 
 					$check = Ratings::sql("where tconst = ? ")->findFirst([ $a->tconst ]);
-					if( $check->id ) {
+					if( @$check->id ) {
 						$a = $check;
 					}
 
