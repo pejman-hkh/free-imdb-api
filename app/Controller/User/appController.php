@@ -10,7 +10,21 @@ use Peji\Cache as PejiCache;
 class appController extends baseController {
 
 	function afterApp() {
+		if( isset( $_GET['showSql']) ) {
+	
+			$arr = PejiCache::get('sqls');
+			usort($arr,function( $a, $b ) {
+				return $a[2] < $b[2];
+			});
 
+			echo '<link rel="stylesheet" href="'.baseUrl.'css/debug.css">';
+			echo '<script>
+				var data = '.json_encode( $arr ).';
+	
+			</script>';
+			echo '<script src="'.baseUrl.'js/debug.js"></script>';
+
+		}	
 	
 	}
 
