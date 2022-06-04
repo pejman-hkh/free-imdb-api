@@ -44,6 +44,7 @@ class Basics extends \Peji\DB\Model {
 		foreach( $basic->columns as $c ) {
 			$this->$c = $basic->$c;
 		}
+		
 		return $basic->tconst;
 	}
 

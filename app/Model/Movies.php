@@ -3,6 +3,37 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function getInfo() {
+		$ret = new \StdClass;
+		foreach( $this->datas as $k => $v ) {
+			if( preg_match('#Nominated#i', $k ) ) {
+				$ret->awards = $k." ".$v[0][0];
+			}
+
+			if( preg_match('#Motion#i', $k ) ) {
+				$ret->mpaa = $k.' '.$v[0][0];
+			}
+
+			if( preg_match('#Release#i', $k ) ) {
+				$ret->rd = $v[0][0];
+			}
+
+			if( preg_match('#sites#i', $k ) ) {
+				$ret->rd = $v;
+			}
+			
+			if( preg_match('#Production company#i', $k ) ) {
+				$ret->company = $v[0][0];
+			}
+			
+			if( preg_match('#Budget#i', $k ) ) {
+				$ret->budget = $v[0][0];
+			}
+
+		}
+		return $ret;
+	}
+
 	function getStoryLine1() {
 		return preg_replace("#—(.*?)$#", "", $this->storyLine );
 	}
