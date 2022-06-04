@@ -38,17 +38,22 @@ class Basics extends \Peji\DB\Model {
 
 	}
 
+	function getTconst1() {
+		$basic = Basics::sql("where id = ? ")->findFirst([ $this->id ]);
+		return $basic->tconst;
+	}
+
 	function getPic() {
-		return 'images/'.$this->tconst.'.jpg';
+		return 'images/'.$this->tconst1.'.jpg';
 	}
 
 	function getMovie() {
-		return Movies::sql("where code = ? ")->findFirst([ $this->tconst ]);
+		return Movies::sql("where code = ? ")->findFirst([ $this->tconst1 ]);
 	}
 
 
 	function getRating() {
-		return Ratings::sql("where tconst = ? ")->findFirst([ $this->tconst ]);
+		return Ratings::sql("where tconst = ? ")->findFirst([ $this->tconst1 ]);
 	}
 
 	function getBasic() {
@@ -56,15 +61,15 @@ class Basics extends \Peji\DB\Model {
 	}
 
 	function getAkas() {
-		return Akas::sql("where titleId = ? ")->find([ $this->tconst ]);
+		return Akas::sql("where titleId = ? ")->find([ $this->tconst1 ]);
 	}
 
 	function getPrincipals() {
-		return Principals::sql("where tconst = ? ")->find([ $this->tconst ]);
+		return Principals::sql("where tconst = ? ")->find([ $this->tconst1 ]);
 	}
 
 	function getCrews() {
-		return Crew::sql("where tconst = ? ")->find([ $this->tconst ]);
+		return Crew::sql("where tconst = ? ")->find([ $this->tconst1 ]);
 	}
 
 	function read() {
