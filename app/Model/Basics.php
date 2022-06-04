@@ -13,7 +13,7 @@ class Basics extends \Peji\DB\Model {
 			try {
 				DB::beginTransaction();
 				$ratings = Ratings::sql(" limit $from, 100000")->find();
-				
+
 				if( count( $ratings ) == 0 ) {
 					break;
 				}
@@ -22,6 +22,7 @@ class Basics extends \Peji\DB\Model {
 					if( $rating->basic->id ) {
 						$rating->basic->averageRating = $rating->averageRating;
 						$rating->basic->numVotes = $rating->numVotes;
+						$rating->basic->rateOrder = $rating->averageRating * $rating->numVotes;
 						$rating->basic->save();
 					}
 				}
