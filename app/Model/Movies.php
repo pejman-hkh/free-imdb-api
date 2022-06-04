@@ -11,7 +11,7 @@ class Movies extends \Peji\DB\Model {
 			}
 
 			if( preg_match('#Motion#i', $k ) ) {
-				$ret->mpaa = $k.' '.$v[0][0];
+				$ret->mpaa = $v[0][0];
 			}
 
 			if( preg_match('#Release#i', $k ) ) {
