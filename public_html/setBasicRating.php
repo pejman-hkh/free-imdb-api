@@ -23,6 +23,14 @@ Config::setDir('../config');
 $dbConf = Config::file('db');
 
 
+DB::init( $dbConf['host'], $dbConf['username'], $dbConf['password'], $dbConf['db'] );
+
+DB::setAttr([
+	\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'" ,
+	\PDO::ATTR_PERSISTENT => false ,
+	\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true ,
+]);
+
 define('MDIR', '');
 use App\Model\Basics;
 
