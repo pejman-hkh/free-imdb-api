@@ -12,7 +12,7 @@ class Basics extends \Peji\DB\Model {
 		while( 1 ) {
 			try {
 				DB::beginTransaction();
-				$ratings = Ratings::sql(" limitt $from, 10000")->find();
+				$ratings = Ratings::sql(" limit $from, 10000")->find();
 				foreach( $ratings as $rating ) {
 					if( $rating->basic->id ) {
 						$rating->basic->averageRating = $rating->averageRating;
