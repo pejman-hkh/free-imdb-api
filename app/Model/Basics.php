@@ -24,6 +24,7 @@ class Basics extends \Peji\DB\Model {
 						$rating->basic->save();
 					}
 				}
+				
 				$from = ($i + 1) * 100000;
 				$i++;
 				DB::commit();
