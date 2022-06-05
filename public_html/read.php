@@ -24,8 +24,6 @@ $dbConf = Config::file('db');
 
 
 define('MDIR', __dir__.'/');
-echo MDIR;
-exit();
 
 use App\Model\Basics;
 use App\Model\Movies;
