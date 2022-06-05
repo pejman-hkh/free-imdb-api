@@ -19,11 +19,14 @@ use Peji\DB\DB as DB;
 use Peji\Config as Config;
 use Peji\View as View;
 
-Config::setDir('../config');
+Config::setDir(__dir__.'/../config');
 $dbConf = Config::file('db');
 
 
-define('MDIR', '');
+define('MDIR', __dir__.'/');
+echo MDIR;
+exit();
+
 use App\Model\Basics;
 use App\Model\Movies;
 
