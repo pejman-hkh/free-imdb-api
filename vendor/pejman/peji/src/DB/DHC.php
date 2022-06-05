@@ -93,6 +93,7 @@ class DHC {
 			$csql = substr($csql, 0, strpos( $csql, 'limit') );
 			$countsql = "select count(*) as count ".$csql;
 			$countsql = preg_replace($regex = '#order\s*by\s*(\w+)\s*(\w+)\s*#i', '', $countsql);
+			$countsql = preg_replace($regex = '#\,\s*(\w+)\s*(desc|asc)\s*#i', '', $countsql);
 
 			$jbind = json_encode( $bind );
 			$md5 = md5($countsql.$jbind);
