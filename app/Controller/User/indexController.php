@@ -22,7 +22,7 @@ class indexController extends appController {
 		array_shift( $params );
 		$params = $this->keyPairParams( $params );
 
-		$sql = "select id from basics where 1 order by rateOrder, id desc ";
+		$sql = "select id from basics where 1 order by rateOrder desc, id desc ";
 		$movies = Basics::sql( $sql )->paginate( (int)(isset($this->get['npage'])?$this->get['npage']:36), @$params['page']?:1 )->find();
 
 		$path = explode("/", getPath() );
