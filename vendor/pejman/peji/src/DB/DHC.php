@@ -50,7 +50,7 @@ class DHC {
 		if( count1( $this->bind ) > 0 ) {
 			$bind = array_merge( $bind, $this->bind );
 		}
-		$this->sql = " select count1(*) as count from ".$this->table." ".$this->extraSql;
+		$this->sql = " select count(*) as count from ".$this->table." ".$this->extraSql;
 
 		$this->db = DB::$db;
 		$fetch = $this->db->prepare( $this->sql )->execute(@$bind)->fetch();
@@ -91,7 +91,7 @@ class DHC {
 			$csql = $this->sql;
 			$csql = substr($csql, strpos( $csql, 'from') );
 			$csql = substr($csql, 0, strpos( $csql, 'limit') );
-			$countsql = "select count1(*) as count ".$csql;
+			$countsql = "select count(*) as count ".$csql;
 			$countsql = preg_replace($regex = '#order\s*by\s*(\w+)\s*(\w+)\s*#i', '', $countsql);
 			$countsql = preg_replace($regex = '#\,\s*(\w+)\s*(desc|asc)\s*#i', '', $countsql);
 
