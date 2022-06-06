@@ -6,7 +6,7 @@ class Model {
 	var $columns, $columnsType;
 	function __construct() {
 
-		if( @count( $this->columns ) == 0 ) {
+		if( @count( (array)$this->columns ) == 0 ) {
 
 		}
 	}

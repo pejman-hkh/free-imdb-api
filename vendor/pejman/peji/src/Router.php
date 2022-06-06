@@ -51,7 +51,7 @@ class Router extends Singleton {
 		$expUri = explode( '/', $uri );
 
 		$extension1 = [];
-		if( @count( $extension ) > 0 ) foreach( $extension as $k => $v ) {
+		if( @count( (array)$extension ) > 0 ) foreach( $extension as $k => $v ) {
 			if( is_array( $v ) ) {
 				if( $pathArr[0] === $k ) {
 					foreach( $v as $k1 => $v1 ) {
@@ -157,7 +157,7 @@ class Router extends Singleton {
 		return $this;
 	}
 
-	private function run( $uri, $callback, $wa, $extension ) {
+	private function run( $uri, $callback, $wa, $extension = [] ) {
 
 		if( $this->checkUrl( $uri, $wa, $extension ) ) {
 

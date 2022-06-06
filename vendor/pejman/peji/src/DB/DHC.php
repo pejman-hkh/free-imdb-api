@@ -65,7 +65,7 @@ class DHC {
 			$bind = array_merge( $bind, $this->bind );
 		}
 
-		if( @count( $this->paginateData ) > 0 ) {
+		if( @count( (array)$this->paginateData ) > 0 ) {
 			if( strtolower( substr( trim($this->sql), 0, 6 ) ) == 'select' ) {
 				//$this->sql = substr( trim($this->sql), 6);
 				//$this->sql = 'SELECT SQL_CALC_FOUND_ROWS '.$this->sql;

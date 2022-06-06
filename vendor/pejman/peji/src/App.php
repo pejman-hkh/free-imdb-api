@@ -19,7 +19,7 @@ class App extends Singleton {
 		return include( $keyFile );
 	}
 
-	function call( $class, $method, $args = [] ) {
+	public static function call( $class, $method, $args = [] ) {
 		if( method_exists( $class, $method ) ) {
 			call_user_func_array( [$class, $method], $args );
 			return true;
