@@ -6,7 +6,7 @@ class Movies extends \Peji\DB\Model {
 	function getInfo() {
 		$ret = new \StdClass;
 		foreach( json_decode($this->datas) as $k => $v ) {
-			if( preg_match('#Nominated#i', $k ) ) {
+			if( preg_match('#Nominated|Won#i', $k ) ) {
 				$ret->awards = $k." ".$v[0][0];
 			}
 

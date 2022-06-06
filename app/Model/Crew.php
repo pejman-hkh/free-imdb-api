@@ -12,7 +12,6 @@ class Crew extends \Peji\DB\Model {
 			file_put_contents($file, $c );
 		}
 
-		//$lines = gzfile($file);
 		try {
 			DB::beginTransaction();
 			$e = [];
