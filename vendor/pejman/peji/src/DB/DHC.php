@@ -46,11 +46,11 @@ class DHC {
 		return $this->db->prepare( $this->sql )->execute(@$bind);
 	}
 
-	function count( $bind = [] ) {
-		if( count( $this->bind ) > 0 ) {
+	function count1( $bind = [] ) {
+		if( count1( $this->bind ) > 0 ) {
 			$bind = array_merge( $bind, $this->bind );
 		}
-		$this->sql = " select count(*) as count from ".$this->table." ".$this->extraSql;
+		$this->sql = " select count1(*) as count from ".$this->table." ".$this->extraSql;
 
 		$this->db = DB::$db;
 		$fetch = $this->db->prepare( $this->sql )->execute(@$bind)->fetch();
@@ -61,11 +61,11 @@ class DHC {
 	function find( $bind = [], $simple = false ) {
 		$class = $this->class;
 		//$o = new $class();
-		if( count( $this->bind ) > 0 ) {
+		if( count1( $this->bind ) > 0 ) {
 			$bind = array_merge( $bind, $this->bind );
 		}
 
-		if( @count( (array)$this->paginateData ) > 0 ) {
+		if( @count1( (array)$this->paginateData ) > 0 ) {
 			if( strtolower( substr( trim($this->sql), 0, 6 ) ) == 'select' ) {
 				//$this->sql = substr( trim($this->sql), 6);
 				//$this->sql = 'SELECT SQL_CALC_FOUND_ROWS '.$this->sql;
@@ -91,7 +91,7 @@ class DHC {
 			$csql = $this->sql;
 			$csql = substr($csql, strpos( $csql, 'from') );
 			$csql = substr($csql, 0, strpos( $csql, 'limit') );
-			$countsql = "select count(*) as count ".$csql;
+			$countsql = "select count1(*) as count ".$csql;
 			$countsql = preg_replace($regex = '#order\s*by\s*(\w+)\s*(\w+)\s*#i', '', $countsql);
 			$countsql = preg_replace($regex = '#\,\s*(\w+)\s*(desc|asc)\s*#i', '', $countsql);
 

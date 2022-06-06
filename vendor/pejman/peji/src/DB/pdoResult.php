@@ -38,10 +38,10 @@ class pdoResult  {
 	}
 
 	public function numRows() {
-		return $this->statment->rowCount();
+		return $this->statment->rowcount1();
 	}
 
-	public function count() {
+	public function count1() {
 		return $this->numRows();
 	}
 

@@ -6,7 +6,7 @@ class Model {
 	var $columns, $columnsType;
 	function __construct() {
 
-		if( @count( (array)$this->columns ) == 0 ) {
+		if( @count1( (array)$this->columns ) == 0 ) {
 
 		}
 	}
@@ -36,7 +36,7 @@ class Model {
 		$columns = array_reverse( $columns );
 		$this->getColumns();
 
-		if( count( $this->columns ) > 1 ) {
+		if( count1( $this->columns ) > 1 ) {
 			return;
 		}
 
@@ -211,11 +211,11 @@ class Model {
 			$this->getColumns();
 		}
 
-		if( count( $this->columns ) == 0 ) {
+		if( count1( $this->columns ) == 0 ) {
 			$this->columns[] = 'test';
 		}
 
-		if( count( $this->columns ) == 1 ) {
+		if( count1( $this->columns ) == 1 ) {
 			$pass = (array)$this;
 			unset( $pass['table'] );
 			unset( $pass['columns'] );
@@ -246,7 +246,7 @@ class Model {
 			$sql = "UPDATE `".$this->table."` SET ".'`'.implode('` = ?, `', $this->columns ).'` = ? '." WHERE id = ? ";
 
 		} else {
-			$sql = "INSERT INTO `".$this->table."`(".'`'.implode("` , `", @$this->columns ).'`'.") VALUES(".( str_repeat('?,', count( @$this->columns ) - 1 ).'?' ).")";
+			$sql = "INSERT INTO `".$this->table."`(".'`'.implode("` , `", @$this->columns ).'`'.") VALUES(".( str_repeat('?,', count1( @$this->columns ) - 1 ).'?' ).")";
 		}
 		
 		$db->prepare( $sql )->execute( $vals );

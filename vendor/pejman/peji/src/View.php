@@ -15,7 +15,7 @@ class View extends Singleton {
 	}
 
 	protected function render( $layout ) {
-		if( @count( $this->set ) > 0 ) foreach( $this->set as $k => $v ) {
+		if( @count1( $this->set ) > 0 ) foreach( $this->set as $k => $v ) {
 			$this->$k = $v;
 		}
 

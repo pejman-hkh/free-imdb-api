@@ -184,11 +184,11 @@ class Movies extends \Peji\DB\Model {
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
-		if( @count( $all['Star'] ) ) foreach( @$all['Star'] as $v ) {
+		if( @count1( $all['Star'] ) ) foreach( @$all['Star'] as $v ) {
 			
 			$actor = Actors::where(['name' => $v[0] ] )->findFirst();
 
-			if( @count( $actor ) == 0 ) {
+			if( @count1( $actor ) == 0 ) {
 				$a = new Actors;
 				$a->name = $v[0];
 				$e = explode('/', $v[1]);
@@ -208,9 +208,9 @@ class Movies extends \Peji\DB\Model {
 
 		@$all['Writer'] = @$all['Writer']?:@$all['Writers'];
 		$ids = [];
-		if( @count( $all['Writer'] ) ) foreach( @$all['Writer'] as $v ) {
+		if( @count1( $all['Writer'] ) ) foreach( @$all['Writer'] as $v ) {
 			$writer = Writers::where([ 'name' => $v[0] ] )->findFirst();
-			if( @count( $writer ) == 0 ) {
+			if( @count1( $writer ) == 0 ) {
 				$a = new Writers;
 				$a->name = $v[0];
 				$e = explode('/', $v[1]);
@@ -230,10 +230,10 @@ class Movies extends \Peji\DB\Model {
 		@$all['Director'] = @$all['Director']?:@$all['Directors'];
 
 		$ids = [];
-		if( @count( $all['Director'] ) ) foreach( @$all['Director'] as $v ) {
+		if( @count1( $all['Director'] ) ) foreach( @$all['Director'] as $v ) {
 			$director = Directors::where([ 'name' => $v[0]] )->findFirst();
 			
-			if( @count( $director ) == 0 ) {
+			if( @count1( $director ) == 0 ) {
 				$a = new Directors;
 				$a->name = $v[0];
 				$e = explode('/', $v[1]);
@@ -255,10 +255,10 @@ class Movies extends \Peji\DB\Model {
 
 		@$all['Genre'] = @$all['Genre']?:@$all['Genres'];
 		$ids = [];
-		if( @count( $all['Genre'] ) )  foreach( @$all['Genre'] as $v ) {
+		if( @count1( $all['Genre'] ) )  foreach( @$all['Genre'] as $v ) {
 			$genre = Genres::sql(" where title like ? " )->findFirst([ '%'.$v[0].'%' ]);
 			
-			if( @count( $genre ) == 0 ) {
+			if( @count1( $genre ) == 0 ) {
 				$a = new Genres;
 				$a->title = $v[0];
 				//$a->imdbLink = $v[1];
@@ -275,10 +275,10 @@ class Movies extends \Peji\DB\Model {
 
 		@$all['Country of origin'] = @$all['Country of origin']?:@$all['Countries of origin'];
 		$ids = [];
-		if( @count( $all['Country of origin'] ) ) foreach( @$all['Country of origin'] as $v ) {
+		if( @count1( $all['Country of origin'] ) ) foreach( @$all['Country of origin'] as $v ) {
 			$country = Countries::where([ 'name' => $v[0]] )->findFirst();
 			
-			if( @count( $country ) == 0 ) {
+			if( @count1( $country ) == 0 ) {
 				$a = new Countries;
 				$a->name = $v[0];
 				$a->imdbLink = $v[1];
@@ -302,10 +302,10 @@ class Movies extends \Peji\DB\Model {
 
 		@$all['Language'] = @$all['Language']?:@$all['Languages'];
 		$ids = [];
-		if( @count( $all['Language'] ) ) foreach( @$all['Language'] as $v ) {
+		if( @count1( $all['Language'] ) ) foreach( @$all['Language'] as $v ) {
 			$lang = Languages::where([ 'name' => $v[0]] )->findFirst();
 			
-			if( @count( $lang ) == 0 ) {
+			if( @count1( $lang ) == 0 ) {
 				$a = new Languages;
 				$a->name = $v[0];
 				$a->imdbLink = $v[1];

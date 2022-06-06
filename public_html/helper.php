@@ -1,5 +1,9 @@
 <?php
 
+function count1( $a ) {
+	return count( (array)$a );
+}
+
 function lockFile($file = '')
 {
     if (file_exists($file)) {

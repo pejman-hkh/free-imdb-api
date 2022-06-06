@@ -14,7 +14,7 @@ class Basics extends \Peji\DB\Model {
 				DB::beginTransaction();
 				$ratings = Ratings::sql(" limit $from, 100000")->find();
 
-				if( count( $ratings ) == 0 ) {
+				if( count1( $ratings ) == 0 ) {
 					break;
 				}
 

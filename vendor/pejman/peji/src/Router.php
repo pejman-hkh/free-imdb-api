@@ -45,13 +45,13 @@ class Router extends Singleton {
 
 		$pathArr = $this->pathArr = explode( "/", $this->path );
 		
-		$last = $pathArr [ count( $pathArr ) - 1 ];
+		$last = $pathArr [ count1( $pathArr ) - 1 ];
 		$expLast = explode(".", $last);
 
 		$expUri = explode( '/', $uri );
 
 		$extension1 = [];
-		if( @count( (array)$extension ) > 0 ) foreach( $extension as $k => $v ) {
+		if( @count1( (array)$extension ) > 0 ) foreach( $extension as $k => $v ) {
 			if( is_array( $v ) ) {
 				if( $pathArr[0] === $k ) {
 					foreach( $v as $k1 => $v1 ) {
@@ -65,8 +65,8 @@ class Router extends Singleton {
 
 		unset( $extension );
 
-		if( count( $expLast ) > 1 && in_array( $expLast[1] , (array)$extension1 )  ) {
-			$pathArr [ count( $pathArr ) - 1 ] = $expLast[0];
+		if( count1( $expLast ) > 1 && in_array( $expLast[1] , (array)$extension1 )  ) {
+			$pathArr [ count1( $pathArr ) - 1 ] = $expLast[0];
 		}
 			
 		$this->getExten = isset( $expLast[1] ) ? $expLast[1] : '';

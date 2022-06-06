@@ -104,7 +104,7 @@ COMMIT;';
 
 	public function bind( &$bind = [] ) {
 		try {
-			if( is_array( $bind ) && @count( $bind ) > 0 ) foreach( $bind as $k => $v ) {
+			if( is_array( $bind ) && @count1( $bind ) > 0 ) foreach( $bind as $k => $v ) {
 				$this->statment->bindValue( $k + 1, $v,  is_int( $v ) ? \PDO::PARAM_INT : \PDO::PARAM_STR );
 			}
 		} catch (\PDOException $e) {
