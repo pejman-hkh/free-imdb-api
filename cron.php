@@ -8,7 +8,7 @@ require_once 'public_html/helper.php';
 use Peji\DB\DB as DB;
 use Peji\Config as Config;
 
-Config::setDir('config');
+Config::setDir(__dir__.'/config');
 $dbConf = Config::file('db');
 
 DB::init( $dbConf['host'], $dbConf['username'], $dbConf['password'], $dbConf['db'] );
@@ -19,7 +19,7 @@ DB::setAttr([
 	\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true ,
 ]);
 
-define('MDIR', 'public_html/');
+define('MDIR', __dir__.'/public_html/');
 
 use App\Model\Ratings;
 
