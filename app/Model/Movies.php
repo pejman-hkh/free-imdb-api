@@ -123,7 +123,8 @@ class Movies extends \Peji\DB\Model {
 		$headers[] = 'Sec-Fetch-User: ?1';
 		$headers[] = 'Sec-Fetch-Dest: document';
 		$headers[] = 'Accept-Language: en-US,en;q=0.9,fa;q=0.8';
-	
+		$headers[] = 'Cookie: ubid-main=135-0830405-5912511; session-id=137-9679125-8436758; uu=eyJpZCI6InV1NmM3MDY5ODRjZDlkNGQzYTliYzkiLCJwcmVmZXJlbmNlcyI6eyJmaW5kX2luY2x1ZGVfYWR1bHQiOmZhbHNlfX0=; adblk=adblk_no; _uetvid=2ea728b0bfc111ec9e347f01afe47388; _gcl_au=1.1.856029712.1650359698; _clck=on0o5m|1|f0r|0; session-id-time=2082787201l; session-token=ROTcN+VoWuVh4amoic9Hs0OVeG43yZdyhl97r5RE+okAhzffvPl7fWI2WVzfPIergEWroM2LCHdbHysvcYspLLPhTpVgCO4H3beRO5wcu4imBD0UqHcANyjCSWlPFLPgQrgSsvQMN6AVG2G6lThkhYBuYLMJU4aptFCoN5ZslkW6BfbAk6WCUkEzbs9nMxODpYAvaW/xUek=; csm-hit=tb:KYTR9K47MMZ6K5GC7WZR+s-0S2S5GNJM77PFWF2ZS3C|1654975066978&t:1654975066978&adb:adblk_no';
+
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 		$result = curl_exec($ch);
