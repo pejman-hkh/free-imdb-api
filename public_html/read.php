@@ -47,7 +47,7 @@ try {
 			echo $basic->tconst."\n";
 
 			$movie = Movies::sql("where code = ? ")->findFirst([$basic->tconst]);
-			if( @$movie->id ) {
+			if( @$movie->id && ! empty( $movie->datas )  ) {
 				continue;
 			}
 
