@@ -191,8 +191,8 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->datas = mjson_encode( $all );
 
-	/*	print_r( $all );
-		exit();*/
+		print_r( $all );
+		exit();
 
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
