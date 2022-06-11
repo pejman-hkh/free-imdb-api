@@ -148,6 +148,8 @@ class Movies extends \Peji\DB\Model {
 
 		$ret = $this->request( $this->imdbUrl );
 		$html = str_get_html( $ret );
+		echo $ret;
+		exit();
 /*
 		$t = $html->find("#__NEXT_DATA__");
 
