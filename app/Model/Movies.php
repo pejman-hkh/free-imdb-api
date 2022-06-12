@@ -43,6 +43,27 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+	function removeType( &$object ) {
+		foreach( $object as $k => $o ) {
+			if( $k == '__typename' ) {
+				unset( $o[$k] );
+			}
+
+			$this->removeType( $o );
+		}
+	}
+
+	function getInfo1() {
+
+		//$ret = new \StdClass;
+
+		$data = $this->removeType( json_decode( $this->datan ) );
+		
+		print_r( $data );
+
+		//return $ret;
+	}
+
 	function getStoryLine1() {
 		return preg_replace("#—(.*?)$#", "", $this->storyLine );
 	}
