@@ -63,8 +63,6 @@ class Movies extends \Peji\DB\Model {
 		$ret->aboveTheFoldData = $data->props->pageProps->aboveTheFoldData;
 		$ret->mainColumnData = $data->props->pageProps->mainColumnData;
 
-		print_r( $ret );
-
 		return $ret;
 	}
 
@@ -173,14 +171,23 @@ class Movies extends \Peji\DB\Model {
 
 		$ret = $this->request( $this->imdbUrl );
 		$html = str_get_html( $ret );
-/*
+
 		$t = $html->find("#__NEXT_DATA__", 0);
+		$movie->datan = $t->innertext;
 
-		$data = json_decode( $t->innertext );
-		print_r( $data->props->pageProps->aboveTheFoldData ); 
+		$info = $movie->info1;
 
-		exit();*/
 
+		$writers = $info->mainColumnData->writers[0]->credits;
+		$directors = $info->mainColumnData->writers[0]->directors;
+		$genres = $info->mainColumnData->writers[0]->genres;
+
+		print_r( $writers );
+		print_r( $directors );
+		print_r( $genres );
+
+		exit();
+		
 		if( ! $html ) return;
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
 		$data = ( json_decode($m[1]) );
@@ -221,10 +228,7 @@ class Movies extends \Peji\DB\Model {
 			}
 		}
 
-		$t = $html->find("#__NEXT_DATA__", 0);
-
 		$movie->datas = mjson_encode( $all );
-		$movie->datan = $t->innertext;
 
 /*		print_r( $all );
 		exit();
