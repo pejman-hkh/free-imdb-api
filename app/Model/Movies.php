@@ -155,7 +155,7 @@ class Movies extends \Peji\DB\Model {
 		print_r( $data->props->pageProps->aboveTheFoldData ); 
 
 		exit();*/
-s
+
 		if( ! $html ) return;
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
 		$data = ( json_decode($m[1]) );
@@ -196,7 +196,10 @@ s
 			}
 		}
 
+		$t = $html->find("#__NEXT_DATA__", 0);
+
 		$movie->datas = mjson_encode( $all );
+		$movie->datan = $t->innertext;
 
 /*		print_r( $all );
 		exit();
