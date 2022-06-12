@@ -151,7 +151,9 @@ class Movies extends \Peji\DB\Model {
 
 		$t = $html->find("#__NEXT_DATA__", 0);
 
-		echo $t->innertext;
+		$data = json_decode( $t->innertext );
+		print_r( $data->props->pageProps->mainColumnData ); 
+
 		exit();
 
 		if( ! $html ) return;
