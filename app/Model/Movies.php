@@ -148,14 +148,14 @@ class Movies extends \Peji\DB\Model {
 
 		$ret = $this->request( $this->imdbUrl );
 		$html = str_get_html( $ret );
-
+/*
 		$t = $html->find("#__NEXT_DATA__", 0);
 
 		$data = json_decode( $t->innertext );
 		print_r( $data->props->pageProps->aboveTheFoldData ); 
 
-		exit();
-
+		exit();*/
+s
 		if( ! $html ) return;
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
 		$data = ( json_decode($m[1]) );
@@ -198,9 +198,9 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->datas = mjson_encode( $all );
 
-		print_r( $all );
+/*		print_r( $all );
 		exit();
-
+*/
 		@$all['Star'] = @$all['Star']?:@$all['Stars'];
 		$ids = [];	
 		if( @count( (array)$all['Star'] ) ) foreach( @$all['Star'] as $v ) {
@@ -343,13 +343,13 @@ class Movies extends \Peji\DB\Model {
 			$ids[] = $id;
 		}
 		$movie->tlanguages = implode(',', array_unique($ids) );
-		if( $movie->tgenres || $this->again > 5 ) {
-			$movie->save();		
-		} else {
+		/*if( $movie->tgenres || $this->again > 5 ) {*/
+		$movie->save();		
+	/*	} else {
 			echo "try again : ".$this->again." \n";
 			$this->again++;
 			$this->update();
-		}
+		}*/
 
 	}
 }
