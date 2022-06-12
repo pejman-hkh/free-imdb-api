@@ -179,15 +179,15 @@ class Movies extends \Peji\DB\Model {
 
 
 		$writers = $info->mainColumnData->writers[0]->credits;
-		$directors = $info->mainColumnData->writers[0]->directors;
-		$genres = $info->mainColumnData->writers[0]->genres;
+		$directors = $info->mainColumnData->directors[0]->directors;
+		$genres = $info->mainColumnData->genres[0]->genres;
 
 		print_r( $writers );
 		print_r( $directors );
 		print_r( $genres );
 
 		exit();
-		
+
 		if( ! $html ) return;
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
 		$data = ( json_decode($m[1]) );
