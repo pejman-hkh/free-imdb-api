@@ -57,7 +57,8 @@ class Movies extends \Peji\DB\Model {
 
 		//$ret = new \StdClass;
 
-		$data = $this->removeType( json_decode( $this->datan ) );
+		$data = json_decode( $this->datan );
+		$this->removeType( $data );
 		
 		print_r( $data );
 
