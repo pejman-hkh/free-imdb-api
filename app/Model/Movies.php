@@ -55,14 +55,17 @@ class Movies extends \Peji\DB\Model {
 
 	function getInfo1() {
 
-		//$ret = new \StdClass;
+		$ret = new \StdClass;
 
 		$data = json_decode( $this->datan );
 		$this->removeType( $data );
 		
-		print_r( $data );
+		$ret->aboveTheFoldData = $data->aboveTheFoldData;
+		$ret->mainColumnData = $data->mainColumnData;
 
-		//return $ret;
+		print_r( $ret );
+
+		return $ret;
 	}
 
 	function getStoryLine1() {
