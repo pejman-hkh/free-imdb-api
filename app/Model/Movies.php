@@ -179,13 +179,13 @@ class Movies extends \Peji\DB\Model {
 
 
 		$writers = $info->mainColumnData->writers[0]->credits;
-		$directors = $info->mainColumnData->directors[0]->directors;
-		$genres = $info->mainColumnData->genres[0]->genres;
+		$directors = $info->mainColumnData->directors[0]->creditss;
+		$genres = $info->mainColumnData->genres->genres;
 
 		print_r( $info );
-		/*print_r( $directors );
+		print_r( $directors );
 		print_r( $genres );
-*/
+
 		exit();
 
 		if( ! $html ) return;
