@@ -60,8 +60,8 @@ class Movies extends \Peji\DB\Model {
 		$data = json_decode( $this->datan );
 		$this->removeType( $data );
 		
-		$ret->aboveTheFoldData = $data->aboveTheFoldData;
-		$ret->mainColumnData = $data->mainColumnData;
+		$ret->aboveTheFoldData = $data->props->pageProps->aboveTheFoldData;
+		$ret->mainColumnData = $data->props->pageProps->mainColumnData;
 
 		print_r( $ret );
 
