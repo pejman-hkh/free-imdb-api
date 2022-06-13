@@ -101,7 +101,7 @@ class Movies extends \Peji\DB\Model {
 	}
 
 
-	function info2() {
+	function getInfo2() {
 
 		$info = $this->info1;
 
@@ -249,7 +249,7 @@ class Movies extends \Peji\DB\Model {
 
 		print_r( $a );
 		exit();
-		
+
 		$ids = [];
 		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
 			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
