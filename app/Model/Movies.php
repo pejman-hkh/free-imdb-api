@@ -293,7 +293,7 @@ class Movies extends \Peji\DB\Model {
 
 		$ids = [];
 		if( @count( $a->casts ) > 0 ) foreach( $a->casts as $v ) {
-			$c = Actors::sql("where title = ?")->findFirst([ $v->text ]);
+			$c = Actors::sql("where name = ?")->findFirst([ $v->text ]);
 			if( ! @$c->id ) {
 				$w = new Actors;
 				$w->name = $v->name;
