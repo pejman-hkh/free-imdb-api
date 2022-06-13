@@ -164,6 +164,14 @@ class Movies extends \Peji\DB\Model {
 
 	}
 
+	function simplify( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'name' => $v->name->nameText->text, 'code' => $v->name->id ];
+		}
+		return $ret;
+	}
+
 	var $again = 0;
 	function update() {
 
@@ -180,13 +188,14 @@ class Movies extends \Peji\DB\Model {
 		$info = $movie->info1;
 
 		$a = new \StdClass;
-		$a->writers = $info->mainColumnData->writers[0]->credits;
-		$a->directors = $info->mainColumnData->directors[0]->credits;
+		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
+		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
 		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
-		$a->genres = $info->aboveTheFoldData->genres->genres;
+		$a->genres = $info->aboveTheFoldData->genres->genres[0]->text;
 		$a->certificate = $info->aboveTheFoldData->certificate->rating;
-		$a->releaseDate = $info->aboveTheFoldData->releaseDate;
-		$a->runtime = $info->aboveTheFoldData->runtime;
+		$date = $info->aboveTheFoldData->releaseDate;
+		$a->releaseDate = $date->year.'/'.$date->month.'/'.$date->day;
+		$a->runtime = round( $info->aboveTheFoldData->runtime->seconds / 60 );
 		$a->primaryImage = $info->aboveTheFoldData->primaryImage;
 		$a->plot = $info->aboveTheFoldData->plot->plotText->plainText;
 		$a->countries = $info->mainColumnData->countriesOfOrigin->countries;
