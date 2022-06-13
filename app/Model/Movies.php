@@ -66,6 +66,72 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+
+	function simplify( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'name' => $v->name->nameText->text, 'code' => $v->name->id ];
+		}
+		return $ret;
+	}
+
+	function simplifyImages( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$v->caption = $v->caption->plainText;
+			$ret[] = $v->node;
+		}
+		return $ret;
+	}
+
+	function simplifyCasts( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'name' => $v->node->name->nameText->text, 'code' => $v->node->name->id, 'characters' => $v->node->characters[0]->name ];
+		}
+		return $ret;
+	}
+
+	function simplifyLocation( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'text' => $v->node->text ];
+		}
+		return $ret;
+	}
+
+
+	function info2() {
+
+		$info = $this->info1;
+
+		$a = new \StdClass;
+		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
+		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
+		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
+		$a->genres = $info->aboveTheFoldData->genres->genres;
+		$a->certificate = $info->aboveTheFoldData->certificate->rating;
+		$date = $info->aboveTheFoldData->releaseDate;
+		$a->releaseDate = $date->year.'/'.$date->month.'/'.$date->day;
+		$a->runtime = round( $info->aboveTheFoldData->runtime->seconds / 60 );
+		$a->primaryImage = $info->aboveTheFoldData->primaryImage;
+		$a->plot = $info->aboveTheFoldData->plot->plotText->plainText;
+		$a->countries = $info->mainColumnData->countriesOfOrigin->countries;
+		$a->wins = $info->mainColumnData->wins->total;
+		$a->nominations = $info->mainColumnData->nominations->total;
+		$a->images = $this->simplifyImages( $info->mainColumnData->titleMainImages->edges );
+		$a->casts = $this->simplifyCasts( $info->mainColumnData->cast->edges );
+		$a->languages = $info->mainColumnData->spokenLanguages->spokenLanguages;
+		$a->filmingLocations = $this->simplifyLocation( $info->mainColumnData->filmingLocations->edges );
+		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
+		$a->budget = $info->mainColumnData->productionBudget->budget;
+		$a->lifetimeGross = $info->mainColumnData->lifetimeGross->total;
+		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
+		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
+		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
+		return $a;	
+	}
+
 	function getStoryLine1() {
 		return preg_replace("#—(.*?)$#", "", $this->storyLine );
 	}
@@ -164,39 +230,6 @@ class Movies extends \Peji\DB\Model {
 
 	}
 
-	function simplify( $a ) {
-		$ret = [];
-		foreach( $a as $v ) {
-			$ret[] = (object)[ 'name' => $v->name->nameText->text, 'code' => $v->name->id ];
-		}
-		return $ret;
-	}
-
-	function simplifyImages( $a ) {
-		$ret = [];
-		foreach( $a as $v ) {
-			$v->caption = $v->caption->plainText;
-			$ret[] = $v->node;
-		}
-		return $ret;
-	}
-
-	function simplifyCasts( $a ) {
-		$ret = [];
-		foreach( $a as $v ) {
-			$ret[] = (object)[ 'name' => $v->node->name->nameText->text, 'code' => $v->node->name->id, 'characters' => $v->node->characters[0]->name ];
-		}
-		return $ret;
-	}
-
-	function simplifyLocation( $a ) {
-		$ret = [];
-		foreach( $a as $v ) {
-			$ret[] = (object)[ 'text' => $v->node->text ];
-		}
-		return $ret;
-	}
-
 	var $again = 0;
 	function update() {
 
@@ -212,34 +245,11 @@ class Movies extends \Peji\DB\Model {
 
 		$info = $movie->info1;
 
-		$a = new \StdClass;
-		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
-		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
-		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
-		$a->genres = $info->aboveTheFoldData->genres->genres;
-		$a->certificate = $info->aboveTheFoldData->certificate->rating;
-		$date = $info->aboveTheFoldData->releaseDate;
-		$a->releaseDate = $date->year.'/'.$date->month.'/'.$date->day;
-		$a->runtime = round( $info->aboveTheFoldData->runtime->seconds / 60 );
-		$a->primaryImage = $info->aboveTheFoldData->primaryImage;
-		$a->plot = $info->aboveTheFoldData->plot->plotText->plainText;
-		$a->countries = $info->mainColumnData->countriesOfOrigin->countries;
-		$a->wins = $info->mainColumnData->wins->total;
-		$a->nominations = $info->mainColumnData->nominations->total;
-		$a->images = $this->simplifyImages( $info->mainColumnData->titleMainImages->edges );
-		$a->casts = $this->simplifyCasts( $info->mainColumnData->cast->edges );
-		$a->languages = $info->mainColumnData->spokenLanguages->spokenLanguages;
-		$a->filmingLocations = $this->simplifyLocation( $info->mainColumnData->filmingLocations->edges );
-		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
-		$a->budget = $info->mainColumnData->productionBudget->budget;
-		$a->lifetimeGross = $info->mainColumnData->lifetimeGross->total;
-		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
-		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
-		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
+		$a = $movie->info2;
 
-	print_r( $a );
-	exit();
-	
+		print_r( $a );
+		exit();
+		
 		$ids = [];
 		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
 			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
@@ -272,10 +282,10 @@ class Movies extends \Peji\DB\Model {
 
 		$ids = [];
 		if( @count( $a->genres ) > 0 ) foreach( $a->genres as $v ) {
-			$c = Genres::sql("where title = ?")->findFirst([ $v->title ]);
+			$c = Genres::sql("where title = ?")->findFirst([ $v->text ]);
 			if( ! @$c->id ) {
 				$w = new Genres;
-				$w->title = $v->title;
+				$w->title = $v->text;
 				$id = $w->save();
 			} else {
 				$id = $c->id;
@@ -284,7 +294,51 @@ class Movies extends \Peji\DB\Model {
 		}
 		$movie->tgenres = implode(',', array_unique($ids) );
 
-		exit();
+		$ids = [];
+		if( @count( $a->casts ) > 0 ) foreach( $a->casts as $v ) {
+			$c = Actors::sql("where title = ?")->findFirst([ $v->text ]);
+			if( ! @$c->id ) {
+				$w = new Actors;
+				$w->name = $v->name;
+				$w->const = $v->code;
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->tactors = implode(',', array_unique($ids) );
+
+
+		$ids = [];
+		if( @count( $a->countries ) > 0 ) foreach( $a->countries as $v ) {
+			$c = Countries::sql("where short = ?")->findFirst([ strtolower($v->id) ]);
+			if( ! @$c->id ) {
+				$w = new Countries;
+				$w->name = $v->text;
+				$w->short = strtolower($v->id);
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->tcountries = implode(',', array_unique($ids) );
+
+		$ids = [];
+		if( @count( $a->languages ) > 0 ) foreach( $a->languages as $v ) {
+			$c = Languages::sql("where short = ?")->findFirst([ strtolower($v->id) ]);
+			if( ! @$c->id ) {
+				$w = new Languages;
+				$w->name = $v->text;
+				$w->short = strtolower($v->id);
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->tlanguages = implode(',', array_unique($ids) );
 
 		
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
@@ -328,158 +382,8 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->datas = mjson_encode( $all );
 
-/*		print_r( $all );
-		exit();
-*/
-		@$all['Star'] = @$all['Star']?:@$all['Stars'];
-		$ids = [];	
-		if( @count( (array)$all['Star'] ) ) foreach( @$all['Star'] as $v ) {
-			
-			$actor = Actors::where(['name' => $v[0] ] )->findFirst();
 
-			if( @count( (array)$actor ) == 0 ) {
-				$a = new Actors;
-				$a->name = $v[0];
-				$e = explode('/', $v[1]);
-				$a->const = $e[2];
-				//$a->imdbLink = $v[1];
-				$id = $a->save();
-
-				//$a->savePic();
-
-			} else {
-				$id = $actor->id;
-			}
-			$ids[] = $id;
-		}
-
-		$movie->tactors = implode(',', array_unique($ids) );
-
-		@$all['Writer'] = @$all['Writer']?:@$all['Writers'];
-		$ids = [];
-		if( @count( (array)$all['Writer'] ) ) foreach( @$all['Writer'] as $v ) {
-			$writer = Writers::where([ 'name' => $v[0] ] )->findFirst();
-			if( @count( (array)$writer ) == 0 ) {
-				$a = new Writers;
-				$a->name = $v[0];
-				$e = explode('/', $v[1]);
-				$a->const = $e[2];				
-				//$a->imdbLink = $v[1];
-				$id = $a->save();
-
-			} else {
-				$id = $writer->id;
-			}
-
-			$ids[] = $id;
-		}
-
-		$movie->twriters = implode(',', array_unique($ids) );
-
-		@$all['Director'] = @$all['Director']?:@$all['Directors'];
-
-		$ids = [];
-		if( @count( (array)$all['Director'] ) ) foreach( @$all['Director'] as $v ) {
-			$director = Directors::where([ 'name' => $v[0]] )->findFirst();
-			
-			if( @count( (array)$director ) == 0 ) {
-				$a = new Directors;
-				$a->name = $v[0];
-				$e = explode('/', $v[1]);
-				$a->const = $e[2];				
-				//$a->imdbLink = $v[1];
-				$id = $a->save();
-
-				//$a->savePic();
-
-			} else {
-				$id = $director->id;
-			}
-
-			$ids[] = $id;
-		}
-
-
-		$movie->tdirectors = implode(',', array_unique($ids) );
-
-		@$all['Genre'] = @$all['Genre']?:@$all['Genres'];
-		$ids = [];
-		if( @count( (array)$all['Genre'] ) )  foreach( @$all['Genre'] as $v ) {
-			$genre = Genres::sql(" where title like ? " )->findFirst([ '%'.$v[0].'%' ]);
-			
-			if( @count( (array)$genre ) == 0 ) {
-				$a = new Genres;
-				$a->title = $v[0];
-				//$a->imdbLink = $v[1];
-				$id = $a->save();
-
-
-			} else {
-				$id = $genre->id;
-			}
-
-			$ids[] = $id;
-		}
-		$movie->tgenres = implode(',', array_unique($ids) );
-
-		@$all['Country of origin'] = @$all['Country of origin']?:@$all['Countries of origin'];
-		$ids = [];
-		if( @count( (array)$all['Country of origin'] ) ) foreach( @$all['Country of origin'] as $v ) {
-			$country = Countries::where([ 'name' => $v[0]] )->findFirst();
-			
-			if( @count( (array)$country ) == 0 ) {
-				$a = new Countries;
-				$a->name = $v[0];
-				$a->imdbLink = $v[1];
-				$a->short = $a->mshort;
-				$id = $a->save();
-
-
-			} else {
-
-				$country->imdbLink = $v[1];
-				$country->short = $country->mshort;
-				$country->save();
-
-				$id = $country->id;
-			}
-
-			$ids[] = $id;
-		}
-		$movie->tcountries = implode(',', array_unique($ids) );
-
-
-		@$all['Language'] = @$all['Language']?:@$all['Languages'];
-		$ids = [];
-		if( @count( (array)$all['Language'] ) ) foreach( @$all['Language'] as $v ) {
-			$lang = Languages::where([ 'name' => $v[0]] )->findFirst();
-			
-			if( @count( (array)$lang ) == 0 ) {
-				$a = new Languages;
-				$a->name = $v[0];
-				$a->imdbLink = $v[1];
-				$a->short = $a->mshort;
-				$id = $a->save();
-
-			
-			} else {
-				$lang->imdbLink = $v[1];
-				$lang->short = $lang->mshort;
-				$lang->save();
-
-				$id = $lang->id;
-			}
-
-			$ids[] = $id;
-		}
-		$movie->tlanguages = implode(',', array_unique($ids) );
-		/*if( $movie->tgenres || $this->again > 5 ) {*/
-		$movie->save();		
-	/*	} else {
-			echo "try again : ".$this->again." \n";
-			$this->again++;
-			$this->update();
-		}*/
+		$movie->save();
 
 	}
 }
