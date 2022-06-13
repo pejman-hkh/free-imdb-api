@@ -216,7 +216,7 @@ class Movies extends \Peji\DB\Model {
 		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
 		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
 		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
-		$a->genres = $info->aboveTheFoldData->genres->genres[0]->text;
+		$a->genres = $info->aboveTheFoldData->genres->genres;
 		$a->certificate = $info->aboveTheFoldData->certificate->rating;
 		$date = $info->aboveTheFoldData->releaseDate;
 		$a->releaseDate = $date->year.'/'.$date->month.'/'.$date->day;
@@ -237,8 +237,52 @@ class Movies extends \Peji\DB\Model {
 		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
 		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
 
-		print_r( $a );
+	print_r( $a );
+	exit();
+	
+		$ids = [];
+		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
+			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
+			if( ! @$c->id ) {
+				$w = new Writers;
+				$w->name = $v->name;
+				$w->const = $v->code;
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->twriters = implode(',', array_unique($ids) );
+	
+		$ids = [];
+		if( @count( $a->directors ) > 0 ) foreach( $a->directors as $v ) {
+			$c = Directors::sql("where name = ?")->findFirst([ $v->name ]);
+			if( ! @$c->id ) {
+				$w = new Directors;
+				$w->name = $v->name;
+				$w->const = $v->code;
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->tdirectors = implode(',', array_unique($ids) );
 
+		$ids = [];
+		if( @count( $a->genres ) > 0 ) foreach( $a->genres as $v ) {
+			$c = Genres::sql("where title = ?")->findFirst([ $v->title ]);
+			if( ! @$c->id ) {
+				$w = new Genres;
+				$w->title = $v->title;
+				$id = $w->save();
+			} else {
+				$id = $c->id;
+			}
+			$ids[] = $id;
+		}
+		$movie->tgenres = implode(',', array_unique($ids) );
 
 		exit();
 
