@@ -179,14 +179,32 @@ class Movies extends \Peji\DB\Model {
 
 		$info = $movie->info1;
 
+		$a = new \StdClass;
+		$a->writers = $info->mainColumnData->writers[0]->credits;
+		$a->directors = $info->mainColumnData->directors[0]->credits;
+		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
+		$a->genres = $info->aboveTheFoldData->genres->genres;
+		$a->certificate = $info->aboveTheFoldData->certificate->rating;
+		$a->releaseDate = $info->aboveTheFoldData->releaseDate;
+		$a->runtime = $info->aboveTheFoldData->runtime;
+		$a->primaryImage = $info->aboveTheFoldData->primaryImage;
+		$a->plot = $info->aboveTheFoldData->plot->plotText->plainText;
+		$a->countries = $info->mainColumnData->countriesOfOrigin->countries;
+		$a->wins = $info->mainColumnData->wins->total;
+		$a->nominations = $info->mainColumnData->nominations->total;
+		$a->images = $info->mainColumnData->titleMainImages->edges;
+		$a->casts = $info->mainColumnData->cast->edges;
+		$a->languages = $info->mainColumnData->spokenLanguages->spokenLanguages;
+		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
+		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
+		$a->budget = $info->mainColumnData->productionBudget->budget;
+		$a->lifetimeGross = $info->mainColumnData->lifetimeGross->total;
+		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
+		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
+		$a->keywords = $info->aboveTheFoldData->keywords->edges;
 
-		$writers = $info->mainColumnData->writers[0]->credits;
-		$directors = $info->mainColumnData->directors[0]->credits;
-		$genres = $info->aboveTheFoldData->genres->genres;
+		print_r( $a );
 
-		print_r( $info );
-		print_r( $directors );
-		print_r( $genres );
 
 		exit();
 
