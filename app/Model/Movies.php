@@ -172,6 +172,8 @@ class Movies extends \Peji\DB\Model {
 		$ret = $this->request( $this->imdbUrl );
 		$html = str_get_html( $ret );
 
+		if( ! $html ) return;
+
 		$t = $html->find("#__NEXT_DATA__", 0);
 		$movie->datan = $t->innertext;
 
@@ -188,7 +190,7 @@ class Movies extends \Peji\DB\Model {
 
 		exit();
 
-		if( ! $html ) return;
+		
 		preg_match('#<script type\="application/ld\+json">(.*?)</script>#', $ret, $m );
 		$data = ( json_decode($m[1]) );
 
