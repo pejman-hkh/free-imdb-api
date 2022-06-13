@@ -235,7 +235,7 @@ class Movies extends \Peji\DB\Model {
 		$a->lifetimeGross = $info->mainColumnData->lifetimeGross->total;
 		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
 		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
-		$a->keywords = $info->aboveTheFoldData->keywords->edges;
+		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
 
 		print_r( $a );
 
