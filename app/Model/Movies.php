@@ -172,6 +172,22 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+	function simplifyImages( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = $v->node;
+		}
+		return $ret;
+	}
+
+	function simplifyCasts( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'name' => $v->node->name->nameText->text, 'code' => $v->node->name->id, 'characters' => $v->node->characters[0]->name ];
+		}
+		return $ret;
+	}
+
 	var $again = 0;
 	function update() {
 
@@ -201,8 +217,8 @@ class Movies extends \Peji\DB\Model {
 		$a->countries = $info->mainColumnData->countriesOfOrigin->countries;
 		$a->wins = $info->mainColumnData->wins->total;
 		$a->nominations = $info->mainColumnData->nominations->total;
-		$a->images = $info->mainColumnData->titleMainImages->edges;
-		$a->casts = $info->mainColumnData->cast->edges;
+		$a->images = $this->simplifyImages( $info->mainColumnData->titleMainImages->edges );
+		$a->casts = $this->simplifyCasts( $info->mainColumnData->cast->edges );
 		$a->languages = $info->mainColumnData->spokenLanguages->spokenLanguages;
 		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
 		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
