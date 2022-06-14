@@ -90,7 +90,7 @@ class apiController extends appController {
 		$ret = new \StdClass;
 		$ret->title = $movie->basic->primaryTitle;
 		$ret->originalTitle = $movie->basic->originalTitle;
-		$ret->summery = $movie->summery;
+		//$ret->summery = $movie->summery;
 		//$ret->story = $movie->storyLine1;
 		$ret->src = $movie->src;
 		$ret->srcset = $movie->srcset;
