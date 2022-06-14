@@ -292,7 +292,7 @@ class Movies extends \Peji\DB\Model {
 
 
 		$ids = [];
-		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
+		if( @count( (array)$a->writers ) > 0 ) foreach( $a->writers as $v ) {
 			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
 			if( ! @$c->id ) {
 				$w = new Writers;
@@ -307,7 +307,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->twriters = implode(',', array_unique($ids) );
 	
 		$ids = [];
-		if( @count( $a->directors ) > 0 ) foreach( $a->directors as $v ) {
+		if( @count( (array)$a->directors ) > 0 ) foreach( $a->directors as $v ) {
 			$c = Directors::sql("where name = ?")->findFirst([ $v->name ]);
 			if( ! @$c->id ) {
 				$w = new Directors;
@@ -322,7 +322,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->tdirectors = implode(',', array_unique($ids) );
 
 		$ids = [];
-		if( @count( $a->genres ) > 0 ) foreach( $a->genres as $v ) {
+		if( @count( (array)$a->genres ) > 0 ) foreach( $a->genres as $v ) {
 			$c = Genres::sql("where title = ?")->findFirst([ $v->text ]);
 			if( ! @$c->id ) {
 				$w = new Genres;
@@ -336,7 +336,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->tgenres = implode(',', array_unique($ids) );
 
 		$ids = [];
-		if( @count( $a->casts ) > 0 ) foreach( $a->casts as $v ) {
+		if( @count( (array)$a->casts ) > 0 ) foreach( $a->casts as $v ) {
 			$c = Actors::sql("where name = ?")->findFirst([ $v->text ]);
 			if( ! @$c->id ) {
 				$w = new Actors;
@@ -352,7 +352,7 @@ class Movies extends \Peji\DB\Model {
 
 
 		$ids = [];
-		if( @count( $a->countries ) > 0 ) foreach( $a->countries as $v ) {
+		if( @count( (array)$a->countries ) > 0 ) foreach( $a->countries as $v ) {
 			$c = Countries::sql("where short = ?")->findFirst([ strtolower($v->id) ]);
 			if( ! @$c->id ) {
 				$w = new Countries;
@@ -367,7 +367,7 @@ class Movies extends \Peji\DB\Model {
 		$movie->tcountries = implode(',', array_unique($ids) );
 
 		$ids = [];
-		if( @count( $a->languages ) > 0 ) foreach( $a->languages as $v ) {
+		if( @count( (array)$a->languages ) > 0 ) foreach( $a->languages as $v ) {
 			$c = Languages::sql("where short = ?")->findFirst([ strtolower($v->id) ]);
 			if( ! @$c->id ) {
 				$w = new Languages;
