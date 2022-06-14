@@ -37,6 +37,10 @@ class movieController extends appController {
 			$movie->getInfo1();
 		}
 
+		if( isset( $this->get['info2'] ) ) {
+			print_r( $movie->getInfo2() );
+		}
+
 		if( isset( $this->get['deletePic'] ) ) {
 			echo $movie->pic;
 			unlink( $movie->pic );
