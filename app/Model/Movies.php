@@ -147,6 +147,7 @@ class Movies extends \Peji\DB\Model {
 		$a->genres = $info->aboveTheFoldData->genres->genres;
 		$a->certificate = $info->aboveTheFoldData->certificate->rating;
 		$date = $info->aboveTheFoldData->releaseDate;
+		$a->year = $date->year;
 		$a->releaseDate = $date->year.'/'.$date->month.'/'.$date->day;
 		$a->runtime = round( $info->aboveTheFoldData->runtime->seconds / 60 );
 		$a->primaryImage = $info->aboveTheFoldData->primaryImage;
