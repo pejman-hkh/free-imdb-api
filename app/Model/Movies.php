@@ -156,7 +156,7 @@ class Movies extends \Peji\DB\Model {
 		$a->wins = $info->mainColumnData->wins->total;
 		$a->nominations = $info->mainColumnData->nominations->total;
 		$a->images = $this->simplifyImages( $info->mainColumnData->titleMainImages->edges );
-		$a->casts = $this->simplifyCasts( $info->mainColumnData->principalCast->credits );
+		$a->casts = $this->simplifyCasts( $info->mainColumnData->principalCast[0]->credits );
 		$a->languages = $info->mainColumnData->spokenLanguages->spokenLanguages;
 		$a->filmingLocations = $this->simplifyLocation( $info->mainColumnData->filmingLocations->edges );
 		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
