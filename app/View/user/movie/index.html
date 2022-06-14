@@ -18,12 +18,16 @@
 
         Summery : <?=$movie->movie->summery?>
         <hr />
-
+        <?if( $movie->movie->src ) {?>
         Src : <?=$movie->movie->src?>
         <hr />
+        <? } ?>
 
+        <?if( $movie->movie->srcset ) {?>
         Src Set : <?=$movie->movie->srcset?>
         <hr />
+        <? } ?>
+
         <?/*Info : <?=json_encode($movie->movie->info2)?>
         <hr />
 */?>
