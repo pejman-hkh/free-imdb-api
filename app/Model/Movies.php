@@ -101,6 +101,15 @@ class Movies extends \Peji\DB\Model {
 	}
 
 
+	function simplifyProduction( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'id' => $v->node->company->id, 'text' => $v->node->company->companyText->text ];
+		}
+		return $ret;
+	}
+
+
 	function getInfo2() {
 
 		$info = $this->info1;
@@ -108,6 +117,7 @@ class Movies extends \Peji\DB\Model {
 		$a = new \StdClass;
 		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
 		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
+		$a->originalTitle = $info->aboveTheFoldData->originalTitleText->text;
 		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
 		$a->genres = $info->aboveTheFoldData->genres->genres;
 		$a->certificate = $info->aboveTheFoldData->certificate->rating;
@@ -129,6 +139,14 @@ class Movies extends \Peji\DB\Model {
 		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
 		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
 		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
+		$a->production = $this->simplifyProduction( $info->aboveTheFoldData->production->edges);
+		$a->prestigiousAwardSummary = $info->mainColumnData->prestigiousAwardSummary;
+		$a->moreLikeThisTitles = $info->mainColumnData->moreLikeThisTitles->edges;
+		$a->detailsExternalLinks = $info->mainColumnData->detailsExternalLinks->edges;
+		$a->akas = $info->mainColumnData->akas->edges;
+		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications;
+		$a->aspectRatios = $info->mainColumnData->aspectRatios->items;
+		$a->colorations = $info->mainColumnData->colorations->items;
 		return $a;	
 	}
 
