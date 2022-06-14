@@ -38,7 +38,7 @@ class movieController extends appController {
 		}
 
 		if( isset( $this->get['info2'] ) ) {
-			print_r( $movie->getInfo2() );
+			print_r( json_decode( $movie->datan ) );
 			$this->disableView = 1;
 		}
 
