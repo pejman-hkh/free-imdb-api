@@ -128,10 +128,10 @@ class Movies extends \Peji\DB\Model {
 	function simplifyTechnical( $a ) {
 		$ret = new \StdClass;
 		foreach( $a as $k => $v ) {
-			$v = $v->item;
+			$v = $v->items;
 			$ret->$k = $v;
 		}
-		return $a;		
+		return $ret;		
 	}
 
 	function getInfo2() {
