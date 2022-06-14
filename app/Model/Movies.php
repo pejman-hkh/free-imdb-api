@@ -131,7 +131,7 @@ class Movies extends \Peji\DB\Model {
 			$v = $v->item;
 			$ret->$k = $v;
 		}
-		return $ret;		
+		return $a;		
 	}
 
 	function getInfo2() {
