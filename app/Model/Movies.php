@@ -160,7 +160,7 @@ class Movies extends \Peji\DB\Model {
 		$a->filmingLocations = $info->mainColumnData->filmingLocations->edges;
 		$a->budget = $info->mainColumnData->productionBudget->budget;
 		$a->lifetimeGross = $info->mainColumnData->lifetimeGross->total;
-		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->total;
+		$a->openingWeekendGross = $info->mainColumnData->openingWeekendGross->gross->total;
 		$a->worldwideGross = $info->mainColumnData->worldwideGross->total;
 		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
 		$a->production = $this->simplifyProduction( $info->aboveTheFoldData->production->edges);
@@ -287,8 +287,8 @@ class Movies extends \Peji\DB\Model {
 		$info = $movie->info1;
 
 		$a = $movie->info2;
-		
-		
+
+
 		$ids = [];
 		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
 			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
