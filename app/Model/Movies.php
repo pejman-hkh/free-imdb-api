@@ -142,6 +142,7 @@ class Movies extends \Peji\DB\Model {
 		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
 		$a->directors = $this->simplify( $info->mainColumnData->directors[0]->credits );
 		$a->originalTitle = $info->aboveTheFoldData->originalTitleText->text;
+		$a->title = $info->aboveTheFoldData->titleText->text;
 		$a->metacritic = $info->aboveTheFoldData->metacritic->metascore->score;
 		$a->genres = $info->aboveTheFoldData->genres->genres;
 		$a->certificate = $info->aboveTheFoldData->certificate->rating;
