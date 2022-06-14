@@ -126,7 +126,7 @@ class Movies extends \Peji\DB\Model {
 	}
 
 	function simplifyTechnical( $a ) {
-		$ret = new StdClass;
+		$ret = new \StdClass;
 		foreach( $a as $k => $v ) {
 			$v = $v->item;
 			$ret->$k = $v;
