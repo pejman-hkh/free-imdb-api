@@ -159,9 +159,8 @@ class Movies extends \Peji\DB\Model {
 		$a->moreLikeThisTitles = $this->simplifyMoreLike( $info->mainColumnData->moreLikeThisTitles->edges );
 		$a->detailsExternalLinks = $this->simplifyExternal( $info->mainColumnData->detailsExternalLinks->edges );
 		$a->akas = $this->simplifyExternal( $info->mainColumnData->akas->edges);
-		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications->soundMixes->items;
-		$a->aspectRatios = $info->mainColumnData->aspectRatios->items;
-		$a->colorations = $info->mainColumnData->colorations->items;
+		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications;
+
 		return $a;	
 	}
 
