@@ -59,7 +59,9 @@ class movieController extends appController {
 			$movie->update();
 
 			$api = $movie->api;
-
+			print_r( $api );
+			exit();
+			
 			if( ! $basics->id ) {
 				$a = new Basics;
 				$a->tconst = $movie->code;
