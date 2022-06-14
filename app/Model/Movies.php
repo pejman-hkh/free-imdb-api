@@ -427,6 +427,8 @@ class Movies extends \Peji\DB\Model {
 	}
 
 	function getApi() {
+		$movie = $this;
+		
 		$info = $movie->info2;
 
 		$ret = new \StdClass;
