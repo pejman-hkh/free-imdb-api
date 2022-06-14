@@ -109,6 +109,13 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+	function simplifyMoreLike( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = (object)[ 'code' => $v->node->id, 'title' => $v->node->titleText->text ];
+		}
+		return $ret;
+	}
 
 	function getInfo2() {
 
@@ -141,7 +148,7 @@ class Movies extends \Peji\DB\Model {
 		$a->keywords = $this->simplifyLocation( $info->aboveTheFoldData->keywords->edges);
 		$a->production = $this->simplifyProduction( $info->aboveTheFoldData->production->edges);
 		$a->prestigiousAwardSummary = $info->mainColumnData->prestigiousAwardSummary;
-		$a->moreLikeThisTitles = $info->mainColumnData->moreLikeThisTitles->edges;
+		$a->moreLikeThisTitles = $this->simplifyMoreLike( $info->mainColumnData->moreLikeThisTitles->edges );
 		$a->detailsExternalLinks = $info->mainColumnData->detailsExternalLinks->edges;
 		$a->akas = $info->mainColumnData->akas->edges;
 		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications;
