@@ -125,6 +125,15 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+	function simplifyTechnical( $a ) {
+		$ret = new StdClass;
+		foreach( $a as $k => $v ) {
+			$v = $v->item;
+			$ret->$k = $v;
+		}
+		return $ret;		
+	}
+
 	function getInfo2() {
 
 		$info = $this->info1;
@@ -159,7 +168,7 @@ class Movies extends \Peji\DB\Model {
 		$a->moreLikeThisTitles = $this->simplifyMoreLike( $info->mainColumnData->moreLikeThisTitles->edges );
 		$a->detailsExternalLinks = $this->simplifyExternal( $info->mainColumnData->detailsExternalLinks->edges );
 		$a->akas = $this->simplifyExternal( $info->mainColumnData->akas->edges);
-		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications;
+		$a->technicalSpecifications = $this->simplifyTechnical( $info->mainColumnData->technicalSpecifications );
 
 		return $a;	
 	}
