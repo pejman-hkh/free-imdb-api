@@ -84,6 +84,14 @@ class Movies extends \Peji\DB\Model {
 		return $ret;
 	}
 
+	function simplifyExternal( $a ) {
+		$ret = [];
+		foreach( $a as $v ) {
+			$ret[] = $v->node;
+		}
+		return $ret;
+	}
+
 	function simplifyCasts( $a ) {
 		$ret = [];
 		foreach( $a as $v ) {
@@ -149,7 +157,7 @@ class Movies extends \Peji\DB\Model {
 		$a->production = $this->simplifyProduction( $info->aboveTheFoldData->production->edges);
 		$a->prestigiousAwardSummary = $info->mainColumnData->prestigiousAwardSummary;
 		$a->moreLikeThisTitles = $this->simplifyMoreLike( $info->mainColumnData->moreLikeThisTitles->edges );
-		$a->detailsExternalLinks = $info->mainColumnData->detailsExternalLinks->edges;
+		$a->detailsExternalLinks = $this->simplifyExternal( $info->mainColumnData->detailsExternalLinks->edges );
 		$a->akas = $info->mainColumnData->akas->edges;
 		$a->technicalSpecifications = $info->mainColumnData->technicalSpecifications;
 		$a->aspectRatios = $info->mainColumnData->aspectRatios->items;
