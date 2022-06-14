@@ -428,20 +428,20 @@ class Movies extends \Peji\DB\Model {
 
 	function getApi() {
 		$movie = $this;
-		
+
 		$info = $movie->info2;
 
 		$ret = new \StdClass;
-		$ret->title = $movie->basic->primaryTitle;
-		$ret->originalTitle = $movie->basic->originalTitle;
+		$ret->title = $info->title;
+		$ret->originalTitle = $info->originalTitle;
 		$ret->src = $movie->src;
 		$ret->srcset = $movie->srcset;
 		$ret->rate = $movie->rating->averageRating;
 		$ret->numVotes = $movie->rating->numVotes;
-		$ret->year = $movie->basic->startYear;
-		$ret->runtime = $movie->basic->runtimeMinutes;
-		$ret->isAdult = $movie->basic->isAdult;
-		$ret->type = $movie->basic->titleType;
+		$ret->year = $info->year;
+		$ret->runtime = $info->runtime;
+		$ret->isAdult = $info->isAdult;
+		$ret->type = $info->type;
 
 		$ret->actors = getArray($movie->actors);
 		$ret->directors = getArray($movie->directors);
