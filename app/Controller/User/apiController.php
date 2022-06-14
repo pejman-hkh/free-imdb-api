@@ -85,7 +85,10 @@ class apiController extends appController {
 		$this->disableView = 1;
 		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
 		$ret = $movie->api;
-
+		if( $movie->datan == '' ) {
+			$movie->update();
+		}
+		
 		echo mjson_encode( (array)$ret );
 	}
 
