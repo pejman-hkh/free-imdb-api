@@ -275,8 +275,7 @@ class Movies extends \Peji\DB\Model {
 	function update() {
 
 		$movie = $this;
-echo $this->imdbUrl;
-exit();
+
 		$ret = $this->request( $this->imdbUrl );
 		$html = str_get_html( $ret );
 
