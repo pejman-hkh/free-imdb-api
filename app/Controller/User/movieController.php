@@ -39,6 +39,7 @@ class movieController extends appController {
 
 		if( isset( $this->get['info2'] ) ) {
 			print_r( $movie->getInfo2() );
+			$this->disableView = 1;
 		}
 
 		if( isset( $this->get['deletePic'] ) ) {
