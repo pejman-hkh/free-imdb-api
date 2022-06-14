@@ -84,43 +84,7 @@ class apiController extends appController {
 	function movies() {
 		$this->disableView = 1;
 		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
-
-		$info = $movie->info2;
-
-		$ret = new \StdClass;
-		$ret->title = $movie->basic->primaryTitle;
-		$ret->originalTitle = $movie->basic->originalTitle;
-		//$ret->summery = $movie->summery;
-		//$ret->story = $movie->storyLine1;
-		$ret->src = $movie->src;
-		$ret->srcset = $movie->srcset;
-		$ret->rate = $movie->rating->averageRating;
-		$ret->numVotes = $movie->rating->numVotes;
-		$ret->year = $movie->basic->startYear;
-		$ret->runtime = $movie->basic->runtimeMinutes;
-		$ret->isAdult = $movie->basic->isAdult;
-		$ret->type = $movie->basic->titleType;
-
-		$ret->actors = getArray($movie->actors);
-		$ret->directors = getArray($movie->directors);
-		$ret->writers = getArray($movie->writers);
-		$ret->countries = getArray($movie->countries);
-		$ret->languages = getArray($movie->languages);
-		$ret->genres = getArray($movie->genres);
-		$ret->metacritic = $info->metacritic;
-		$ret->releaseDate = $info->releaseDate;
-		$ret->plot = $info->plot;
-		$ret->wins = $info->wins;
-		$ret->nominations = $info->nominations;
-		$ret->casts = $info->casts;
-		$ret->budget = $info->budget;
-		$ret->lifetimeGross = $info->lifetimeGross;
-		$ret->openingWeekendGross = $info->openingWeekendGross;
-		$ret->worldwideGross = $info->worldwideGross;
-		$ret->keywords = $info->keywords;
-		$ret->production = $info->production;
-		$ret->prestigiousAwardSummary = $info->prestigiousAwardSummary;
-		$ret->moreLikeThisTitles = $info->moreLikeThisTitles;
+		$ret = $movie->api;
 
 		echo mjson_encode( (array)$ret );
 	}

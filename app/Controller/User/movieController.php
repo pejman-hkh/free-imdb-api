@@ -55,9 +55,31 @@ class movieController extends appController {
 		}
 
 		if( isset( $this->get['update'] ) ) {
-	
 			$movie->code = $params[1];
 			$movie->update();
+
+			$api = $movie->api;
+
+			if( ! $basics->id ) {
+				$a = new Basics;
+				$a->tconst = $movie->code;
+				$a->titleType = $api->type;
+				$a->primaryTitle = $api->title;
+				$a->originalTitle = $api->originalTitle;
+				$a->startYear = $api->year;
+				$a->isAdult = $api->isAdult;
+				$a->runtimeMinutes = $api->runtime;
+				$gs = [];
+				foreach( $api->genres as $genre ) {
+					$gs[] = $genre->title;
+				}
+
+				$a->genres = implode(',', $gs);
+				$a->averageRating = $api->rate;
+				$a->numVotes = $api->numVotes;
+				$a->rateOrder = $api->averageRating * $api->numVotes;
+				$a->save();
+			}
 			
 		}
 
