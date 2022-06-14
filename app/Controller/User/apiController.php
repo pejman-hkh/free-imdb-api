@@ -83,27 +83,44 @@ class apiController extends appController {
 
 	function movies() {
 		$this->disableView = 1;
-		$find = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
+		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
+
+		$info = $movie->info2;
 
 		$ret = new \StdClass;
-		$ret->title = $find->basic->originalTitle;
-		$ret->summery = $find->summery;
-		//$ret->story = $find->storyLine1;
-		$ret->src = $find->src;
-		$ret->srcset = $find->srcset;
-		$ret->rate = $find->rating->averageRating;
-		$ret->numVotes = $find->rating->numVotes;
-		$ret->year = $find->basic->startYear;
-		$ret->runtime = $find->basic->runtimeMinutes;
-		$ret->isAdult = $find->basic->isAdult;
-		$ret->type = $find->basic->titleType;
+		$ret->title = $movie->basic->primaryTitle;
+		$ret->originalTitle = $movie->basic->originalTitle;
+		$ret->summery = $movie->summery;
+		//$ret->story = $movie->storyLine1;
+		$ret->src = $movie->src;
+		$ret->srcset = $movie->srcset;
+		$ret->rate = $movie->rating->averageRating;
+		$ret->numVotes = $movie->rating->numVotes;
+		$ret->year = $movie->basic->startYear;
+		$ret->runtime = $movie->basic->runtimeMinutes;
+		$ret->isAdult = $movie->basic->isAdult;
+		$ret->type = $movie->basic->titleType;
 
-		$ret->actors = getArray($find->actors);
-		$ret->directors = getArray($find->directors);
-		$ret->writers = getArray($find->writers);
-		$ret->countries = getArray($find->countries);
-		$ret->languages = getArray($find->languages);
-		$ret->genres = getArray($find->genres);
+		$ret->actors = getArray($movie->actors);
+		$ret->directors = getArray($movie->directors);
+		$ret->writers = getArray($movie->writers);
+		$ret->countries = getArray($movie->countries);
+		$ret->languages = getArray($movie->languages);
+		$ret->genres = getArray($movie->genres);
+		$ret->metacritic = $info->metacritic;
+		$ret->releaseDate = $info->releaseDate;
+		$ret->plot = $info->plot;
+		$ret->wins = $info->wins;
+		$ret->nominations = $info->nominations;
+		$ret->casts = $info->casts;
+		$ret->budget = $info->budget;
+		$ret->lifetimeGross = $info->lifetimeGross;
+		$ret->openingWeekendGross = $info->openingWeekendGross;
+		$ret->worldwideGross = $info->worldwideGross;
+		$ret->keywords = $info->keywords;
+		$ret->production = $info->production;
+		$ret->prestigiousAwardSummary = $info->prestigiousAwardSummary;
+		$ret->moreLikeThisTitles = $info->moreLikeThisTitles;
 
 		echo mjson_encode( (array)$ret );
 	}

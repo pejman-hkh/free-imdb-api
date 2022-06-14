@@ -287,7 +287,8 @@ class Movies extends \Peji\DB\Model {
 		$info = $movie->info1;
 
 		$a = $movie->info2;
-
+		
+		
 		$ids = [];
 		if( @count( $a->writers ) > 0 ) foreach( $a->writers as $v ) {
 			$c = Writers::sql("where name = ?")->findFirst([ $v->name ]);
