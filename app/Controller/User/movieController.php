@@ -55,8 +55,10 @@ class movieController extends appController {
 		}
 
 		if( isset( $this->get['update'] ) ) {
-			$movie->code = $basics->tconst;
+	
+			$movie->code = $params[1];
 			$movie->update();
+			
 		}
 
 	}
