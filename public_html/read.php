@@ -47,16 +47,12 @@ try {
 			echo $basic->tconst."\n";
 
 			$movie = Movies::sql("where code = ? ")->findFirst([$basic->tconst]);
-			if( @$movie->id && ! empty( $movie->datan )  ) {
+			if( @$movie->id   ) {
 				continue;
 			}
 
-			if( ! $movie->id ) {
-				$m = new Movies;
-			} else {
-				$m = $movie;
-			}
-			
+		
+			$m = new Movies;
 			$m->code = $basic->tconst;
 			$m->update();
 		}
