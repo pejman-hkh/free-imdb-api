@@ -51,7 +51,12 @@ try {
 				continue;
 			}
 
-			$m = new Movies;
+			if( ! $movie->id ) {
+				$m = new Movies;
+			} else {
+				$m = $movie;
+			}
+			
 			$m->code = $basic->tconst;
 			$m->update();
 		}
