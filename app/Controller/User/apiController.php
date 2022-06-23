@@ -86,8 +86,10 @@ class apiController extends appController {
 		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
 		if( ! $movie ) {
 			$movie = new Movies;
+			$movie->code = $this->get['code'];
+			$movie->save();
 		}
-		
+
 		if( $movie->datan == '' ) {
 			$movie->update();
 		}
