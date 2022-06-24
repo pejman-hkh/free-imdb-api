@@ -44,7 +44,7 @@ class Movies extends \Peji\DB\Model {
 	}
 
 	function removeType( &$object ) {
-		foreach( $object as $k => $o ) {
+		if( is_array( $object ) || is_object( $object ) ) foreach( $object as $k => $o ) {
 			if( $k == '__typename' ) {
 				unset( $object->$k );
 			}
