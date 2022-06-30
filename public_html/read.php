@@ -42,19 +42,26 @@ try {
 			\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true ,
 		]);
 
-		$basics = Basics::sql(" order by rateOrder desc limit $from, 100")->find();
+		$basics = Basics::sql(" where movieid = 0 order by rateOrder desc limit $from, 100")->find();
 		foreach( $basics as $basic ) {
 			echo $basic->tconst."\n";
 
 			$movie = Movies::sql("where code = ? ")->findFirst([$basic->tconst]);
 			if( @$movie->id   ) {
+				$basic->movieid = $movie->id;
+				$basic->save();
+
 				continue;
 			}
+
 
 		
 			$m = new Movies;
 			$m->code = $basic->tconst;
 			$m->update();
+
+			$basic->movieid = $m->id;
+			$basic->save();
 		}
 
 		$from = ($i + 1) * 100;
