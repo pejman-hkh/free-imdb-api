@@ -137,9 +137,9 @@ class Movies extends \Peji\DB\Model {
 	function getInfo2() {
 
 		$info = $this->info1;
-
+/*
 		print_r( $info );
-		exit();
+		exit();*/
 
 		$a = new \StdClass;
 		$a->writers = $this->simplify($info->mainColumnData->writers[0]->credits);
