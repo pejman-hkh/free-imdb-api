@@ -138,7 +138,7 @@ class Movies extends \Peji\DB\Model {
 
 		$info = $this->info1;
 
-		print_r( $info->mainColumnData->cast->edges  );
+		print_r( $this->simplifyCasts( $info->mainColumnData->cast->edges )  );
 		exit();
 
 		$a = new \StdClass;
