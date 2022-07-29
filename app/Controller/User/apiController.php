@@ -89,9 +89,9 @@ class apiController extends appController {
 		
 		if( ! $movie ) {
 			$movie = new Movies;
-			exit();
 			
 			$movie->code = $this->get['code'];
+			exit();
 			$movie->save();
 		}
 
