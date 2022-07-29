@@ -89,7 +89,8 @@ class apiController extends appController {
 			$movie->code = $this->get['code'];
 			$movie->save();
 		}
-
+		exit();
+		
 		if( $movie->datan == '' ) {
 			$movie->update();
 		}
