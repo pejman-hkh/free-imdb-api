@@ -84,13 +84,14 @@ class apiController extends appController {
 	function movies() {
 		$this->disableView = 1;
 		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
+			exit();
+		
 		if( ! $movie ) {
 			$movie = new Movies;
 			$movie->code = $this->get['code'];
 			$movie->save();
 		}
-		exit();
-		
+
 		if( $movie->datan == '' ) {
 			$movie->update();
 		}
