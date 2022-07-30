@@ -85,7 +85,6 @@ class apiController extends appController {
 		$this->disableView = 1;
 		$movie = Movies::sql("where code = ?")->findFirst([ $this->get['code'] ]);
 
-		exit();
 		
 		if( ! $movie ) {
 			$movie = new Movies;
@@ -94,6 +93,7 @@ class apiController extends appController {
 			$movie->save();
 			//exit();
 		}
+		exit();
 
 		if( $movie->datan == '' ) {
 			$movie->update();
