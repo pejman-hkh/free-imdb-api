@@ -97,9 +97,10 @@ class apiController extends appController {
 		if( $movie->datan == '' ) {
 			$movie->update();
 		}
-		exit();
 		
-		$movie->checkDatan1();
+		//exit();
+		
+		//$movie->checkDatan1();
 
 		$ret = $movie->api;
 		echo mjson_encode( (array)$ret );
