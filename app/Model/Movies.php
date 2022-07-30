@@ -3,6 +3,13 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function checkDatan1() {
+		$info = $this->info2;
+		$this->datan1 = json_encode( $info );
+		$this->datan = '';
+		$this->save();
+	}
+
 	function getInfo() {
 		$ret = new \StdClass;
 		foreach( json_decode($this->datas) as $k => $v ) {
@@ -135,6 +142,10 @@ class Movies extends \Peji\DB\Model {
 	}
 
 	function getInfo2() {
+
+		if( $this->datan1 ) {
+			return json_decode( $this->datan1 );
+		}
 
 		$info = $this->info1;
 

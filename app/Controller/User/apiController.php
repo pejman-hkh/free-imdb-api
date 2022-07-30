@@ -99,6 +99,8 @@ class apiController extends appController {
 			$movie->update();
 		}
 		
+		$movie->checkDatan1();
+		
 		$ret = $movie->api;
 		echo mjson_encode( (array)$ret );
 	}
