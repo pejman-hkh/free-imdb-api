@@ -93,11 +93,11 @@ class apiController extends appController {
 			$movie->save();
 			//exit();
 		}
-		exit();
 
 		if( $movie->datan == '' ) {
 			$movie->update();
 		}
+		exit();
 		
 		$movie->checkDatan1();
 
