@@ -438,6 +438,8 @@ class Movies extends \Peji\DB\Model {
 		$movie->datas = mjson_encode( $all );
 
 
+		$movie->checkDatan1();
+		
 		$movie->save();
 
 	}
