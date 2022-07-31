@@ -94,7 +94,7 @@ class apiController extends appController {
 			//exit();
 		}
 
-		if( $movie->datan == '' ) {
+		if( $movie->datan1 == '' ) {
 			$movie->update();
 		}
 
