@@ -4,12 +4,12 @@ class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
 	function encode( $a ) {
-		return base64_encode( gzdeflate( $a, 9 ));
+		return $a;
 	}
 
 
 	function decode( $a ) {
-		return base64_decode( gzinflate( $a ) );
+		return $a;
 	}
 
 	function checkDatan1() {
