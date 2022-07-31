@@ -35,10 +35,10 @@ class Model {
 
 		$columns = array_reverse( $columns );
 		$this->getColumns();
-
+/*
 		if( count1( $this->columns ) > 1 ) {
 			return;
-		}
+		}*/
 
 		foreach( $columns as $v ) {
 			if( $v == 'ajax' ) continue;
