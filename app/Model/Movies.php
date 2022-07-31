@@ -449,6 +449,9 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->checkDatan1();
 
+		print_r( $movie );
+		exit();
+		
 		$movie->save();
 
 	}
