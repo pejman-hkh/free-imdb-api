@@ -449,13 +449,13 @@ class Movies extends \Peji\DB\Model {
 
 		$movie->checkDatan1();
 
-		$columns = [];
+/*		$columns = [];
 		foreach( $movie as $k => $v ) {
 			$columns[] = $k;
 		}
 
 		$movie->makeColumns( $columns );
-		
+		*/
 		$movie->save();
 
 	}
