@@ -3,11 +3,18 @@ namespace App\Model;
 class Movies extends \Peji\DB\Model {
 	var $table = 'movies';
 
+	function encode( $a ) {
+		return base64_encode(bzcompress( $a, 9 ));
+	}
+
+
+	function decode( $a ) {
+		return base64_decode( bzdecompress( $a ) );
+	}
+
 	function checkDatan1() {
 		$info = $this->info2;
-		
-
-		$this->datan1 = bzcompress(json_encode( $info ), 9);
+		$this->datan1 = $this->encode( json_encode( $info ) );
 		$this->datan = '';
 		$this->save();
 	}
@@ -146,7 +153,7 @@ class Movies extends \Peji\DB\Model {
 	function getInfo2() {
 
 		if( $this->datan1 ) {
-			return json_decode( bzdecompress( $this->datan1 ) );
+			return json_decode( $this->decode( $this->datan1 ) );
 		}
 
 		$info = $this->info1;
