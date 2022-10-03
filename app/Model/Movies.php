@@ -251,7 +251,7 @@ class Movies extends \Peji\DB\Model {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
-		$proxy = "138.201.113.9:3828";
+		//$proxy = "138.201.113.9:3828";
 		if( isLocal() ) $proxy = '';
 
 
