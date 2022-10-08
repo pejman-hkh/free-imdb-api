@@ -24,7 +24,7 @@ class movieController extends appController {
 
 		$this->set('movie', $basics);
 
-		$this->set('title', ($basics->primaryTitle?:$basics->movie->api->title).' '.($basics->startYear?:$basics->movie->api->year);
+		$this->set('title', ($basics->primaryTitle?:$basics->movie->api->title).' '.($basics->startYear?:$basics->movie->api->year) );
 
 		$movie = Movies::sql("where code = ? ")->findFirst([ $params[1] ]);
 		if( ! @$movie->id ) {
