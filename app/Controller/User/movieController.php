@@ -62,7 +62,11 @@ class movieController extends appController {
 
 			if( ! $basics->id ) {
 				$a = new Basics;
+			} else {
+				$a = $basics;
+			}
 
+			if( $a && ! $basics->titleType ){
 				$a->tconst = $movie->code;
 				$a->titleType = $api->type;
 				$a->primaryTitle = $api->title;
