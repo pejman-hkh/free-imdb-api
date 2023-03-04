@@ -1,0 +1,81 @@
+
+<div class="row">
+  <div class="col-lg-12">
+
+
+    <div class="row">
+    <?foreach( $movies as $movie ) {?>
+      <div class="col-lg-4">
+        <div class="card m-1">
+          <div class="card-body">
+            <center><h4><a href="<?=baseUrl?>movie/<?=$movie->tconst1?>"><?=$movie->basic->primaryTitle?></a></h4></center>
+            <?if( file_exists($movie->pic) ) {?>
+              <center><img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->basic->primaryTitle?>" /></center>
+            <? } ?>
+            <hr />
+            Imdb Code : <a target="_blank" href="https://www.imdb.com/title/<?=$movie->basic->tconst?>/"><?=$movie->basic->tconst?></a>
+            <hr />
+            Title Type : <?=$movie->basic->titleType?>
+            <hr />
+            <?=$movie->rating->averageRating?> / <?=$movie->rating->numVotes?>
+            <hr />
+            Year : <?=$movie->basic->startYear?>
+            <hr />
+            RunTime : <?=$movie->basic->runtimeMinutes?>
+            <hr />
+            Genres : <?=$movie->basic->genres?>
+            <hr />
+            isAdult : <?=$movie->basic->isAdult?> 
+
+            <hr />
+
+            <a rel="nofollow" href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">ratings</a> / <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">basics</a>
+          </div>
+        </div>
+
+      </div>
+
+    <? } ?>
+    </div>
+
+
+    <br />
+
+   <?if( $pagination['count'] > 0 ) {?>
+
+   <ul class="pagination">
+   <? 
+   $p = $pagination;
+   $i = $p['prev']; 
+   $params = makePp($this->params);
+   ?>
+   <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>">Prev</a></li>
+
+
+   <?$i = 1;?>
+   <li class="page-item"><a class="page-link wa" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>">First</a></li>
+
+   <?
+
+   for( $i = $p['start']; $i <= $p['end']; $i++ ) {
+
+   ?>
+   <li class="page-item <?=(@$this->params['page'] == $i ? ' active' : '')?>"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"><?=$i?></a> </li>
+   <?    
+   }
+   ?>
+
+   <? $i = $p['endPage']?>
+   <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"> Last</a></li>
+
+
+   <? $i = $p['next']?>
+   <li class="page-item"><a class="page-link" href="<?=baseUrl?><?=$mcontroller?>/<?=($params?$params.'/':'')?>page/<?=$i?><?=$queryString?>"> Next</a></li>
+
+   </ul>
+ 
+   <? } ?>  
+
+
+  </div>
+</div>

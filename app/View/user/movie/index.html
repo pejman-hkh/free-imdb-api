@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-lg-12">
+  <h1> <?=$movie->primaryTitle?:$movie->movie->api->title?> <?=$movie->startYear?:$movie->movie->api->year?> ( <a rel="nofollow" href="<?=baseUrl?>api/movies/?code=<?=$movie->tconst?>">api</a> )  </h1>
+
+  <?if($movie->movie->id) {?>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card m-1">
+        <div class="card-body">        
+      <?if( file_exists( $movie->pic ) ) {?>
+        <img src="<?=baseUrl?><?=$movie->pic?>" alt="<?=$movie->primaryTitle?>" />
+        <br />
+      <? } ?>
+        <br />
+
+       <?/* Story Line : <?=$movie->movie->storyLine1?>
+        <hr />*/?>
+
+        Summery : <?=$movie->movie->summery?>
+        <hr />
+        <?if( $movie->movie->src ) {?>
+        Src : <?=$movie->movie->src?>
+        <hr />
+        <? } ?>
+
+        <?if( $movie->movie->srcset ) {?>
+        Src Set : <?=$movie->movie->srcset?>
+        <hr />
+        <? } ?>
+
+        <?/*Info : <?=json_encode($movie->movie->info2)?>
+        <hr />
+*/?>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+  <hr />
+    <? } ?>
+
+ <div class="row">
+    <div class="col-lg-6">
+      <div class="card m-1">
+        <div class="card-body">
+          <h4>Basics ( <a rel="nofollow" href="<?=baseUrl?>api/basics/?code=<?=$movie->tconst?>">api</a> ) </h4>
+          
+
+          <ul>
+          <?foreach( $movie->basic->columns as $c ) {?>
+              <li><?=$c?> : <?=$movie->basic->$c?></li>
+          <? } ?>
+          </ul>   
+
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      
+      <div class="card m-1">
+        <div class="card-body">
+          <h4>Ratings ( <a rel="nofollow" href="<?=baseUrl?>api/ratings/?code=<?=$movie->tconst?>">api</a> ) </h4>
+          
+          <ul>
+          <?foreach( $movie->rating->columns as $c ) {?>
+              <li><?=$c?> : <?=$movie->rating->$c?></li>
+          <? } ?>
+          </ul>    
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<hr />
+
+<h4>Akas ( <a rel="nofollow" href="<?=baseUrl?>api/akas/?code=<?=$movie->tconst?>">api</a> ) </h4>
+
+ <div class="row">
+    <?
+  foreach( $movie->akas as $aka ) {
+    ?>
+    <div class="col-lg-3">
+      
+      <div class="card m-1">
+        <div class="card-body">
+
+    <ul>
+    <?foreach( $aka->columns as $c ) {?>
+        <li><?=$c?> : <?=$aka->$c?></li>
+    <? } ?>
+    </ul>
+    </div>
+  </div>
+</div>
+
+    <?
+  }
+    ?>
+</div>
+
+<hr />
+
+<h4>Principals ( <a rel="nofollow" href="<?=baseUrl?>api/principals/?code=<?=$movie->tconst?>">api</a> ) </h4>
+
+ <div class="row">
+    <?
+  foreach( $movie->principals as $principal ) {
+    ?>
+    <div class="col-lg-3">
+      
+      <div class="card m-1">
+        <div class="card-body">
+
+    <ul>
+    <?foreach( $principal->columns as $c ) {?>
+        <li><?=$c?> : <?=$principal->$c?></li>
+    <? } ?>
+    </ul>
+    </div>
+  </div>
+</div>
+
+  <?}?>
+</div>
+
+<hr />
+
+<h4>Crews ( <a rel="nofollow" href="<?=baseUrl?>api/crew/?code=<?=$movie->tconst?>">api</a> ) </h4>
+
+ <div class="row">
+    <?
+  foreach( $movie->crews as $crew ) {
+    ?>
+    <div class="col-lg-3">
+      
+      <div class="card m-1">
+        <div class="card-body">
+
+    <ul>
+    <?foreach( $crew->columns as $c ) {?>
+        <li><?=$c?> : <?=$crew->$c?></li>
+    <? } ?>
+    </ul>
+    </div>
+  </div>
+</div>
+
+  <?}?>
+</div>
+
+
+  </div>
+</div>

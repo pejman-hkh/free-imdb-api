@@ -1,0 +1,36 @@
+[
+    {
+        "name": "pejman/peji",
+        "version": "v1.0.7",
+        "version_normalized": "1.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pejman-hkh/peji.git",
+            "reference": "b92ad9b31b97a275f2f3e38f3cf0453c61a67dda"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pejman-hkh/peji/zipball/b92ad9b31b97a275f2f3e38f3cf0453c61a67dda",
+            "reference": "b92ad9b31b97a275f2f3e38f3cf0453c61a67dda",
+            "shasum": ""
+        },
+        "time": "2022-05-09T14:34:01+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Peji\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "pejman",
+                "email": "pejman.hkh@gmail.com"
+            }
+        ]
+    }
+]
