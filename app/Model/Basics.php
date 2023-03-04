@@ -79,7 +79,9 @@ class Basics extends \Peji\DB\Model {
 
 	function read() {
 		$file = MDIR.'datasets/title.basics.tsv.gz';
-		if( ! file_exists( $file ) ) {
+		$filetime = filemtime( $cache_file );
+
+		if( ! file_exists( $file ) || ( time() - $filetime > 3 * 24 * 3600 ) ) {
 			$c = file_get_contents('https://datasets.imdbws.com/title.basics.tsv.gz');
 			file_put_contents($file, $c );
 		}
@@ -99,9 +101,12 @@ class Basics extends \Peji\DB\Model {
 				if( $k == 0 ) {
 					$e = explode("\t", $line);
 
-				} else {			
+				} else {	
 					$d = explode("\t", $line );
-					$a = new Basics;
+					$a = Basics::sql("where tconst = ? ")->findFirst([ $d[0] ]);
+					if( ! $a->id )
+						$a = new Basics;
+					
 					foreach( $e as $k1 => $v ) {
 						$v = trim( $v );
 						$a->$v = trim($d[$k1]);
